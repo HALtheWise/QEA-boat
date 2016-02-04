@@ -1,0 +1,362 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     11806,        353]
+NotebookOptionsPosition[     10722,        310]
+NotebookOutlinePosition[     11088,        326]
+CellTagsIndexPosition[     11045,        323]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"boat", "[", "n_", "]"}], ":=", 
+  RowBox[{"ImplicitRegion", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"Abs", "[", "y", "]"}], "^", "n"}], "-", "1"}], "<", "z", "<", 
+     "0"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"y", ",", "z"}], "}"}]}], "]"}]}], "\n", 
+ RowBox[{
+  RowBox[{"underwater", "[", 
+   RowBox[{"n_", ",", "d_", ",", "\[Theta]_"}], "]"}], ":=", 
+  RowBox[{"RegionIntersection", "[", 
+   RowBox[{
+    RowBox[{"boat", "[", "n", "]"}], ",", 
+    RowBox[{"HalfSpace", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"RotationMatrix", "[", "\[Theta]", "]"}], ".", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "1"}], "}"}]}], ",", 
+      RowBox[{"-", "d"}]}], "]"}]}], "]"}]}]}], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"Show", "[", 
+    RowBox[{
+     RowBox[{"RegionPlot", "[", 
+      RowBox[{"boat", "[", "n", "]"}], "]"}], ",", 
+     RowBox[{"RegionPlot", "[", 
+      RowBox[{"underwater", "[", 
+       RowBox[{"n", ",", "d", ",", "\[Theta]"}], "]"}], "]"}], ",", 
+     RowBox[{
+      RowBox[{"p1", "=", 
+       RowBox[{"RegionCentroid", "@", 
+        RowBox[{"boat", "[", "n", "]"}]}]}], ";", 
+      RowBox[{"p2", "=", 
+       RowBox[{"RegionCentroid", "@", 
+        RowBox[{"underwater", "[", 
+         RowBox[{"n", ",", "d", ",", "\[Theta]"}], "]"}]}]}], ";", 
+      RowBox[{"Graphics", "@", 
+       RowBox[{"Line", "[", 
+        RowBox[{"{", 
+         RowBox[{"p1", ",", "p2"}], "}"}], "]"}]}]}], ",", 
+     RowBox[{"Graphics", "[", 
+      RowBox[{
+       RowBox[{"PointSize", "[", "Large", "]"}], ",", 
+       RowBox[{"Point", "@", "p1"}]}], "]"}], ",", 
+     RowBox[{"Graphics", "[", 
+      RowBox[{"Point", "@", "p2"}], "]"}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"n", ",", "1", ",", "10", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"d", ",", "0.1", ",", ".9", ",", ".02"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\[Theta]", ",", "0", ",", 
+     RowBox[{"Pi", "/", "2"}], ",", ".1"}], "}"}]}], "]"}]], "Input"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`d$$ = 0.36, $CellContext`n$$ = 
+    10, $CellContext`\[Theta]$$ = 0., Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`n$$], 1, 10, 1}, {
+      Hold[$CellContext`d$$], 0.1, 0.9, 0.02}, {
+      Hold[$CellContext`\[Theta]$$], 0, Rational[1, 2] Pi, 0.1}}, 
+    Typeset`size$$ = {360., {170., 174.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`n$174579$$ = 0, $CellContext`d$174580$$ = 
+    0, $CellContext`\[Theta]$174581$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`d$$ = 0.1, $CellContext`n$$ = 
+        1, $CellContext`\[Theta]$$ = 0}, "ControllerVariables" :> {
+        Hold[$CellContext`n$$, $CellContext`n$174579$$, 0], 
+        Hold[$CellContext`d$$, $CellContext`d$174580$$, 0], 
+        Hold[$CellContext`\[Theta]$$, $CellContext`\[Theta]$174581$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Show[
+        RegionPlot[
+         $CellContext`boat[$CellContext`n$$]], 
+        RegionPlot[
+         $CellContext`underwater[$CellContext`n$$, $CellContext`d$$, \
+$CellContext`\[Theta]$$]], $CellContext`p1 = RegionCentroid[
+           $CellContext`boat[$CellContext`n$$]]; $CellContext`p2 = 
+         RegionCentroid[
+           $CellContext`underwater[$CellContext`n$$, $CellContext`d$$, \
+$CellContext`\[Theta]$$]]; Graphics[
+          Line[{$CellContext`p1, $CellContext`p2}]], 
+        Graphics[
+         PointSize[Large], 
+         Point[$CellContext`p1]], 
+        Graphics[
+         Point[$CellContext`p2]]], 
+      "Specifications" :> {{$CellContext`n$$, 1, 10, 1}, {$CellContext`d$$, 
+         0.1, 0.9, 0.02}, {$CellContext`\[Theta]$$, 0, Rational[1, 2] Pi, 
+         0.1}}, "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{407., {238., 245.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Print", "@", 
+   RowBox[{"RegionCentroid", "@", 
+    RowBox[{"boat", "[", "3", "]"}]}]}], ";", 
+  RowBox[{"Print", "@", 
+   RowBox[{"RegionCentroid", "@", 
+    RowBox[{"underwater", "[", 
+     RowBox[{"3", ",", ".4", ",", "0"}], "]"}]}]}], ";"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0", ",", 
+   RowBox[{"-", 
+    FractionBox["3", "7"]}]}], "}"}]], "Print"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.`", ",", 
+   RowBox[{"-", "0.6571428571428573`"}]}], "}"}]], "Print"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"With", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"d", "=", ".5"}], ",", 
+     RowBox[{"\[Theta]", "=", "0"}]}], "}"}], ",", 
+   RowBox[{"Area", "[", "underwater", "]"}]}], "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Area", "::", "nmet"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Unable to compute the area of region \
+\[NoBreak]\\!\\(\\*RowBox[{\\\"RegionIntersection\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"HalfSpace\\\", \\\"[\\\", RowBox[{RowBox[{\\\"{\\\", \
+RowBox[{RowBox[{\\\"-\\\", RowBox[{\\\"Sin\\\", \\\"[\\\", \\\"\[Theta]\\\", \
+\\\"]\\\"}]}], \\\",\\\", RowBox[{\\\"Cos\\\", \\\"[\\\", \\\"\[Theta]\\\", \
+\\\"]\\\"}]}], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"-\\\", \\\"d\\\"}]}], \
+\\\"]\\\"}], \\\",\\\", RowBox[{\\\"ImplicitRegion\\\", \\\"[\\\", \
+RowBox[{RowBox[{RowBox[{RowBox[{\\\"-\\\", \\\"1\\\"}], \\\"+\\\", \
+SuperscriptBox[RowBox[{\\\"Abs\\\", \\\"[\\\", \\\"y\\\", \\\"]\\\"}], \
+\\\"n\\\"]}], \\\"<\\\", \\\"z\\\", \\\"<\\\", \\\"0\\\"}], \\\",\\\", \
+RowBox[{\\\"{\\\", RowBox[{\\\"y\\\", \\\",\\\", \\\"z\\\"}], \\\"}\\\"}]}], \
+\\\"]\\\"}]}], \\\"]\\\"}]\\)\[NoBreak]. \\!\\(\\*ButtonBox[\\\"\
+\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/Area\\\", ButtonNote -> \
+\\\"Area::nmet\\\"]\\)\"\>"}]], "Message", "MSG"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Area", "::", "nmet"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Unable to compute the area of region \
+\[NoBreak]\\!\\(\\*RowBox[{\\\"RegionIntersection\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"HalfSpace\\\", \\\"[\\\", RowBox[{RowBox[{\\\"{\\\", \
+RowBox[{RowBox[{RowBox[{\\\"-\\\", \\\"1.`\\\"}], \\\" \\\", \
+RowBox[{\\\"Sin\\\", \\\"[\\\", \\\"\[Theta]\\\", \\\"]\\\"}]}], \\\",\\\", \
+RowBox[{\\\"Cos\\\", \\\"[\\\", \\\"\[Theta]\\\", \\\"]\\\"}]}], \\\"}\\\"}], \
+\\\",\\\", RowBox[{RowBox[{\\\"-\\\", \\\"1.`\\\"}], \\\" \\\", \
+\\\"d\\\"}]}], \\\"]\\\"}], \\\",\\\", RowBox[{\\\"ImplicitRegion\\\", \
+\\\"[\\\", RowBox[{RowBox[{RowBox[{RowBox[{\\\"-\\\", \\\"1.`\\\"}], \
+\\\"+\\\", SuperscriptBox[RowBox[{\\\"Abs\\\", \\\"[\\\", \\\"y\\\", \
+\\\"]\\\"}], \\\"n\\\"]}], \\\"<\\\", \\\"z\\\", \\\"<\\\", \\\"0.`\\\"}], \\\
+\",\\\", RowBox[{\\\"{\\\", RowBox[{\\\"y\\\", \\\",\\\", \\\"z\\\"}], \
+\\\"}\\\"}]}], \\\"]\\\"}]}], \\\"]\\\"}]\\)\[NoBreak]. \\!\\(\\*ButtonBox[\\\
+\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/Area\\\", ButtonNote -> \
+\\\"Area::nmet\\\"]\\)\"\>"}]], "Message", "MSG"],
+
+Cell[BoxData[
+ RowBox[{"Area", "[", 
+  RowBox[{"RegionIntersection", "[", 
+   RowBox[{
+    RowBox[{"HalfSpace", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", "1.`"}], " ", 
+         RowBox[{"Sin", "[", "\[Theta]", "]"}]}], ",", 
+        RowBox[{"Cos", "[", "\[Theta]", "]"}]}], "}"}], ",", 
+      RowBox[{
+       RowBox[{"-", "1.`"}], " ", "d"}]}], "]"}], ",", 
+    RowBox[{"ImplicitRegion", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", "1.`"}], "+", 
+        SuperscriptBox[
+         RowBox[{"Abs", "[", "y", "]"}], "n"]}], "<", "z", "<", "0.`"}], ",", 
+      
+      RowBox[{"{", 
+       RowBox[{"y", ",", "z"}], "}"}]}], "]"}]}], "]"}], "]"}]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"D", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Abs", "[", "x", "]"}], "^", "2"}], ",", "x"}], "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"2", " ", 
+  RowBox[{"Abs", "[", "x", "]"}], " ", 
+  RowBox[{
+   SuperscriptBox["Abs", "\[Prime]",
+    MultilineFunction->None], "[", "x", "]"}]}]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  SubscriptBox["\[PartialD]", "x"], 
+  RowBox[{"(", 
+   RowBox[{"2", " ", 
+    RowBox[{"Abs", "[", "x", "]"}], " ", 
+    RowBox[{
+     SuperscriptBox["Abs", "\[Prime]",
+      MultilineFunction->None], "[", "x", "]"}]}], ")"}]}]], "Input",
+ NumberMarks->False],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"2", " ", 
+   SuperscriptBox[
+    RowBox[{
+     SuperscriptBox["Abs", "\[Prime]",
+      MultilineFunction->None], "[", "x", "]"}], "2"]}], "+", 
+  RowBox[{"2", " ", 
+   RowBox[{"Abs", "[", "x", "]"}], " ", 
+   RowBox[{
+    SuperscriptBox["Abs", "\[Prime]\[Prime]",
+     MultilineFunction->None], "[", "x", "]"}]}]}]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  SubscriptBox["\[PartialD]", "x"], 
+  SuperscriptBox[
+   RowBox[{"Abs", "[", "x", "]"}], "1.9`"]}]], "Input",
+ NumberMarks->False],
+
+Cell[BoxData[
+ RowBox[{"1.9`", " ", 
+  SuperscriptBox[
+   RowBox[{"Abs", "[", "x", "]"}], "0.8999999999999999`"], " ", 
+  RowBox[{
+   SuperscriptBox["Abs", "\[Prime]",
+    MultilineFunction->None], "[", "x", "]"}]}]], "Output"]
+}, Open  ]]
+},
+WindowSize->{806, 911},
+WindowMargins->{{503, Automatic}, {Automatic, 35}},
+TrackCellChangeTimes->False,
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 769, 24, 77, "Input"],
+Cell[CellGroupData[{
+Cell[1352, 48, 1287, 34, 121, "Input"],
+Cell[2642, 84, 2663, 55, 500, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5342, 144, 291, 8, 55, "Input"],
+Cell[CellGroupData[{
+Cell[5658, 156, 114, 4, 41, "Print"],
+Cell[5775, 162, 111, 3, 23, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5935, 171, 230, 7, 32, "Input"],
+Cell[6168, 180, 1133, 19, 63, "Message"],
+Cell[7304, 201, 1207, 20, 66, "Message"],
+Cell[8514, 223, 732, 23, 55, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9283, 251, 133, 4, 32, "Input"],
+Cell[9419, 257, 181, 5, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9637, 267, 283, 9, 35, "Input"],
+Cell[9923, 278, 361, 11, 34, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10321, 294, 155, 5, 34, "Input"],
+Cell[10479, 301, 227, 6, 34, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

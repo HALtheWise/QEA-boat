@@ -28,15 +28,13 @@ NIntegrate[1,{x,y,z}\[Element]reg, PrecisionGoal->2]
 nPoints=200000;
 
 (* angle is a unit vector in the direction of the water surface *)
-underwaterVolume["random", region_,angle_]:=underwaterVolume["random", region,angle]=(
-pts=Table[angle.i,{i,myRandomPoint[region,nPoints]}];
-table = Transpose[{Sort[pts],Range[nPoints]}];
-Interpolation[table]
-);
-
-underwaterVolume["random", region_, angle_, waterLevel_]:=(
-interpolation=underwaterVolume["random",region,Normalize@angle];
-interpolation[waterLevel]*totalVolume[region]/nPoints
+underwaterVolume["random", region_,angle_]:=underwaterVolume["random", region, angle]=(
+nangle=Normalize[angle];
+pts=Table[nangle.i,{i,myRandomPoint[region,nPoints]}];
+sorted = Sort[pts];
+table = Transpose[{sorted,Range[nPoints]*(totalVolume[region]/nPoints)}];
+{Interpolation[table(* InterpolationOrder \[Rule] 1 (* Uncomment this line if the waterline[] 
+function returns erroneous results at the limits of the boat*) *)],{sorted[[1]],sorted[[nPoints]]}}
 );
 
 ClearAll[myRandomPoint];
@@ -48,9 +46,12 @@ totalVolume[region_]:=totalVolume[region]=Volume[region];
 ]
 
 
-waterline[region_,angle_,desiredVolume_]:=(
-FindMinimum[(underwaterVolume["random",region,angle,d]-desiredVolume)^2,{d,0}]
-)
+waterline[region_,angle_,desiredVolume_]:=
+Module[{func, min, max, d, val},
+{func,{min,max}}=underwaterVolume["random", region, angle];
+d /. Quiet[FindRoot[func[d]-desiredVolume,
+   {d,(min+max)/2}],{InterpolatingFunction::dmval}]
+]
 
 
 testRegion=RegionUnion[CapsuleShape[{{0,0,0},{0,2,1}},1],CapsuleShape[{{0,0.1,0},{0,-1,1}},1]];
@@ -64,7 +65,17 @@ Do[
 Print@Timing@underwaterVolume["random",testRegion,{0,0.3,1},i],{i,-2,4,.5}]
 
 
-waterline[testRegion,{0,0,1},4]
+{func,{min,max}}=underwaterVolume["random", testRegion,{0,0,1}];
+Print@FindRoot[func[d]-4,{d,(min+max)/2}];
+Plot[func[d]-4,{d,min-1,max+1}]
+
+
+
+(* ::InheritFromParent:: *)
+(**)
+
+
+waterline[testRegion,{0,0,-1},3]
 
 
 Timing@Volume[testRegion]

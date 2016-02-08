@@ -8,6 +8,9 @@
 (*Given a boat hull Region and a height of the waterline, we want to return a volume underwater. This needs to happen efficiently for arbitrary shapes.*)
 
 
+Needs["Combinatorica`"]
+
+
 ClearAll[underwaterVolume]
 Module[{waterHeight,reg},
 underwaterVolume["nocache", region_, waterLevel_]:=(
@@ -22,10 +25,16 @@ reg:=ImplicitRegion[RegionMember[region,{x,y,z}]&&z<waterLevel,{x,y,z}];
 NIntegrate[1,{x,y,z}\[Element]reg, PrecisionGoal->2]
 );
 
-underwaterVolume["random", region_, waterLevel_]:=(
 nPoints=200000;
-pts=myRandomPoint[region,nPoints];
-totalVolume[region]*Count[pts,{_,_,z_/;z<waterLevel}]/nPoints
+
+(* angle is a unit vector in the direction of the water surface *)
+underwaterVolume["random", region_,angle_]:=underwaterVolume["random", region, angle]=(
+nangle=Normalize[angle];
+pts=Table[nangle.i,{i,myRandomPoint[region,nPoints]}];
+sorted = Sort[pts];
+table = Transpose[{sorted,Range[nPoints]*(totalVolume[region]/nPoints)}];
+{Interpolation[table(* InterpolationOrder \[Rule] 1 (* Uncomment this line if the waterline[] 
+function returns erroneous results at the limits of the boat*) *)],{sorted[[1]],sorted[[nPoints]]}}
 );
 
 ClearAll[myRandomPoint];
@@ -37,15 +46,27 @@ totalVolume[region_]:=totalVolume[region]=Volume[region];
 ]
 
 
-testRegion=RegionUnion[CapsuleShape[{{0,0,0},{0,2,1}},1],CapsuleShape[{{0,0.1,0},{0,-1,1}},1]];
+waterline[region_,angle_,desiredVolume_]:=
+Module[{func, min, max, d, val},
+{func,{min,max}}=underwaterVolume["random", region, angle];
+d /. Quiet[FindRoot[func[d]-desiredVolume,
+   {d,(min+max)/2}],{InterpolatingFunction::dmval}]
+]
 
 
-DiscretizeRegion[testRegion,Boxed->True]
+(*testRegion=RegionUnion[CapsuleShape[{{0,0,0},{0,2,1}},1],CapsuleShape[{{0,0.1,0},{0,-1,1}},1]];*)
 
 
-Timing@underwaterVolume["nocache",testRegion,-10]
-Do[
-Print@Timing@underwaterVolume["random",testRegion,-10],{i,10}]
+(*DiscretizeRegion[testRegion,Boxed->True]*)
 
 
-Timing@Volume[testRegion]
+(*waterline[testRegion,{0,0,1},5]*)
+
+
+(*Timing@Volume[testRegion]*)
+
+
+(*Plot[underwaterVolume["random",testRegion,{0,0,1},d],{d,-1,1.9}]*)
+
+
+

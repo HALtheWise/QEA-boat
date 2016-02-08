@@ -60,22 +60,7 @@ testRegion=RegionUnion[CapsuleShape[{{0,0,0},{0,2,1}},1],CapsuleShape[{{0,0.1,0}
 DiscretizeRegion[testRegion,Boxed->True]
 
 
-(*Timing@underwaterVolume["nocache",testRegion,.1]*)
-Do[
-Print@Timing@underwaterVolume["random",testRegion,{0,0.3,1},i],{i,-2,4,.5}]
-
-
-{func,{min,max}}=underwaterVolume["random", testRegion,{0,0,1}];
-Print@FindRoot[func[d]-4,{d,(min+max)/2}];
-Plot[func[d]-4,{d,min-1,max+1}]
-
-
-
-(* ::InheritFromParent:: *)
-(**)
-
-
-waterline[testRegion,{0,0,-1},3]
+waterline[testRegion,{0,0,1},5]
 
 
 Timing@Volume[testRegion]

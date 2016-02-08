@@ -8,7 +8,7 @@
 (*Given a boat hull Region and a height of the waterline, we want to return a volume underwater. This needs to happen efficiently for arbitrary shapes.*)
 
 
-ClearAll[underwaterVolume]
+ClearAll[underwaterVolume];
 Module[{waterHeight,reg},
 underwaterVolume["nocache", region_, waterLevel_]:=(
 reg:=RegionIntersection[region,HalfSpace[{0,0,-1},waterLevel]];
@@ -22,8 +22,8 @@ reg:=ImplicitRegion[RegionMember[region,{x,y,z}]&&z<waterLevel,{x,y,z}];
 NIntegrate[1,{x,y,z}\[Element]reg, PrecisionGoal->2]
 );
 
-underwaterVolume["random", region_, waterLevel_]:=(
-nPoints=200000;
+underwaterVolume["random", region_, waterLevel_, nPoints_:100000]:=(
+nPoints=5000;
 pts=myRandomPoint[region,nPoints];
 totalVolume[region]*Count[pts,{_,_,z_/;z<waterLevel}]/nPoints
 );
@@ -37,15 +37,15 @@ totalVolume[region_]:=totalVolume[region]=Volume[region];
 ]
 
 
-testRegion=RegionUnion[CapsuleShape[{{0,0,0},{0,2,1}},1],CapsuleShape[{{0,0.1,0},{0,-1,1}},1]];
+(*testRegion=RegionUnion[CapsuleShape[{{0,0,0},{0,2,1}},1],CapsuleShape[{{0,0.1,0},{0,-1,1}},1]];*)
 
 
-DiscretizeRegion[testRegion,Boxed->True]
+(*DiscretizeRegion[testRegion,Boxed->True]*)
 
 
-Timing@underwaterVolume["nocache",testRegion,-10]
+(*Timing@underwaterVolume["nocache",testRegion,-10]
 Do[
-Print@Timing@underwaterVolume["random",testRegion,-10],{i,10}]
+Print@Timing@underwaterVolume["random",testRegion,-10],{i,10}]*)
 
 
-Timing@Volume[testRegion]
+(*Timing@Volume[testRegion]*)

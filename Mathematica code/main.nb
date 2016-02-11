@@ -25,14 +25,46 @@ Cell[BoxData[
     RowBox[{
      RowBox[{"NotebookDirectory", "[", "]"}], ",", "\"\<drag.m\>\""}], "}"}], 
    "]"}], "]"}]], "Input",
- InitializationCell->True]
+ InitializationCell->True],
+
+Cell[BoxData[
+ RowBox[{"Get", "[", 
+  RowBox[{"FileNameJoin", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"NotebookDirectory", "[", "]"}], ",", 
+     "\"\<visualizations.m\>\""}], "}"}], "]"}], "]"}]], "Input",
+ InitializationCell->True],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"seal", "=", 
+  RowBox[{"Import", "[", 
+   RowBox[{
+   "\"\<Sample Data/seal.stl\>\"", ",", " ", "\"\<BoundaryMeshRegion\>\""}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"nPoints", "=", "20000"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Volume", "[", "seal", "]"}]}], "Input"],
+
+Cell[BoxData["4.969056853038001`"], "Output"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"showWaterline", "[", 
+  RowBox[{"seal", ",", " ", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", "1"}], "}"}], ",", "4.9"}], "]"}]], "Input"]
 }, Open  ]]
 },
-WindowSize->{759, 835},
-WindowMargins->{{Automatic, 572}, {63, Automatic}},
+WindowSize->{1920, 1014},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (October 9, 2015)",
+Magnification:>1.5 Inherited,
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
 StyleDefinitions->"Default.nb",
 $CellContext`TrackCellChangeTimes -> False
 ]
+

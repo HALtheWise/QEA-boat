@@ -25,7 +25,7 @@ reg:=ImplicitRegion[RegionMember[region,{x,y,z}]&&z<waterLevel,{x,y,z}];
 NIntegrate[1,{x,y,z}\[Element]reg, PrecisionGoal->2]
 );
 
-nPoints=200000;
+nPoints=10000;
 
 (* angle is a unit vector in the direction of the water surface *)
 underwaterVolume["random", region_,angle_]:=underwaterVolume["random", region, angle]=(

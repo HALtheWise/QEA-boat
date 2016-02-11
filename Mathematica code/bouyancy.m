@@ -25,7 +25,7 @@ reg:=ImplicitRegion[RegionMember[region,{x,y,z}]&&z<waterLevel,{x,y,z}];
 NIntegrate[1,{x,y,z}\[Element]reg, PrecisionGoal->2]
 );
 
-nPoints=200000;
+nPoints=10000;
 
 (* angle is a unit vector in the direction of the water surface *)
 underwaterVolume["random", region_,angle_]:=underwaterVolume["random", region, angle]=(
@@ -54,19 +54,19 @@ d /. Quiet[FindRoot[func[d]-desiredVolume,
 ]
 
 
-testRegion=RegionUnion[CapsuleShape[{{0,0,0},{0,2,1}},1],CapsuleShape[{{0,0.1,0},{0,-1,1}},1]];
+(*testRegion=RegionUnion[CapsuleShape[{{0,0,0},{0,2,1}},1],CapsuleShape[{{0,0.1,0},{0,-1,1}},1]];*)
 
 
-DiscretizeRegion[testRegion,Boxed->True]
+(*DiscretizeRegion[testRegion,Boxed->True]*)
 
 
-waterline[testRegion,{0,0,1},5]
+(*waterline[testRegion,{0,0,1},5]*)
 
 
-Timing@Volume[testRegion]
+(*Timing@Volume[testRegion]*)
 
 
-Plot[underwaterVolume["random",testRegion,{0,0,1},d],{d,-1,1.9}]
+(*Plot[underwaterVolume["random",testRegion,{0,0,1},d],{d,-1,1.9}]*)
 
 
 

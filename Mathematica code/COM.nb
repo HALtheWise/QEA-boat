@@ -1,0 +1,219 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      7221,        210]
+NotebookOptionsPosition[      6518,        181]
+NotebookOutlinePosition[      6894,        197]
+CellTagsIndexPosition[      6851,        194]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"SetDirectory", "[", 
+  RowBox[{"NotebookDirectory", "[", "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.664708636608654*^9, 3.664708656420787*^9}}],
+
+Cell[BoxData["\<\"C:\\\\Users\\\\jbriskman\\\\Documents\\\\GitHub\\\\boat2\\\\\
+Mathematica code\"\>"], "Output",
+ CellChangeTimes->{3.6647086577398624`*^9, 3.6647086962680664`*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"massCOM", "[", 
+    RowBox[{"region_", ",", "points_", ",", "masses_"}], "]"}], " ", ":=", 
+   " ", 
+   RowBox[{"(", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"densityOfFoam", " ", "=", " ", 
+      RowBox[{"QuantityMagnitude", "[", 
+       RowBox[{"UnitConvert", "[", 
+        RowBox[{
+         TemplateBox[{
+          "31.7",RowBox[{
+            "\"kg\"", "\[InvisibleSpace]", "\"/\"", "\[InvisibleSpace]", 
+             SuperscriptBox["\"m\"", "3"]}],"kilograms per meter cubed",
+           FractionBox["\"Kilograms\"", 
+            SuperscriptBox["\"Meters\"", "3"]]},
+          "Quantity"], ",", " ", 
+         RowBox[{"\"\<Grams\>\"", "/", 
+          RowBox[{"\"\<Centimeters\>\"", "^", "3"}]}]}], "]"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"(*", 
+      RowBox[{"center1", " ", "=", " ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"Total", "[", 
+           RowBox[{"Cross", "[", 
+            RowBox[{"points", ",", "masses"}], "]"}], "]"}], " ", "/", " ", 
+          RowBox[{"Total", "[", "masses", "]"}]}], "\[IndentingNewLine]", 
+         "center2"}], " ", "=", " ", 
+        RowBox[{"RegionCentroid", "[", "region", "]"}]}]}], "*)"}], 
+     "\[IndentingNewLine]", 
+     RowBox[{"foamMass", "=", 
+      RowBox[{
+       RowBox[{"Volume", "[", "region", "]"}], " ", "*", " ", 
+       "densityOfFoam"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"foamPoint", "=", 
+      RowBox[{"RegionCentroid", "[", "region", "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"newPoints", " ", "=", " ", 
+      RowBox[{"Append", "[", 
+       RowBox[{"points", ",", "foamPoint"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"newMasses", " ", "=", " ", 
+      RowBox[{"Append", "[", 
+       RowBox[{"masses", ",", "foamMass"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"(*", 
+      RowBox[{
+       RowBox[{"allPoints", "=", 
+        RowBox[{"Join", "[", 
+         RowBox[{
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"points", "[", 
+              RowBox[{"[", "i", "]"}], "]"}], "*", 
+             RowBox[{"masses", "[", 
+              RowBox[{"[", "i", "]"}], "]"}]}], ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", 
+              RowBox[{"Length", "@", "points"}]}], "}"}]}], "]"}], "  ", ",", 
+          RowBox[{"Cross", "[", 
+           RowBox[{
+            RowBox[{"RegionCentroid", "[", "region", "]"}], ",", 
+            "densityOfFoam"}], "]"}]}], "]"}]}], ";"}], "*)"}], 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Total", "[", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"newPoints", "[", 
+           RowBox[{"[", "i", "]"}], "]"}], "*", 
+          RowBox[{"newMasses", "[", 
+           RowBox[{"[", "i", "]"}], "]"}]}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", 
+           RowBox[{"Length", "@", "newPoints"}]}], "}"}]}], "]"}], "]"}], " ",
+       "/", " ", 
+      RowBox[{"Total", "[", "newMasses", "]"}]}]}], "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", ")"}]}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.664708787341275*^9, 3.6647088214402256`*^9}, {
+   3.664708889084095*^9, 3.664708901187787*^9}, {3.664708949933575*^9, 
+   3.6647089511156425`*^9}, 3.664708991823971*^9, {3.664709027575016*^9, 
+   3.664709051464382*^9}, {3.6647093038098154`*^9, 3.664709310786215*^9}, {
+   3.6647093531046352`*^9, 3.66470947766776*^9}, {3.6647095104616356`*^9, 
+   3.664709607105163*^9}, 3.664709731102255*^9, {3.664709769106429*^9, 
+   3.6647097717695813`*^9}, {3.6647098076946363`*^9, 3.664709845834818*^9}, {
+   3.6647100733798323`*^9, 3.6647102724692197`*^9}, {3.664710390644979*^9, 
+   3.6647103910990047`*^9}, {3.664710523468576*^9, 3.664710527348798*^9}, {
+   3.664710621008155*^9, 3.6647106397382264`*^9}, {3.6647107712437477`*^9, 
+   3.66471078543456*^9}, {3.6647108483751593`*^9, 3.6647108495462265`*^9}, {
+   3.6647109830488625`*^9, 3.6647111297242517`*^9}, {3.664711415824616*^9, 
+   3.664711457342991*^9}, {3.664711522701729*^9, 3.664711688719225*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"boat", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+    "\"\<Sample Data/40mmcube.stl\>\"", ",", "\"\<BoundaryMeshRegion\>\""}], 
+    "]"}]}], ";"}]], "Input"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.66471051741823*^9, 3.6647105209614325`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"massCOM", "[", 
+  RowBox[{"boat", ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"10", ",", "5", ",", "5"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"5", ",", "3", ",", "3"}], "}"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"12", ",", "8"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6647105685091524`*^9, 3.6647105694412055`*^9}, {
+  3.6647112198244057`*^9, 3.664711301312066*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0.07809324130078611`", ",", "0.04099965405434362`", ",", 
+   "19.845763127481387`"}], "}"}]], "Output",
+ CellChangeTimes->{3.664711303803209*^9, 3.664711463238328*^9, 
+  3.6647116975197277`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"RegionCentroid", "[", "boat", "]"}]], "Input",
+ CellChangeTimes->{{3.6647117106864815`*^9, 3.6647117240692463`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"-", "1.351038159478377`*^-6"}], ",", "4.133657953044347`*^-13", 
+   ",", "19.99999992052754`"}], "}"}]], "Output",
+ CellChangeTimes->{3.664711724721284*^9}]
+}, Open  ]]
+},
+AutoGeneratedPackage->Automatic,
+WindowSize->{944, 1022},
+WindowMargins->{{Automatic, 0}, {Automatic, 0}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (October 9, 2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 170, 3, 31, "Input"],
+Cell[753, 27, 181, 2, 31, "Output"]
+}, Open  ]],
+Cell[949, 32, 4163, 97, 314, "Input",
+ InitializationCell->True],
+Cell[5115, 131, 195, 6, 31, "Input"],
+Cell[5313, 139, 93, 1, 31, "Input"],
+Cell[CellGroupData[{
+Cell[5431, 144, 443, 12, 31, "Input"],
+Cell[5877, 158, 237, 6, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6151, 169, 140, 2, 31, "Input"],
+Cell[6294, 173, 208, 5, 66, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

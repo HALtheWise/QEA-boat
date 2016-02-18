@@ -36,33 +36,1444 @@ Cell[BoxData[
      "\"\<visualizations.m\>\""}], "}"}], "]"}], "]"}]], "Input",
  InitializationCell->True],
 
-Cell[CellGroupData[{
-
-Cell[BoxData[{
- RowBox[{"seal", "=", 
-  RowBox[{"Import", "[", 
-   RowBox[{
-   "\"\<Sample Data/seal.stl\>\"", ",", " ", "\"\<BoundaryMeshRegion\>\""}], 
-   "]"}]}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"nPoints", "=", "20000"}], ";"}], "\[IndentingNewLine]", 
- RowBox[{"Volume", "[", "seal", "]"}]}], "Input"],
-
-Cell[BoxData["4.969056853038001`"], "Output"]
-}, Open  ]],
+Cell[BoxData[
+ RowBox[{"Get", "[", 
+  RowBox[{"FileNameJoin", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"NotebookDirectory", "[", "]"}], ",", "\"\<COM.m\>\""}], "}"}], 
+   "]"}], "]"}]], "Input",
+ InitializationCell->True],
 
 Cell[BoxData[
- RowBox[{"showWaterline", "[", 
-  RowBox[{"seal", ",", " ", 
+ RowBox[{"Get", "[", 
+  RowBox[{"FileNameJoin", "[", 
    RowBox[{"{", 
-    RowBox[{"0", ",", "0", ",", "1"}], "}"}], ",", "4.9"}], "]"}]], "Input"]
+    RowBox[{
+     RowBox[{"NotebookDirectory", "[", "]"}], ",", "\"\<AVS.m\>\""}], "}"}], 
+   "]"}], "]"}]], "Input",
+ InitializationCell->True],
+
+Cell[BoxData[
+ RowBox[{"Get", "[", 
+  RowBox[{"FileNameJoin", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"NotebookDirectory", "[", "]"}], ",", "\"\<boats.m\>\""}], "}"}],
+    "]"}], "]"}]], "Input",
+ InitializationCell->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"boatboatboat", "[", "boat_", "]"}], ":=", 
+  RowBox[{"Quiet", "@", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"doesFloat", ",", "doesFloatFlat", ",", "stabilityAngles"}], 
+      "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"doesFloat", "=", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Volume", "[", 
+          RowBox[{"region", "/.", "boat"}], "]"}], 
+         TemplateBox[{InterpretationBox["\[InvisibleSpace]", 1],RowBox[{
+             SuperscriptBox["\"cm\"", "3"]}],"centimeters cubed",
+           SuperscriptBox["\"Centimeters\"", "3"]},
+          "Quantity"], "*", 
+         RowBox[{
+          TemplateBox[{"\"water\"",RowBox[{"Entity", "[", 
+              RowBox[{"\"Chemical\"", ",", "\"Water\""}], "]"}],
+            "\"Entity[\\\"Chemical\\\", \\\"Water\\\"]\"","\"chemical\""},
+           "Entity"], "[", 
+          TemplateBox[{"\"density\"",RowBox[{"EntityProperty", "[", 
+              RowBox[{"\"Chemical\"", ",", "\"Density\""}], "]"}],
+            "\"EntityProperty[\\\"Chemical\\\", \\\"Density\\\"]\""},
+           "EntityProperty"], "]"}]}], ">", 
+        RowBox[{
+         RowBox[{"totalMass", "[", "boat", "]"}], 
+         TemplateBox[{
+          InterpretationBox["\[InvisibleSpace]", 1],"\"g\"","grams",
+           "\"Grams\""},
+          "Quantity"]}]}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"doesFloatFlat", "=", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"rightingArm", "[", 
+          RowBox[{"boat", ",", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "1", ",", "0"}], "}"}], ",", 
+           RowBox[{
+            RowBox[{"N", "@", "10"}], " ", "Degree"}]}], "]"}], ">", "0"}], "&&", 
+        RowBox[{
+         RowBox[{"rightingArm", "[", 
+          RowBox[{"boat", ",", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "1", ",", "0"}], "}"}], ",", 
+           RowBox[{
+            RowBox[{"N", "@", 
+             RowBox[{"-", "10"}]}], " ", "Degree"}]}], "]"}], "<", "0"}]}]}], 
+      ";", "\[IndentingNewLine]", 
+      RowBox[{"stabilityAngles", "=", 
+       RowBox[{
+        RowBox[{"DeleteDuplicates", "@", 
+         RowBox[{"Round", "[", 
+          RowBox[{
+           RowBox[{"Table", "[", 
+            RowBox[{
+             RowBox[{"\[Theta]", "/.", 
+              RowBox[{"avs", "[", 
+               RowBox[{"boat", ",", 
+                RowBox[{"{", 
+                 RowBox[{"0", ",", "1", ",", "0"}], "}"}], ",", "i"}], 
+               "]"}]}], ",", 
+             RowBox[{"{", 
+              RowBox[{"i", ",", 
+               RowBox[{"-", "Pi"}], ",", "Pi", ",", 
+               RowBox[{"Pi", "/", "3"}]}], "}"}]}], "]"}], "*", 
+           RowBox[{"180", "/", "Pi"}]}], "]"}]}], " ", 
+        RowBox[{"HoldForm", "[", "Degree", "]"}]}]}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"Grid", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"Style", "[", 
+             RowBox[{
+              RowBox[{"name", "/.", "boat"}], ",", 
+              RowBox[{"FontSize", "\[Rule]", "60"}], ",", 
+              RowBox[{"FontFamily", "\[Rule]", "\"\<Purisa\>\""}]}], "]"}], 
+            ",", "SpanFromLeft"}], "}"}], ",", "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"showBoat", "[", 
+             RowBox[{"boat", ",", 
+              RowBox[{"{", 
+               RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "]"}], ",", 
+            "SpanFromLeft"}], "}"}], ",", "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{"\"\<Is it a boat?\>\"", ",", "\"\<Boatboat.\>\""}], "}"}],
+           ",", "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{"\"\<Does it float?\>\"", ",", "doesFloat"}], "}"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{"\"\<Does it float flat?\>\"", ",", "doesFloatFlat"}], 
+           "}"}], ",", "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{"\"\<What's the AVS?\>\"", ",", "stabilityAngles"}], 
+           "}"}]}], "\[IndentingNewLine]", "}"}], ",", 
+        RowBox[{"Frame", "\[Rule]", "All"}]}], "]"}]}]}], 
+    "\[IndentingNewLine]", "]"}]}]}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"boatboatboat", "[", "boat", "]"}]], "Input"],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     StyleBox["\<\"Crapboat\"\>",
+      StripOnInput->False,
+      FontFamily->"Purisa",
+      FontSize->60], "\[SpanFromLeft]"},
+    {
+     Graphics3DBox[{
+       {GrayLevel[0.5], Opacity[0.5], EdgeForm[None], 
+        GraphicsComplex3DBox[CompressedData["
+1:eJxdXAd4D1n3vkoSCSJNJCHJpEoRLLusYI0uiLJYu4s1SvTel2VHjbJ676OL
+bvUSRl8tqwchBmER0UVI8P9+553kPyf7fM+XJ683555775lz79x75g3o3P/H
+uIJCiOeFhPjf/2z/KQH+jrLt58pNt2v976cxJfGy7acyoxHh4kZTwkVX72uE
+X35ZxIaru+Ubtt/llJv0Uy3S0MmGG2HnHhLPSLpk+ynN6024/GU+4SJx6VX6
+uTOCcMWpxn36+8Gu18mefzs7G64trRFv+13vHvPS9lN7HVFYhsuLD+PnK7KT
+Gk181TOa+GqJ4Rn0d8lB5L/qfIj6IzkvofalLbXh/88vT5OfF249on6vfOVA
+9i/0OEN/v6/CA/p3ZTThRoXsY+RHgWSyo386TLj88zXiq1lxBux9LAy86WTq
+T3RiOtn3WEi4trr+TMIXjHhG+LQkwlVj7AnqT+Mpd+nfLwylfikv+1K7+sLy
+96idrjUJN2a02E+8xlXIT/XOVsKl3+bDnxJRmE/pEcYzaV4S2fEdjnGObm1v
+w/Wady/Q73s20Dwa2T7AL1ekeVK2l6bxU1O70bjJJXskk5+3Z9P8yuVcCRcv
+BhFfbvmZfuqLb2E8r6XT71L7blfo58DlGLfMy2lkZ26VzTSu1V/Yw/5Fmg+t
+05c11O5LO+JL3yx/Qvx6cfPJ/qqvhGtlStK4yyuddfq54gHsO5+lcVRdEo8T
+PqMh4frkDhjHj25HyZ8qlcl/o9JsGkf9Tol94PsQLv3TjOJTLxB7iNofMAz+
+fEZ86NdD9tA4jXhK8aZ5e98i/xO24+9iZuK5CDxGfurSt/D376uESwnDyE99
+g3hO+KxiRcnOqu+JZ0xIpfjR3/oTLno0oPHR60+HnYiZhEuhS2k8JZdZxFf3
+DMfz2zfuMfEP/ED+y2GrCZc3z/mP7NuXOEz9KnoQ+J2+hMuDBx0hO9/qhEs3
+P6Ddl0MoHqXmE2l89ISYp9T/w/PXU7/tDIxnSuITxMfLrfR36VcIVxw7kn2t
+ue8O+vdfKqPdATXBbzByF7Vb4zs8v/HRhOvxiwjXrpcl3GiXSv0SywvQ+Ovn
+2xKu17MD//ZTzItbPOz3PEztiorLD1C/+/ZFPK+eCDtezluoX/YngW8uTLiS
++H4n8U/sRN5w30njrL4Zvpv4IYUwzj2jCdcitpJ9/WM64ifqLfJIt+c0zlpW
+M8RJ9AXKI8YqP4pbZT/6K0ZNJb7kegHj/GUO+vu1J/KX5nmS/J2J+VXvRuH5
+j7t4ivD6SXguTnSh/KIeHrSY/Ok1DP1artB8qemz1hH/+kj4uSCNxketlLCR
+2rl9GfyBuyiOhdKR/NQnLAN/blfkwbqL6XkRl9qDHxWF53dpd5pfEXmI/FGi
+Z5J9Pa7WKmrni0rPu9Er7jns3htD87+jJ+LqzwcU35q+lp5T0XcC7A/zp/4a
+u1tTPGs5uxFX2aPwPPSbSc+79jiJ7CvFPLEeja5C86i0j0G+mp9CuFy1D8WV
+8n0U5reLAz2PSqd35jg3JVx7357yhjysNtlXxRD46d/yDuHd91HeldfOh59V
+lqbS7+GFaF60fp+At/YjP9U5bwmXi9YB/rI45UnN/xLlZyNrKfCOLykva2v+
+oPypNn2Bdjf6pdA8XXT+l/hfzHFosIVwcd/rPP0cch/5MPUj8v+yochPz3Zj
+XpatxN8nHqO8rnQcB7z5t5TftczaN5AXlyGuxBDaBxhObrQuaEkuwLUArLNF
+XlA/1K3tkSfr2FN/9B1vqR3p8w2aF/VDNbIrvqyn9UcdHYHxX5KJ9WXftYvk
+z6wnsL9j/k1qby/6pbxbjX5tqUX90Z/e+4fG09UNfOe1tP4p/y2icZZej8a6
+9pcrzZe+sx2tt2pmVTxHPRZjXViQdZZ++iQgPs+ORhzeTT5IP+e2ovVUznpD
+82uUWUzPhbGyJ9bZpohPbcITyj9qP+xbpGXPkTd6rttO/z4AuOZ8jOJQXfUH
+8t7v5j5nUj3E26cCFG/iD+DyiTEUn1LNShSfehvgajFzP/S//VEN2/93N3Ev
+T6wrg07Q86X2MO1fOUZ5QNhvnUv+9zbxz3seIz6KUj5X+wI3aq2h51oevIDW
+a+XDKKyntybRuKuDO8Kvh2do3KT+uzG+H27TOGlTQrGPctpG4yu59MP8aP0w
+zkMf43k7egPPU7qO+SpbCfNtX5PmX6q9EPEzNYSeB6V6U/opmjYD7jgsGfP0
+4zniBw3Efkn/jfyW/R+iH+52mMct32I+tHTMzz/m/ufWOVr/9N3XsW5XOEt8
+fXcc5vvHYMJFs+rYfya/xXPVuxnlAaVJAPjPm1D8a56C4l8PsUecdLSj58VY
+cB77oyHPaJz1P1qR38q+0TeRn815HJaAfc/zwTRv8jEzHuYjnsRyxJd02OSb
+8ZQXXwfM+S02heLSqFMW+Xs7cKVHNPVXafkMeXS9aScacSYdR9wpmhnPJZKp
+n6LrRZpHvZ878kbcv4jXXUcxPns3Ih5mJFC+Vr3SkL9bd8d8dfpM66J86TDe
+A8b9i33s37/TOqSUaYF1Y8Qa4Me2JZDdqpOxr+nTFPvMesXo+ZTsW9D6L1Wr
+hngrYtA4iB4RL+hnhYaY35wKG6jd5Ae0TirzxxMuLjoRrgxcSHx9wXpqV2hl
+5xDuU4beR0RLd+JrKWOJb6xzeYp4c8BzcXk0+aOu+IviTdy5jH1UWAz2IUOn
+UhxJSz5j33LUDnhb5CXR6Svey5YtQrwWyEIe+74U9gmPJuO9JdWO1l+lZBz2
+FTElsf4WHJgIPzdj/9N1K8WH/GgVzY9S8QlwoxXw0xXx3vBPaexXlxUBPrkG
+5Wfx+R78b7yC5klZFEfxrNothp8Zq7DeldmN98epfWC/iyvyqjKe1h8RtAN2
+et4jO3KtrhTv6r2psFP/OD1HRkpx+qnUR7ty52zs53ekYd3Y0Zn8FF6ZiLOO
+2ygO5ZhU+D99M8ZhnkLPkbJtMeF6rZIUN6qeSX7KE5oDnxiPeHran/wxTh1B
+uxU7kR/Sv5HIYzfPYX8bZOaf+7XQ700zsU+o/yfec1o/ob8Tfd3x/uuXhnbv
+ZtPzpHzqhPffVT3hX3o9ytPi5CXEQ+1v8B7luYxwSZ8HPOonvI/56oQbcevR
+bpkp9D4rKjWn918tYyXW3wFHsN/VnxNuzMhdR46Qn7k/janmenRuI63v6pYn
+tP7/b10GPmUg5WWl+5xTeC6/FLPhauUjyJve7QSNy6FGhMthLzBfdYcRLvbG
+4v2l0vGrmN+lwGuWwnzNPUn+q+3OEa5mYL8tvBbsRpx/hf3G5fC8h1+YR/2s
+Fl2A+hm+AM9p7n/FhxOul8iwZ/ifvdCeM/aTiu9HWv9ycaWOhnn/ocNWKy71
+96Wf2vVDuxn/qCv1S3F2PW7FtSvT0N+COGfIs/OXHY2P0mzhBSuunzqLcVvy
++KoVNyLLFqd/3xaazPAHVwk3Cq5MZf68GudMdpwepllx8SiOcKlU2ieav0rm
+e2LIyis/2Ph/fleR/r4i8P/999S2jzCObCU8z/+/q5BdPdmvgmyxIzLb38Xz
+VoPxleYXKF+qlZqWt/L15nuz6O+aFSlv5Qul3zuKy65Loxjf3Y/46qOCDBc/
+Fi9E4+DYI8KKK6+eEC7udIi02jfKjkH8jGsXZuVLTWqi/fLjwqx83W8B9pP1
+mjO+FnUG64tDFYYbVaoVJH7iUeaPdH0hxaO6XUQyP5tvzKb+tuhRjtkJ30Hx
+oKfXDWF45ZsUV/rVZIarneqVIPvVxoRY/Vcv9EZ8zvMLZf7/vAj73lHVyjJ/
+vh/uSvM8qF2g1Y4cHOhC7e6rHMj6VbIatStXrBFkxeXOLhSf8vYvwQz/3Izs
+iw8jfVm/ptQgXPHy82N+flnoRu22behn9Udpehf+vO8gMTvThhMubxwQwPz8
+JNxpvj4eK8Xi4fJqatdQjpZifn4DXB5TwIvZ/28Q8JefS7PxX9gaeOuOroxf
+qx/9rjkOcGP+PNhBv4vq1V1Zv7oNoN/1zVMYX5RfA17Sd8xPZedGwlX/mXZs
+3k/9SOMg9gXZW/n68c6EG9v2M9xwPES4Gl3LieEfrsGOV8+ibF7Cy6O/WS4u
+DPcrRPGg9Pb/as0zUqNkwrWTz1+zvPeHV52jNjtRzpRP9KD7y+jvil7ZZ8ON
+oVWB93xL+VieZ+dpw7WUOMJFTBfCtfTWNxNtfzdhFuWH3P+kVO0M8ecE5+IJ
+9H6UWZPsy+nrCVd/SqlN9s8tv2HDpY1+lJfkhq9pfdA9DvjYcP0f5DHRcPNA
+Gp/0NvfI/pn25a1+avu3HCP+6Vj4PzQd51TlAxxtuMiYB/8bHAde8oPrEdvP
+S6PBD36Mc6eOcefIn6n9CVdHjsH+YeOwHBtfGpUCO032ncT+66MvjVv2HtOO
+D+0DldOjqF+i/z6Wt5VzEyPI31B/ytvSvKO0X9O2R36w8dVaaZSX9LcDsb/q
+0O8d9TdffpayY19TfyddjbLylbFFX9hwJbAvy/9yuXqPCU86WN7KN9puuEJ2
+ziyuYMW1Ggn+1G6lYuSn/CwH5yVHd9npNj9v3gtjdsZ8LUR4b8HysDy5N+FK
+1fRwxr8dX8CGG0UcWH4WUz8IstPiVQTjD//3M8WPvT3L28rivTk0/tcyItk4
+9B5EuJ5Qj/HlFjWyyM69z9xOkxFFbe3qUStCrHb0X90dCY+dwPP2xkOEGwP2
+h1r5onzPIjZcemwwvrQzyYH6dT2pLJvf8mcI1/Kta0ohr8JkZ+/7cGYnY04J
+Gk+3KoFWO+rNIoTL77qzdUGf1dWZcLV9EGu3Tani5P+ij2y9kNLsgM/8M5j1
+q9yOYmTnGV8flWgvwvWcLQwXCy+7EP+UytYLLSiQcHGAr2t6WRfwb/7CcLVz
+I8K11sUCmP+TtxEuDdD9WZz8b10jfr51TZmfDTsvu/pa+VKnFsQ3svqy9VFv
+PAr40tls3ZF7VSBcP2pfmo3P+AmEq3WLcf6XGPjz+0YvK1//YSXsD9/E1jtx
+ZTX47fn6qMU3QbvLYzytdpRzGtot2ciT+Z9VmXAx8ak7i5MXaFctX4bxpdaF
+gD+b6srsR/5MuNR6HFtntfEHaDz1q+2cWb9qysRXstexdUpa/RPxVZHgyPgj
+NmEeL01xZPx6eyme1esF7ax8zb09+G9/Z+upKDiD4lz93F2w+Y2vhOfFqbqw
+8tWvxyhujeOvaP+bNz7fZlD8S2nXPrD1NHQY4j8i6D3N6+E0eo/TL6x3IvsO
+Beh9Uz5SCO8TSVGUT4TrN/RerIZsovdv6dZlyhsiwjyXiDXPJcZ8Jlx5Yp5L
+dPoF53kDUsiO9HEKtZu7Hone7tSunvuem4j3XL1pU8KlEX/Bn/I+9H6t1VuN
+dkfjHkrZ60rnQLrTQeSxW7iHMgbiHkp2ike7JY5Tu9rFIYRrjcojH1avT+c+
+WpkIOu8xanwH+xNwfyTNxv2RHBaEcehfOJPaM9dl7Xxb9LcO7o/ETdwfCdd4
+wrUeuD/SXXB/pP2aQP0SShvYMdd9Y38q5Vvt1lGyowZfIly5cMqe4qF9NuLj
+WZsJ9O8dxlO+FZWS6RxK+zcD57HnGqDdzzLNe+4+RDtyifjSq444t0pYT/c7
+yomF1K7xXRTOdZOf0rmUHnCP1kel+oSPhJv7H7V1BOVzvSg/N1bjlpKfQnIg
+fu6+SFpZ+z9ap07/QOt7rj/i0al02ie8+x3rvjkOyh/NaD8ghbYtZ+VLh9a8
+pfWx0cxyjF94Sybxl/eIZPyW7h+BL4+08mX9QDa1++3gCCtfda70hdbZT2sj
+mP1/atA6rgwdFm7lyxkqrfvi6dpwxm8xqCCN/5rBYYyfloj9w44VYVa+sPuD
+xlO0713WyteGJGH8X84pa+VL3/9C42ykdghl/mfspPmV/xsbyvq72oHmV1/d
+NISNj+iG+HfvG2Lla+MnI34qVA1m9l+lI26zWwUz/z+mEC739w1i/b1Tl/KM
+OqlKkJWvJwjCRR8RyOKhWx/kq5MlA5n/XTKJL31rSFa+8msc5Unl+GuJ2Q85
+THb0TqP8GX9vFOVPkbLA38pXf2xJdrTylX2ZP7dOgv+pgS/zZ/Me4kudn/hY
++XrtktgPDH/nw+JBegq+utzLyjd+rEB84+4qLyvf8H5OfFH8R082/tcqwv7f
+zTwZf/QRjEN3Ow9m/4A38ZXmn9ytfKmlgv5WPujK+ut0jfqrddngyuz3uEzj
+KXvfd2b82nWJb7hvcWb2P7oSXz3S2onxY8dSu0YvFyc2/vcCaX6Vtdfs2Hg6
+z8Q8Ro61s/JFqcKUh1W1YwErXxrbB+ugw2fB5mvBvYu251oReD+SfnGleyGt
+f7+H9Lz3mEPvEXnvRwfapNlwrdHK8la+4rHlJeWTolujrHztVuwrstPsQJSV
+r7fc8J7wI0fLWfmGZxDlK0M5X87KF2NCKS9Jv52PtPJFgfWEG7/ciGT234VT
+XtLf/Bth5au/90a+qns7wso39EWUl/SCF8NZfzNSCJfW3Ahn9gPvUF6Sb58I
+s/L1WxLlJen0hTA2nive2NO8eO8py+wf+x7rVGxiWWZ/bArlJbXgqlArX34d
+SPlHGrkxlPGHzUOeKTklhPXX7S7wpJkhbL5O+SH/3OgTzPzp2wP5JGlQsJUv
+TxuJuK3QNIiNv3QKeOeWQVa+1H093ke+CQtk/H9eY/+2vFwg8ydkNd5rnokA
+5v83L7A/nF44gMWDUgX7/Dnb/K18aTP2jaLebn82v2fHYV/q8rMv8ycmAXYi
+2vsy+9/sBZ72xYfxr97BfjiuQGk2/n9dAr56nZeVb8gf0O7U9V7MH7creA+6
+0MSTj08WcB/gefw9B2H/0Ct31t9298Hv/8KdjeeIqdg/hy50tfK1nB3gy3Nd
+2XzVq41xazbG2crXF3SHnZaDnRm/xxHkw37XHVl/69ohb9c/48j8GXwWebVM
+NTvm/3MP7NsvlbWz8tW1a5Df7DYKK19p84Jwbflcwcb/WTD27SG/0D42r90b
+3U7TfsZdofyWu79VO0Tcp3ziPwjnJLnnSCe7PqD92Mrx5Rm/TKuMoxQvM6Ks
+fCV5EZ3DGO9WRFn5yn8DcJ4ze3U5K98I9aa8Z3T6u5yVL+98TPsx+cr2SMa3
+n/eJcP1IpJUvNSj6lfzx2Bth5UvdEglXvU9GWPlGw1e0H5NSd4cz/qImyG/v
+joVb+fqFCpTflJFbw6x88d10wo0lB8KYP/vr2NN8xWtlGb/EasKNrZvLWvna
+z2GU3+RGM0IZf8gU7Mf6LQpl/rRPxX7s+xEhVr7sUhvvZe3HhjB/nLrROijf
+6xDM5iviHOFGdlwwm98xR7HvCqkVxPhGMPJblQZBbL5+fWqu+76BVr52uTny
+W5mgQDb+vR5iH3Lug8TG/3xjxP/hHIn5s3kL4VITzZ/Z7+KEfUuRjf7Mn5o4
+bzFOx/qy+JmN93Hl11a+zH7TNsgDy7N8rHz90hTkq8I5Pla+Mqo/7HdY48Xs
+l1qLvLRorRfr75cBwKfGejL+snUmv6kn45/9Bfifme5sfH6cAbzjW3fmf2o4
+/M/QXFk8RP8G/7Wlrix+mh3HfvXuYmc2v7WwL5Uypjqz/o7+iv3Y6yxHK19k
+dcN8/f3IkdmPKAb+mK52bL6OD8I6mN3UzsrXWj7BeVrlFMH4t2IprpRhRwWb
+34iZeE/PV48qPZGxf3YeTfzc8wqjXQ/yU9/hYcfwtthXqyv2OVpx9d1sxElk
+d2eGz07B+L+a4WrFFY9iOEdKS3e34vqcIOBtGnsyO06BOO+ausGL+TPZgXA5
+onBpKy7fvIr1d5fiy+yLeOAzD/ozfmAA4mFukQDmp299zNfYbwJZu3NLYdwC
+2wYxP1MOYJ/c7fdg1m5b85yn5sIQhj8bSHlJPbQjlNlvPAnnCb+dLmvFpct9
+aH8o1twIs+JaxVCcqze8H874T3bhnHzTowhmP6sSnXvLYx5EMjx9M+2f5Zo3
+yzE89gr24XdPR7F2e7d5RPwJW8uzcbuXcsmGKw+mVbDionK6F6070z/gfmTH
+Wqy/lUdhH+tcvCDh5nmI3DMW+bypL+G55x7CaQb4C1oyvp7RFedL8UPtrXwt
+Yyrh8v4cJytfy4ql/K8OuOlk5cuTzmG9uNWxGLM/owjWhSYNSzD7w5OwTx78
+xNXKN5Ln4rkblupq5euLXQnX7Hu7W/li9Uvwz/p4MP6hNoif2F89Gd+zDOJt
+ws+ejN+4Jeyk/e3F/KngjbxRcr6Xla+WCID97ed82PgU+Q/99b7sY+VLiZOo
+v1rCR18rX42eiPsRh+K+zP6SCjhvTK7qz+xff4vzyb4N/Nl4lqxMuNHhiMT6
+NXQ3ztMOzQ9g8zK/Ls4JGyUHMD8HjyO+eHue8bXmobDjlhHI7B/0syd/4l4F
+sXEekkK4sf1rEOvXJJzjSfOlYMZv1RXnS6WdQ5g//zjScyrH2IWycbukA+/t
+Fcr8KVSM9lfi+0Wcv/sl7cdUD/+yVr7cYhKdsylJjmFWvtL/Me3rpE1SGLNf
+ZjbtD8XIN4yvOSzC+3JGmXDmf0O8d0vJWeFs/At/oLyh13OPYPZ//wP3jF8j
+I6182cXpDfGHFoy08rVewXSeKUIuMr60acVT2pe+fcb46lvvu4TvuVCO2bk6
+DfFfnNf5iPn2OA9ZuJbV+ainzuK5WMTrfGz1Mzb7+etnbHUy5Ge+OhlbfQvN
+V776FlsdC+H56lhs9SE0j/nqQ2z1HuR/vnoPWx2RDc9fR6QNuWSe7w1idUf6
+rDC8B32pzOuUpvvS+Cgtx7L6KKO/L/KYweup9BlbcG6wYfA2Ky47L8LzNbPA
+AsYvkWGvC8t/uX5+WehG/uSrG7HVgdjw/HUgtnoMspO/HmPnRuwT8tVX2OoZ
+yH6+egax7w/UKZ3oyuLW2H6HcCO+BcOFezrqi85vK2TF5XZ2uH/y7VDEimuN
+ce6m/l3E2YorQ/9FXWuZwVR3kYtLAe9Q79eu2jsrLqqp8HfoLBfmp0N5fE+U
+0sCD+bmrBeoev35l+U1pIKMe6ZvPjK/fq0e4XHOQN7PzbAjVgWrjCvN6jDMT
+cJ9RfwJ7HpVSEzKw36nNcGOAF8bnZCDzR7R5jvV4UWOWV+UBw1FvmDKgLPPz
+bjs6fxTZWSzvKbscMW5buoUwOwVb4/3/zSSWhxX/ZojTv5L8rLjU8C/Ee7uH
+bP3Sk+pg3JKnsfGRUnEvo55vOZ7y2qLluN98DVxuF//4APi4t7kBPLeOP7eu
+X7tm2slXN67qpp18dePaftNOvvpwbRvw/PXh0jrTfr76cGkl8Pz14fJ0s918
+dafSFOD56061USaer+5UjMy1w7+D0Iab/uf7bsL2/QXZyf+dRR/Tz3zfZci9
+gef/3sHoadrP932E3tUcB/M7C3UgvrMQcWa7izF/8lnMp9LNtJPv+wtb/aou
+LP+Z9au2Oluyn6/OVhuaiLrh5zFs36s5OdL3BtKbKFYvpLdZSeNqrCjG6pFE
+/TuUf9Xf97J6J8n9Gp73l8tQj5l7ni99h7zYf+Nb+j33PL/XNuTdAa2B575H
+p6I+VswqQXjee+vTOMLV9tff1LL4qWV+JdzY0ovwvP18uCP2wTGor8yru5hx
+nOoMtWoNqI4yDx/dhPbTxm9V3jD8pxKoc3O8Y2+1o8y6hXrCHaVdrLj2QEV+
+nDCxqBU3/ovFe3sm6vHy7LjLqEt4cc2D8Rt6Y18uD3djeHwd2HFa6G3FxVNf
+nHvaf2B1HdrXe6jfe9/aj+ERU+D3158kZmeSN+HasLGsXkUbF0jjqU9NCGT8
+TvdRbzwzidXnKIX7Yzzvv2J1OHrpHHyn1jmM1RGpdy4gTnxLsHokxe8FrU9S
+q9a8PurYSJpXtcaPrM5K3L6MPNypcTjHczB/s2qwui9R8QHiNbsuq0PTVs6h
+umd1enNWzyYGzEA/1rRl9WbK7hO07ihrK7L6NM19O9bHnasprvLOde/dQv22
+3ZVsazwrDsGo0x6+LpvxT/vi/GLEUPQ7N/7P9cD5dePOhOfdy3ypiLrKbs4O
+Vr6e+Aeei1++2Fv5orQj5l1sK2rlyw0rIP69VxVl/OKdUDebGeFi5UtD41E3
+4xXqYuWrNTXYjx/rxvy/dBq82mPcrHx972mz/ua2B7PfNQPxPOGmB/OnH+pO
+tYpVSrH+BmfDvh/wvHP+0LPgR8/xZvavvwT/xFxvK9+4thb9LZ9RmvF7n4ef
+LV+xexOtX3fgPg38GD9lOsbrRmM/xm/pCrxkrGTlK+Orws4PLSTmT6X6NI+S
+x1B2ryTEbMyv/e/sXkl7VgVxsmdJIBufr2MJV/qvDLTylYFZiM/YRHYvpm2t
+Q/GpXjzO7sXkkCmIm+/v8nu37lfwffofD9m9mzT4Gc4fS35k93piaSXsl0sL
+fg841Rfri70Lu2cUv3fFfvdcKXbPaIwPRH3V8wB2jym8e+D7jl4R/B6zdA7t
+p+WxUeyeVETL+H5tTxV2T2p8SMD3IlGV2T2sGPccdfvuNdk9rFqp7Rf6GVCZ
+3fOq928Sru+pye55peKop9EblmP3yJLfRNTZTKzK7pGVTZ2xjm73Y/fUStod
+rKNzItg9tVYyFfVDXRzZPbjU/xzOXx+XZPfg6qjz+K63enV2ny4/8sd3B8dq
+51jXcf3vCcj/39jlWNdxeU0nxM+cdQVlC19ZdoZwoU4jPI9vh/s5ZUMVBytf
+z7mFeL4hOTD+4R/xXHRIKmrlyxMOEi6uHi5q5RsHBNbrSDxnef68/BbP3fSK
+Lla+NqYWntMjqLfP5asvBuPvG090s/KlvXHIV91TPZj/MUuA+9/xsPLFT7Aj
+OiJf5d0XZG4Avz7wvP4G9IB/nWZ4M/6+ZfB/+CxvZt+5Huy3eFSajc+4EfB/
+7tPSrL8uDsiH0dF+Vr5oWh12Nsl+zJ/iXVC3H1af3Qepaefw3ceQGHYfJJWK
+p3k0onoHsPEPeIH72mn4LiNvH7hsJPZvt2YEMvtbDKybDeYHMv/r/ID4HLud
+3X/J5dYgPrP3svsvtedl7EPGXmT3a/LXb7Evtb/B7teUUaYOw8j/2P2dMnsh
+3jftXrP7O2Ndb3wHNCOH3Q8qrhfwfXoZB36fKIbg3kUrxu8rF17BfXOkF7uv
+FPVa4lygrye/D727lXDlZSC7D9U8C1G+0n71YfetxpQO+E7u37LsvlV76/qZ
+xmmxF7vP1WscJ1xkh/L7XOMc6lA9Xfh98Q/D6HxD/s2f3xf7V8T+2xDsPlqt
+f4Nwo4gru4/WW06HfkehZ4wvL0nC97V22YwvrUN9q7HNj92b6416Yh+xKJN9
+lyEmoZ5Vanid1SvKRaD/oj1dxOob5XFxdL6jl8tg9Ypq3wr0fbB8ZRerb5Qf
+faR6UDHkM6tXVGcvRl3vd2dYfaPxMZryqeziwPmVzmJdKHyN1zeenYf7szeO
+rL7R6LmB1h2pwm1W36j8bBQkXqQDr29ci+/RpJO3WX2j2CgQh9O/sHpFkbaD
+4k2fd53VNwrXTOzDd7xk9Yra+ZW4R6x+jtc3pibie9UbKaxeUd7eCc/R+wOs
+vlHLamt+P3uC1SvKwzOxf7i/ltU3KpVPYD3osp7VK6rZ7XEOc3Maq2/UQ/Ad
+q1IoPtDK15PnYn9ceUAg87+/I/Lb6q4BrL8JS8mOtLBlAPO/dxrua9NrsfpG
+LWkw1sctFXk9ZOIMvJcplfyYP89KI3/Gl/Zj41+qMPJ8GaM045+Zi3X246XS
+Vr5cIAzryw2cO+WNz9bbuG/uP8Gb2Q+vDP5oc/3KHf9dr8C/ATxvPBeFYH2p
+eN+D+fP8Ot53Yp6y+kbJ+yv2t+VmujH7l8177k8r3Nj4+40DvwbW7Tz/h5bA
++Oz/yYX1N+oa/NQfFrXypdNd8H1i4cBijD/kPd5/67R0sPLF63isL3tWODD/
+Yx4B73CqIPMndhTaexZQiPmftRbnosumYX+Vaz8E392JRZ0p7+bZLzgM62CV
+IfhONPce+cAhxGHJWGo371541CXsi5biHDTvXnXkLxiv63OKWnGRvhP7kL2S
+C8OHvcY8rh7pZsWVUC98L5lww8OKy69DUN/gaMZDLr7YB+chQ+d7M/semWjv
+7Ft2n6632Y/9mFsLPysuJeL9VD/cSmL9upCG/UmX0fw+vQDiTU1YG8jG5+g8
+Gk/pwT/sPl3EBeH+tdczdp+uKuPw/pLqwO7N1Yd/4z2lo8TuzYX9HlNHojK7
+NzcmT4POxn2Z3ZtrrlVo/ozCjfi9ea0edE6idY9h9+byaBc6xzDe1GX35krh
+rrS+qHursntzcfBfnEseDGL35mLZe+iOzApm3z9KybHQTWhQn91zGcXt6LxZ
+3/gbuxczirpTHZuuDWT3cfKOy7R+Gf5j2L2eKFeD1iktaiK7H5QOhOO8c9kk
+ds+oexaj50dyHMfuK+V5x3EulDCC3XsaPrE4/1/SK5jZmbIJz+2On9m9qj7x
+FnQAousFWnF1423s9+6XY/e8SqutWI8aubP7YimqJd6XR7/0ZfbFaaxH53eV
+ZrhPUegnRA7zZvhsiXBtXNVSrF8j7JFn0rLYfb1SLxHr1MBEN8YvUh/5J2e8
+Cxv/Xctxf2S/pJgV1/qjDlL9DD28PH+WHMN6HXutELM/ZLq5XguK0zz+/Ejk
+ncpDMq24TbdBt7WfT7fBplNhw/PrVOhqW3yH+HQ89qPRXrTfsulCkJ18uhA2
+/RbC8+m3aNPP0Lm6vGQk7kFaFCE9AptuBtnPp5th06Ow4fn1KGz6GzY8v/6G
+TdeC2s2na6H6Pwa/XBp0POrNJL5N98OG59f9sOlmkJ/5dDO08o9Qz9CxLfRH
+wjJxH5QchDqT4tC31ItB39LYXBt1LD+Z+pbnTX3Lu9GoH/CATqZs6mQqd7vh
++1APU9fxCnQdlUhX4BnQddRioOuoONYB/hp6ZbIz9Mq08EM0X0o1U+ftZ+i8
+6Rl2mMeK0G/UKkC/0aj2guZL94Deo/oT9B41j4X4LmkVdDKN+dDJlKu1Jr5a
+A3qVYhf0KnX/R5hfU99SlIG+pZqylXC9A/Qw9eLQw5QufMT9Szvoc6rVoM8p
+fzoMP3+Cnqf8Hnqe6spXwM9CF1Tea+qC3jyHutBA6MDod6EDo8/tjfjJMfVO
+90PvVNsRgXl0hN6p3g96p1rMTNzXm/qQhh/0IZW1MuzUioIe6Djo4emT++C7
+nlxdHdnU1ZH88d2cqeOqjoSOqza9Eeq+rkHHVfkVOq7q3njU1Ry/gPu/8w5Y
+Dxy+M78fbIT7r/MF8B7V8Svi2dQj0o0PdB+nfqOb3+tBH1I7DX1IOWAH2jV1
+fjQ/6Pxo5Z8AN3WH1HWm7lD2HOAFeiGOh0LnUG62GXVW3aBfpByCfpHwiEO7
+jaB3pNwfgO/cna6hzirIDuM/vRnuAxu/QN7YDN08bS1088S7qrDfG/pvWh9T
+/+2v4bCfCn1FUd3UVxzxFHgp6HyKjdD5FPXvYXw6QqfI2GzqFOUAl2Ogm6SO
+N3WTzpTGvJs6S2IwdJbUhJnkp1LvT1PXDDpC+qWXeO52mbq7V6C7a2QuBb+T
+qRM4CzqB0p6N9mR/NnS3hIepuzX2X9wz7oG+lvCBvpb82x3i6ylPSbdKn1KJ
+/DJauBOu3YTOlWTqXBmBDvRc6EnQuVKWmzpXFRqC/wn6WtoN6GtpfZoS36gN
+nS7FztTpumfWy9WF7pOaDN0nrfBixHk6dKWEG3Sl9IsusLPS1Bu0g96g8kyn
+dpVQ6MWphaAXZ9Odo/7aQXdON3XnxMMzxJd7QadOZEGnTmSiPlC+A1070Q26
+dpqbHfLJZujFCVMvTu9SE/VXph6vFgM9XuX8UORbU79XXgD9Xm1lP2rXGAK9
+O/Uw9O60Mz7w5yZ057Rd0J2z6aSR/79CJ00xddL04qehe+DZA+cvG9rgfnvE
+Gvh5ADppehXopGmBA+HnUejgqX7QwTPSkuBPUVMnczh0Mo2pSbjXztUljoEu
+sRj8DPk5V6duL3TqlGB7+GPq2glT186ICSBcM3XwdA/o4ClNq4Nv6uYZPaGb
+J+a0wriZ+opyaegrSit6gp+rrzgW+op6/+WYr/fQE5YmQk9Y7dMX+XkV9F2V
+gtB31exOAk+Avqt2CPquyvelEG/3oasmnkJXTdqNPKD0gY6uvBg6uuonzJdq
+6iSrW6GTLMkLCdemYF2Qq0GfUG3cjHDJ1Cc0ZkKfUOTcgJ1M6GHqH6GHqb0c
+jXgw9SrlbaYunIsb1tni0LeUHkLfUngnwI6pVyknQ6/S+Ksh9lfx0D1WXkP3
+WO83DHZysJ5JSdAxFtN9kE/OQPdYfd+U+iu1i0H+mQfdVC0Suqk2nWcbLi5B
+51nrAJ1nbXQE9iHzoedpHISepyaG4HsxH+im6r2hm6oMuo95vA+dUmn6UFPX
+czfyzBLolIp9/69TasONJtAp1T9Ap1S+swz+fBlM65zuCJ1SY+YT6F1sNXVE
+d0NH1KgahXhQoPuqd4Tuq5GD+k8lC7qy0mDoyurboadhjMZ6bCSa+rSf0rG+
+REDvVx0AvV9lwjKM22zo5Wq1oZdrfIZ9uT70WuVL8Eft+wnj08rUiR0LnVhp
+H75nV0ZCH1gI6AOrW9pjfmtDZ1XdZOqsvl2NcdgMfVTlIfRRxfIHGLdi0MeW
+nUx97A/NsK5Vgy6xmO2n1/o/ATyEPw==
+         
+         "], {Polygon3DBox[{1, 2, 3}], Polygon3DBox[{4, 5, 6}], 
+          Polygon3DBox[{7, 8, 9}], Polygon3DBox[{10, 11, 12}], 
+          Polygon3DBox[{11, 13, 12}], Polygon3DBox[{12, 13, 14}], 
+          Polygon3DBox[{15, 8, 16}], Polygon3DBox[{17, 18, 19}], 
+          Polygon3DBox[{20, 21, 22}], Polygon3DBox[{21, 23, 22}], 
+          Polygon3DBox[{24, 25, 26}], Polygon3DBox[{27, 28, 29}], 
+          Polygon3DBox[{30, 31, 32}], Polygon3DBox[{33, 34, 35}], 
+          Polygon3DBox[{36, 37, 38}], Polygon3DBox[{38, 37, 39}], 
+          Polygon3DBox[{37, 40, 39}], Polygon3DBox[{39, 40, 41}], 
+          Polygon3DBox[{42, 43, 44}], Polygon3DBox[{42, 44, 45}], 
+          Polygon3DBox[{46, 47, 48}], Polygon3DBox[{49, 50, 51}], 
+          Polygon3DBox[{50, 52, 51}], Polygon3DBox[{51, 52, 42}], 
+          Polygon3DBox[{52, 53, 42}], Polygon3DBox[{42, 53, 43}], 
+          Polygon3DBox[{54, 55, 56}], Polygon3DBox[{55, 57, 56}], 
+          Polygon3DBox[{56, 57, 58}], Polygon3DBox[{57, 59, 58}], 
+          Polygon3DBox[{58, 59, 60}], Polygon3DBox[{59, 61, 60}], 
+          Polygon3DBox[{60, 61, 62}], Polygon3DBox[{63, 64, 54}], 
+          Polygon3DBox[{64, 65, 54}], Polygon3DBox[{54, 65, 55}], 
+          Polygon3DBox[{60, 66, 58}], Polygon3DBox[{66, 67, 58}], 
+          Polygon3DBox[{58, 67, 56}], Polygon3DBox[{67, 68, 56}], 
+          Polygon3DBox[{56, 68, 54}], Polygon3DBox[{68, 69, 54}], 
+          Polygon3DBox[{54, 69, 63}], Polygon3DBox[{69, 70, 63}], 
+          Polygon3DBox[{34, 33, 71}], Polygon3DBox[{33, 72, 71}], 
+          Polygon3DBox[{71, 72, 73}], Polygon3DBox[{74, 28, 35}], 
+          Polygon3DBox[{28, 27, 35}], Polygon3DBox[{35, 27, 33}], 
+          Polygon3DBox[{27, 75, 33}], Polygon3DBox[{33, 75, 72}], 
+          Polygon3DBox[{31, 30, 76}], Polygon3DBox[{30, 77, 76}], 
+          Polygon3DBox[{76, 77, 78}], Polygon3DBox[{77, 79, 78}], 
+          Polygon3DBox[{78, 79, 80}], Polygon3DBox[{60, 73, 66}], 
+          Polygon3DBox[{73, 72, 66}], Polygon3DBox[{66, 72, 67}], 
+          Polygon3DBox[{72, 75, 67}], Polygon3DBox[{67, 75, 68}], 
+          Polygon3DBox[{75, 27, 68}], Polygon3DBox[{68, 27, 69}], 
+          Polygon3DBox[{27, 29, 69}], Polygon3DBox[{69, 29, 70}], 
+          Polygon3DBox[{81, 25, 82}], Polygon3DBox[{25, 24, 82}], 
+          Polygon3DBox[{82, 24, 83}], Polygon3DBox[{24, 84, 83}], 
+          Polygon3DBox[{81, 85, 25}], Polygon3DBox[{85, 86, 25}], 
+          Polygon3DBox[{25, 86, 26}], Polygon3DBox[{86, 87, 26}], 
+          Polygon3DBox[{26, 87, 88}], Polygon3DBox[{87, 89, 88}], 
+          Polygon3DBox[{88, 89, 90}], Polygon3DBox[{89, 91, 90}], 
+          Polygon3DBox[{84, 24, 92}], Polygon3DBox[{24, 26, 92}], 
+          Polygon3DBox[{92, 26, 93}], Polygon3DBox[{26, 88, 93}], 
+          Polygon3DBox[{93, 88, 94}], Polygon3DBox[{88, 90, 94}], 
+          Polygon3DBox[{94, 90, 95}], Polygon3DBox[{90, 91, 95}], 
+          Polygon3DBox[{95, 91, 96}], Polygon3DBox[{97, 83, 80}], 
+          Polygon3DBox[{83, 84, 80}], Polygon3DBox[{80, 84, 78}], 
+          Polygon3DBox[{84, 92, 78}], Polygon3DBox[{78, 92, 76}], 
+          Polygon3DBox[{92, 93, 76}], Polygon3DBox[{76, 93, 31}], 
+          Polygon3DBox[{93, 94, 31}], Polygon3DBox[{31, 94, 32}], 
+          Polygon3DBox[{94, 95, 32}], Polygon3DBox[{32, 95, 98}], 
+          Polygon3DBox[{95, 96, 98}], Polygon3DBox[{98, 96, 99}], 
+          Polygon3DBox[{99, 100, 98}], Polygon3DBox[{100, 74, 98}], 
+          Polygon3DBox[{98, 74, 32}], Polygon3DBox[{74, 35, 32}], 
+          Polygon3DBox[{32, 35, 30}], Polygon3DBox[{35, 34, 30}], 
+          Polygon3DBox[{30, 34, 77}], Polygon3DBox[{34, 71, 77}], 
+          Polygon3DBox[{77, 71, 79}], Polygon3DBox[{71, 73, 79}], 
+          Polygon3DBox[{79, 73, 80}], Polygon3DBox[{73, 60, 80}], 
+          Polygon3DBox[{80, 60, 97}], Polygon3DBox[{60, 62, 97}], 
+          Polygon3DBox[{101, 74, 102}], Polygon3DBox[{74, 100, 102}], 
+          Polygon3DBox[{102, 100, 103}], Polygon3DBox[{100, 99, 103}], 
+          Polygon3DBox[{103, 99, 104}], Polygon3DBox[{105, 70, 106}], 
+          Polygon3DBox[{70, 29, 106}], Polygon3DBox[{106, 29, 107}], 
+          Polygon3DBox[{29, 28, 107}], Polygon3DBox[{107, 28, 108}], 
+          Polygon3DBox[{28, 74, 108}], Polygon3DBox[{108, 74, 109}], 
+          Polygon3DBox[{74, 101, 109}], Polygon3DBox[{110, 111, 112}], 
+          Polygon3DBox[{111, 113, 112}], Polygon3DBox[{112, 113, 114}], 
+          Polygon3DBox[{113, 22, 114}], Polygon3DBox[{114, 22, 115}], 
+          Polygon3DBox[{22, 23, 115}], Polygon3DBox[{115, 23, 116}], 
+          Polygon3DBox[{117, 118, 119}], Polygon3DBox[{118, 19, 119}], 
+          Polygon3DBox[{119, 19, 120}], Polygon3DBox[{19, 18, 120}], 
+          Polygon3DBox[{121, 116, 122}], Polygon3DBox[{116, 23, 122}], 
+          Polygon3DBox[{122, 23, 123}], Polygon3DBox[{23, 21, 123}], 
+          Polygon3DBox[{123, 21, 124}], Polygon3DBox[{21, 20, 124}], 
+          Polygon3DBox[{125, 126, 118}], Polygon3DBox[{126, 127, 118}], 
+          Polygon3DBox[{127, 128, 118}], Polygon3DBox[{118, 128, 19}], 
+          Polygon3DBox[{128, 129, 19}], Polygon3DBox[{19, 129, 17}], 
+          Polygon3DBox[{129, 130, 17}], Polygon3DBox[{17, 130, 131}], 
+          Polygon3DBox[{14, 13, 132}], Polygon3DBox[{13, 133, 132}], 
+          Polygon3DBox[{132, 133, 134}], Polygon3DBox[{133, 135, 134}], 
+          Polygon3DBox[{134, 135, 136}], Polygon3DBox[{137, 138, 139}], 
+          Polygon3DBox[{138, 140, 139}], Polygon3DBox[{139, 140, 9}], 
+          Polygon3DBox[{140, 141, 9}], Polygon3DBox[{9, 141, 7}], 
+          Polygon3DBox[{8, 15, 9}], Polygon3DBox[{15, 142, 9}], 
+          Polygon3DBox[{9, 142, 139}], Polygon3DBox[{142, 143, 139}], 
+          Polygon3DBox[{139, 143, 137}], Polygon3DBox[{125, 16, 8}], 
+          Polygon3DBox[{11, 137, 13}], Polygon3DBox[{137, 143, 13}], 
+          Polygon3DBox[{13, 143, 133}], Polygon3DBox[{143, 142, 133}], 
+          Polygon3DBox[{133, 142, 135}], Polygon3DBox[{142, 15, 135}], 
+          Polygon3DBox[{135, 15, 136}], Polygon3DBox[{15, 16, 136}], 
+          Polygon3DBox[{44, 144, 45}], Polygon3DBox[{144, 145, 45}], 
+          Polygon3DBox[{45, 145, 146}], Polygon3DBox[{47, 49, 48}], 
+          Polygon3DBox[{49, 51, 48}], Polygon3DBox[{48, 51, 147}], 
+          Polygon3DBox[{51, 42, 147}], Polygon3DBox[{147, 42, 148}], 
+          Polygon3DBox[{42, 45, 148}], Polygon3DBox[{148, 45, 149}], 
+          Polygon3DBox[{45, 146, 149}], Polygon3DBox[{149, 146, 150}], 
+          Polygon3DBox[{146, 151, 150}], Polygon3DBox[{150, 151, 152}], 
+          Polygon3DBox[{2, 1, 153}], Polygon3DBox[{1, 154, 153}], 
+          Polygon3DBox[{153, 154, 152}], Polygon3DBox[{154, 155, 152}], 
+          Polygon3DBox[{152, 155, 150}], Polygon3DBox[{156, 157, 158}], 
+          Polygon3DBox[{157, 6, 158}], Polygon3DBox[{158, 6, 159}], 
+          Polygon3DBox[{6, 5, 159}], Polygon3DBox[{159, 5, 160}], 
+          Polygon3DBox[{5, 4, 160}], Polygon3DBox[{160, 4, 161}], 
+          Polygon3DBox[{158, 162, 156}], Polygon3DBox[{162, 163, 156}], 
+          Polygon3DBox[{156, 163, 164}], Polygon3DBox[{145, 165, 146}], 
+          Polygon3DBox[{165, 161, 146}], Polygon3DBox[{146, 161, 151}], 
+          Polygon3DBox[{161, 4, 151}], Polygon3DBox[{151, 4, 152}], 
+          Polygon3DBox[{4, 6, 152}], Polygon3DBox[{152, 6, 153}], 
+          Polygon3DBox[{6, 157, 153}], Polygon3DBox[{153, 157, 2}], 
+          Polygon3DBox[{157, 156, 2}], Polygon3DBox[{2, 156, 3}], 
+          Polygon3DBox[{156, 164, 3}], Polygon3DBox[{38, 166, 36}], 
+          Polygon3DBox[{166, 167, 36}], Polygon3DBox[{36, 167, 10}], 
+          Polygon3DBox[{167, 168, 10}], Polygon3DBox[{10, 168, 11}], 
+          Polygon3DBox[{168, 169, 11}], Polygon3DBox[{11, 169, 137}], 
+          Polygon3DBox[{169, 170, 137}], Polygon3DBox[{137, 170, 138}], 
+          Polygon3DBox[{111, 119, 113}], Polygon3DBox[{119, 120, 113}], 
+          Polygon3DBox[{113, 120, 22}], Polygon3DBox[{120, 18, 22}], 
+          Polygon3DBox[{22, 18, 20}], Polygon3DBox[{18, 17, 20}], 
+          Polygon3DBox[{20, 17, 124}], Polygon3DBox[{17, 131, 124}], 
+          Polygon3DBox[{124, 131, 123}], Polygon3DBox[{131, 171, 123}], 
+          Polygon3DBox[{123, 171, 122}], Polygon3DBox[{171, 172, 122}], 
+          Polygon3DBox[{122, 172, 121}], Polygon3DBox[{172, 173, 121}], 
+          Polygon3DBox[{125, 118, 16}], Polygon3DBox[{118, 117, 16}], 
+          Polygon3DBox[{16, 117, 136}], Polygon3DBox[{117, 119, 136}], 
+          Polygon3DBox[{136, 119, 134}], Polygon3DBox[{119, 111, 134}], 
+          Polygon3DBox[{134, 111, 132}], Polygon3DBox[{111, 110, 132}], 
+          Polygon3DBox[{132, 110, 14}], Polygon3DBox[{110, 164, 14}], 
+          Polygon3DBox[{14, 164, 12}], Polygon3DBox[{164, 163, 12}], 
+          Polygon3DBox[{12, 163, 10}], Polygon3DBox[{163, 162, 10}], 
+          Polygon3DBox[{10, 162, 36}], Polygon3DBox[{162, 158, 36}], 
+          Polygon3DBox[{36, 158, 37}], Polygon3DBox[{158, 159, 37}], 
+          Polygon3DBox[{37, 159, 40}], Polygon3DBox[{64, 46, 65}], 
+          Polygon3DBox[{46, 48, 65}], Polygon3DBox[{65, 48, 55}], 
+          Polygon3DBox[{48, 147, 55}], Polygon3DBox[{55, 147, 57}], 
+          Polygon3DBox[{147, 148, 57}], Polygon3DBox[{57, 148, 59}], 
+          Polygon3DBox[{148, 149, 59}], Polygon3DBox[{59, 149, 61}], 
+          Polygon3DBox[{149, 150, 61}], Polygon3DBox[{61, 150, 62}], 
+          Polygon3DBox[{150, 155, 62}], Polygon3DBox[{62, 155, 97}], 
+          Polygon3DBox[{155, 154, 97}], Polygon3DBox[{97, 154, 83}], 
+          Polygon3DBox[{154, 1, 83}], Polygon3DBox[{83, 1, 82}], 
+          Polygon3DBox[{1, 3, 82}], Polygon3DBox[{82, 3, 81}], 
+          Polygon3DBox[{3, 164, 81}], Polygon3DBox[{81, 164, 85}], 
+          Polygon3DBox[{164, 110, 85}], Polygon3DBox[{85, 110, 86}], 
+          Polygon3DBox[{110, 112, 86}], Polygon3DBox[{86, 112, 87}], 
+          Polygon3DBox[{112, 114, 87}], Polygon3DBox[{87, 114, 89}], 
+          Polygon3DBox[{114, 115, 89}], Polygon3DBox[{89, 115, 91}], 
+          Polygon3DBox[{115, 116, 91}], Polygon3DBox[{91, 116, 96}], 
+          Polygon3DBox[{116, 121, 96}], Polygon3DBox[{96, 121, 99}], 
+          Polygon3DBox[{121, 173, 99}], Polygon3DBox[{99, 173, 104}], 
+          Polygon3DBox[{41, 174, 39}], Polygon3DBox[{174, 175, 39}], 
+          Polygon3DBox[{176, 166, 175}], Polygon3DBox[{166, 38, 175}], 
+          Polygon3DBox[{175, 38, 39}], Polygon3DBox[{177, 168, 176}], 
+          Polygon3DBox[{168, 167, 176}], Polygon3DBox[{176, 167, 166}], 
+          Polygon3DBox[{178, 170, 177}], Polygon3DBox[{170, 169, 177}], 
+          Polygon3DBox[{177, 169, 168}], Polygon3DBox[{7, 141, 179}], 
+          Polygon3DBox[{141, 140, 179}], Polygon3DBox[{179, 140, 178}], 
+          Polygon3DBox[{140, 138, 178}], Polygon3DBox[{178, 138, 170}], 
+          Polygon3DBox[{8, 7, 180}], Polygon3DBox[{7, 179, 180}], 
+          Polygon3DBox[{180, 179, 181}], Polygon3DBox[{179, 182, 181}], 
+          Polygon3DBox[{182, 179, 183}], Polygon3DBox[{179, 178, 183}], 
+          Polygon3DBox[{183, 178, 184}], Polygon3DBox[{184, 178, 185}], 
+          Polygon3DBox[{178, 177, 185}], Polygon3DBox[{185, 177, 186}], 
+          Polygon3DBox[{186, 177, 187}], Polygon3DBox[{177, 176, 187}], 
+          Polygon3DBox[{187, 176, 188}], Polygon3DBox[{188, 176, 189}], 
+          Polygon3DBox[{176, 175, 189}], Polygon3DBox[{189, 175, 190}], 
+          Polygon3DBox[{175, 174, 190}], Polygon3DBox[{190, 174, 191}], 
+          Polygon3DBox[{174, 41, 192}], Polygon3DBox[{193, 194, 195}], 
+          Polygon3DBox[{194, 196, 195}], Polygon3DBox[{195, 196, 197}], 
+          Polygon3DBox[{196, 198, 197}], Polygon3DBox[{197, 198, 199}], 
+          Polygon3DBox[{198, 200, 199}], Polygon3DBox[{201, 202, 203}], 
+          Polygon3DBox[{202, 204, 203}], Polygon3DBox[{203, 204, 205}], 
+          Polygon3DBox[{204, 206, 205}], Polygon3DBox[{201, 207, 202}], 
+          Polygon3DBox[{207, 208, 202}], Polygon3DBox[{202, 208, 198}], 
+          Polygon3DBox[{208, 209, 198}], Polygon3DBox[{198, 209, 200}], 
+          Polygon3DBox[{210, 211, 212}], Polygon3DBox[{211, 213, 212}], 
+          Polygon3DBox[{212, 213, 204}], Polygon3DBox[{213, 214, 204}], 
+          Polygon3DBox[{204, 214, 206}], Polygon3DBox[{215, 216, 217}], 
+          Polygon3DBox[{215, 217, 212}], Polygon3DBox[{217, 218, 212}], 
+          Polygon3DBox[{212, 218, 210}], Polygon3DBox[{219, 220, 221}], 
+          Polygon3DBox[{220, 222, 221}], Polygon3DBox[{221, 222, 215}], 
+          Polygon3DBox[{222, 223, 215}], Polygon3DBox[{215, 223, 216}], 
+          Polygon3DBox[{224, 225, 226}], Polygon3DBox[{224, 226, 221}], 
+          Polygon3DBox[{226, 227, 221}], Polygon3DBox[{221, 227, 219}], 
+          Polygon3DBox[{228, 229, 230}], Polygon3DBox[{229, 231, 230}], 
+          Polygon3DBox[{230, 231, 224}], Polygon3DBox[{231, 232, 224}], 
+          Polygon3DBox[{224, 232, 225}], Polygon3DBox[{233, 234, 235}], 
+          Polygon3DBox[{235, 236, 233}], Polygon3DBox[{236, 237, 233}], 
+          Polygon3DBox[{233, 237, 230}], Polygon3DBox[{237, 238, 230}], 
+          Polygon3DBox[{230, 238, 228}], Polygon3DBox[{234, 233, 239}], 
+          Polygon3DBox[{233, 240, 239}], Polygon3DBox[{239, 240, 192}], 
+          Polygon3DBox[{240, 191, 192}], Polygon3DBox[{192, 191, 174}], 
+          Polygon3DBox[{241, 242, 243}], Polygon3DBox[{244, 245, 246}], 
+          Polygon3DBox[{247, 241, 248}], Polygon3DBox[{242, 241, 249}], 
+          Polygon3DBox[{250, 251, 252}], Polygon3DBox[{253, 254, 255}], 
+          Polygon3DBox[{256, 193, 257}], Polygon3DBox[{258, 259, 260}], 
+          Polygon3DBox[{259, 261, 260}], Polygon3DBox[{260, 261, 262}], 
+          Polygon3DBox[{261, 256, 262}], Polygon3DBox[{262, 256, 263}], 
+          Polygon3DBox[{256, 257, 263}], Polygon3DBox[{263, 257, 264}], 
+          Polygon3DBox[{265, 266, 267}], Polygon3DBox[{266, 268, 267}], 
+          Polygon3DBox[{267, 268, 269}], Polygon3DBox[{268, 270, 269}], 
+          Polygon3DBox[{269, 270, 271}], Polygon3DBox[{270, 272, 271}], 
+          Polygon3DBox[{271, 272, 258}], Polygon3DBox[{272, 273, 258}], 
+          Polygon3DBox[{258, 273, 259}], Polygon3DBox[{274, 275, 276}], 
+          Polygon3DBox[{275, 277, 276}], Polygon3DBox[{276, 277, 278}], 
+          Polygon3DBox[{277, 279, 278}], Polygon3DBox[{278, 279, 265}], 
+          Polygon3DBox[{279, 280, 265}], Polygon3DBox[{265, 280, 266}], 
+          Polygon3DBox[{281, 282, 283}], Polygon3DBox[{282, 284, 283}], 
+          Polygon3DBox[{283, 284, 285}], Polygon3DBox[{284, 286, 285}], 
+          Polygon3DBox[{285, 286, 274}], Polygon3DBox[{286, 287, 274}], 
+          Polygon3DBox[{274, 287, 275}], Polygon3DBox[{288, 289, 281}], 
+          Polygon3DBox[{289, 290, 281}], Polygon3DBox[{281, 290, 282}], 
+          Polygon3DBox[{281, 291, 288}], Polygon3DBox[{291, 292, 288}], 
+          Polygon3DBox[{288, 292, 293}], Polygon3DBox[{292, 294, 293}], 
+          Polygon3DBox[{293, 294, 295}], Polygon3DBox[{295, 294, 296}], 
+          Polygon3DBox[{294, 297, 296}], Polygon3DBox[{296, 297, 298}], 
+          Polygon3DBox[{297, 299, 298}], Polygon3DBox[{298, 299, 300}], 
+          Polygon3DBox[{300, 299, 301}], Polygon3DBox[{299, 302, 301}], 
+          Polygon3DBox[{301, 302, 303}], Polygon3DBox[{302, 304, 303}], 
+          Polygon3DBox[{303, 304, 305}], Polygon3DBox[{304, 306, 305}], 
+          Polygon3DBox[{305, 306, 307}], Polygon3DBox[{306, 308, 307}], 
+          Polygon3DBox[{307, 308, 309}], Polygon3DBox[{308, 310, 309}], 
+          Polygon3DBox[{309, 310, 311}], Polygon3DBox[{310, 312, 311}], 
+          Polygon3DBox[{311, 312, 313}], Polygon3DBox[{312, 314, 313}], 
+          Polygon3DBox[{313, 314, 315}], Polygon3DBox[{314, 316, 315}], 
+          Polygon3DBox[{315, 316, 317}], Polygon3DBox[{318, 319, 320}], 
+          Polygon3DBox[{321, 322, 323}], Polygon3DBox[{322, 324, 323}], 
+          Polygon3DBox[{323, 324, 325}], Polygon3DBox[{326, 327, 328}], 
+          Polygon3DBox[{327, 321, 328}], Polygon3DBox[{329, 330, 331}], 
+          Polygon3DBox[{330, 332, 331}], Polygon3DBox[{331, 332, 333}], 
+          Polygon3DBox[{334, 335, 329}], Polygon3DBox[{336, 337, 338}], 
+          Polygon3DBox[{337, 339, 338}], Polygon3DBox[{338, 339, 340}], 
+          Polygon3DBox[{341, 342, 343}], Polygon3DBox[{342, 336, 343}], 
+          Polygon3DBox[{241, 247, 249}], Polygon3DBox[{247, 344, 249}], 
+          Polygon3DBox[{249, 344, 345}], Polygon3DBox[{344, 346, 345}], 
+          Polygon3DBox[{345, 346, 347}], Polygon3DBox[{346, 348, 347}], 
+          Polygon3DBox[{347, 348, 349}], Polygon3DBox[{348, 350, 349}], 
+          Polygon3DBox[{349, 350, 351}], Polygon3DBox[{350, 352, 351}], 
+          Polygon3DBox[{351, 352, 353}], Polygon3DBox[{352, 354, 353}], 
+          Polygon3DBox[{353, 354, 355}], Polygon3DBox[{354, 356, 355}], 
+          Polygon3DBox[{355, 356, 357}], Polygon3DBox[{356, 358, 357}], 
+          Polygon3DBox[{357, 358, 359}], Polygon3DBox[{358, 360, 359}], 
+          Polygon3DBox[{359, 360, 361}], Polygon3DBox[{360, 362, 361}], 
+          Polygon3DBox[{361, 362, 363}], Polygon3DBox[{362, 364, 363}], 
+          Polygon3DBox[{363, 364, 365}], Polygon3DBox[{364, 366, 365}], 
+          Polygon3DBox[{365, 366, 367}], Polygon3DBox[{366, 368, 367}], 
+          Polygon3DBox[{367, 368, 369}], Polygon3DBox[{368, 370, 369}], 
+          Polygon3DBox[{369, 370, 371}], Polygon3DBox[{370, 372, 371}], 
+          Polygon3DBox[{371, 372, 373}], Polygon3DBox[{372, 374, 373}], 
+          Polygon3DBox[{373, 374, 375}], Polygon3DBox[{374, 376, 375}], 
+          Polygon3DBox[{375, 376, 377}], Polygon3DBox[{376, 378, 377}], 
+          Polygon3DBox[{377, 378, 379}], Polygon3DBox[{378, 380, 379}], 
+          Polygon3DBox[{379, 380, 381}], Polygon3DBox[{380, 382, 381}], 
+          Polygon3DBox[{381, 382, 383}], Polygon3DBox[{382, 384, 383}], 
+          Polygon3DBox[{383, 384, 385}], Polygon3DBox[{384, 386, 385}], 
+          Polygon3DBox[{385, 386, 387}], Polygon3DBox[{386, 388, 387}], 
+          Polygon3DBox[{387, 388, 389}], Polygon3DBox[{388, 390, 389}], 
+          Polygon3DBox[{389, 390, 391}], Polygon3DBox[{390, 338, 391}], 
+          Polygon3DBox[{391, 338, 334}], Polygon3DBox[{338, 340, 334}], 
+          Polygon3DBox[{334, 340, 335}], Polygon3DBox[{254, 253, 392}], 
+          Polygon3DBox[{253, 393, 392}], Polygon3DBox[{392, 393, 394}], 
+          Polygon3DBox[{393, 395, 394}], Polygon3DBox[{394, 395, 396}], 
+          Polygon3DBox[{395, 397, 396}], Polygon3DBox[{396, 397, 398}], 
+          Polygon3DBox[{397, 399, 398}], Polygon3DBox[{398, 399, 400}], 
+          Polygon3DBox[{399, 401, 400}], Polygon3DBox[{400, 401, 402}], 
+          Polygon3DBox[{401, 403, 402}], Polygon3DBox[{402, 403, 404}], 
+          Polygon3DBox[{403, 405, 404}], Polygon3DBox[{404, 405, 406}], 
+          Polygon3DBox[{405, 407, 406}], Polygon3DBox[{406, 407, 408}], 
+          Polygon3DBox[{407, 409, 408}], Polygon3DBox[{408, 409, 410}], 
+          Polygon3DBox[{409, 411, 410}], Polygon3DBox[{410, 411, 412}], 
+          Polygon3DBox[{411, 413, 412}], Polygon3DBox[{412, 413, 414}], 
+          Polygon3DBox[{413, 415, 414}], Polygon3DBox[{414, 415, 416}], 
+          Polygon3DBox[{415, 417, 416}], Polygon3DBox[{416, 417, 418}], 
+          Polygon3DBox[{417, 419, 418}], Polygon3DBox[{418, 419, 420}], 
+          Polygon3DBox[{419, 421, 420}], Polygon3DBox[{420, 421, 422}], 
+          Polygon3DBox[{421, 423, 422}], Polygon3DBox[{422, 423, 424}], 
+          Polygon3DBox[{423, 425, 424}], Polygon3DBox[{424, 425, 426}], 
+          Polygon3DBox[{425, 427, 426}], Polygon3DBox[{426, 427, 428}], 
+          Polygon3DBox[{427, 429, 428}], Polygon3DBox[{428, 429, 430}], 
+          Polygon3DBox[{429, 431, 430}], Polygon3DBox[{430, 431, 432}], 
+          Polygon3DBox[{431, 433, 432}], Polygon3DBox[{432, 433, 434}], 
+          Polygon3DBox[{433, 435, 434}], Polygon3DBox[{434, 435, 436}], 
+          Polygon3DBox[{435, 437, 436}], Polygon3DBox[{436, 437, 438}], 
+          Polygon3DBox[{437, 439, 438}], Polygon3DBox[{438, 439, 440}], 
+          Polygon3DBox[{439, 441, 440}], Polygon3DBox[{440, 441, 442}], 
+          Polygon3DBox[{441, 323, 442}], Polygon3DBox[{442, 323, 443}], 
+          Polygon3DBox[{323, 325, 443}], Polygon3DBox[{443, 325, 319}], 
+          Polygon3DBox[{251, 250, 444}], Polygon3DBox[{250, 445, 444}], 
+          Polygon3DBox[{444, 445, 446}], Polygon3DBox[{445, 447, 446}], 
+          Polygon3DBox[{446, 447, 448}], Polygon3DBox[{447, 449, 448}], 
+          Polygon3DBox[{448, 449, 450}], Polygon3DBox[{449, 451, 450}], 
+          Polygon3DBox[{450, 451, 452}], Polygon3DBox[{451, 453, 452}], 
+          Polygon3DBox[{452, 453, 454}], Polygon3DBox[{453, 455, 454}], 
+          Polygon3DBox[{454, 455, 456}], Polygon3DBox[{455, 457, 456}], 
+          Polygon3DBox[{456, 457, 458}], Polygon3DBox[{457, 459, 458}], 
+          Polygon3DBox[{458, 459, 460}], Polygon3DBox[{459, 461, 460}], 
+          Polygon3DBox[{460, 461, 462}], Polygon3DBox[{461, 463, 462}], 
+          Polygon3DBox[{462, 463, 464}], Polygon3DBox[{463, 465, 464}], 
+          Polygon3DBox[{464, 465, 466}], Polygon3DBox[{465, 467, 466}], 
+          Polygon3DBox[{466, 467, 468}], Polygon3DBox[{467, 469, 468}], 
+          Polygon3DBox[{468, 469, 470}], Polygon3DBox[{469, 471, 470}], 
+          Polygon3DBox[{470, 471, 472}], Polygon3DBox[{471, 473, 472}], 
+          Polygon3DBox[{472, 473, 474}], Polygon3DBox[{473, 475, 474}], 
+          Polygon3DBox[{474, 475, 476}], Polygon3DBox[{475, 477, 476}], 
+          Polygon3DBox[{476, 477, 478}], Polygon3DBox[{477, 479, 478}], 
+          Polygon3DBox[{478, 479, 480}], Polygon3DBox[{479, 481, 480}], 
+          Polygon3DBox[{480, 481, 482}], Polygon3DBox[{481, 483, 482}], 
+          Polygon3DBox[{482, 483, 484}], Polygon3DBox[{483, 485, 484}], 
+          Polygon3DBox[{484, 485, 486}], Polygon3DBox[{485, 487, 486}], 
+          Polygon3DBox[{486, 487, 488}], Polygon3DBox[{487, 489, 488}], 
+          Polygon3DBox[{488, 489, 490}], Polygon3DBox[{489, 491, 490}], 
+          Polygon3DBox[{490, 491, 492}], Polygon3DBox[{491, 493, 492}], 
+          Polygon3DBox[{492, 493, 494}], Polygon3DBox[{493, 331, 494}], 
+          Polygon3DBox[{494, 331, 328}], Polygon3DBox[{331, 333, 328}], 
+          Polygon3DBox[{328, 333, 326}], Polygon3DBox[{321, 323, 328}], 
+          Polygon3DBox[{323, 441, 328}], Polygon3DBox[{328, 441, 494}], 
+          Polygon3DBox[{441, 439, 494}], Polygon3DBox[{494, 439, 492}], 
+          Polygon3DBox[{439, 437, 492}], Polygon3DBox[{492, 437, 490}], 
+          Polygon3DBox[{437, 435, 490}], Polygon3DBox[{490, 435, 488}], 
+          Polygon3DBox[{435, 433, 488}], Polygon3DBox[{488, 433, 486}], 
+          Polygon3DBox[{433, 431, 486}], Polygon3DBox[{486, 431, 484}], 
+          Polygon3DBox[{431, 429, 484}], Polygon3DBox[{484, 429, 482}], 
+          Polygon3DBox[{429, 427, 482}], Polygon3DBox[{482, 427, 480}], 
+          Polygon3DBox[{427, 425, 480}], Polygon3DBox[{480, 425, 478}], 
+          Polygon3DBox[{425, 423, 478}], Polygon3DBox[{478, 423, 476}], 
+          Polygon3DBox[{423, 421, 476}], Polygon3DBox[{476, 421, 474}], 
+          Polygon3DBox[{421, 419, 474}], Polygon3DBox[{474, 419, 472}], 
+          Polygon3DBox[{419, 417, 472}], Polygon3DBox[{472, 417, 470}], 
+          Polygon3DBox[{417, 415, 470}], Polygon3DBox[{470, 415, 468}], 
+          Polygon3DBox[{415, 413, 468}], Polygon3DBox[{468, 413, 466}], 
+          Polygon3DBox[{413, 411, 466}], Polygon3DBox[{466, 411, 464}], 
+          Polygon3DBox[{411, 409, 464}], Polygon3DBox[{464, 409, 462}], 
+          Polygon3DBox[{409, 407, 462}], Polygon3DBox[{462, 407, 460}], 
+          Polygon3DBox[{407, 405, 460}], Polygon3DBox[{460, 405, 458}], 
+          Polygon3DBox[{405, 403, 458}], Polygon3DBox[{458, 403, 456}], 
+          Polygon3DBox[{403, 401, 456}], Polygon3DBox[{456, 401, 454}], 
+          Polygon3DBox[{401, 399, 454}], Polygon3DBox[{454, 399, 452}], 
+          Polygon3DBox[{399, 397, 452}], Polygon3DBox[{452, 397, 450}], 
+          Polygon3DBox[{397, 395, 450}], Polygon3DBox[{450, 395, 448}], 
+          Polygon3DBox[{395, 393, 448}], Polygon3DBox[{448, 393, 446}], 
+          Polygon3DBox[{393, 253, 446}], Polygon3DBox[{446, 253, 444}], 
+          Polygon3DBox[{253, 255, 444}], Polygon3DBox[{444, 255, 251}], 
+          Polygon3DBox[{329, 331, 334}], Polygon3DBox[{331, 493, 334}], 
+          Polygon3DBox[{334, 493, 391}], Polygon3DBox[{493, 491, 391}], 
+          Polygon3DBox[{391, 491, 389}], Polygon3DBox[{491, 489, 389}], 
+          Polygon3DBox[{389, 489, 387}], Polygon3DBox[{489, 487, 387}], 
+          Polygon3DBox[{387, 487, 385}], Polygon3DBox[{487, 485, 385}], 
+          Polygon3DBox[{385, 485, 383}], Polygon3DBox[{485, 483, 383}], 
+          Polygon3DBox[{383, 483, 381}], Polygon3DBox[{483, 481, 381}], 
+          Polygon3DBox[{381, 481, 379}], Polygon3DBox[{481, 479, 379}], 
+          Polygon3DBox[{379, 479, 377}], Polygon3DBox[{479, 477, 377}], 
+          Polygon3DBox[{377, 477, 375}], Polygon3DBox[{477, 475, 375}], 
+          Polygon3DBox[{375, 475, 373}], Polygon3DBox[{475, 473, 373}], 
+          Polygon3DBox[{373, 473, 371}], Polygon3DBox[{473, 471, 371}], 
+          Polygon3DBox[{371, 471, 369}], Polygon3DBox[{471, 469, 369}], 
+          Polygon3DBox[{369, 469, 367}], Polygon3DBox[{469, 467, 367}], 
+          Polygon3DBox[{367, 467, 365}], Polygon3DBox[{467, 465, 365}], 
+          Polygon3DBox[{365, 465, 363}], Polygon3DBox[{465, 463, 363}], 
+          Polygon3DBox[{363, 463, 361}], Polygon3DBox[{463, 461, 361}], 
+          Polygon3DBox[{361, 461, 359}], Polygon3DBox[{461, 459, 359}], 
+          Polygon3DBox[{359, 459, 357}], Polygon3DBox[{459, 457, 357}], 
+          Polygon3DBox[{357, 457, 355}], Polygon3DBox[{457, 455, 355}], 
+          Polygon3DBox[{355, 455, 353}], Polygon3DBox[{455, 453, 353}], 
+          Polygon3DBox[{353, 453, 351}], Polygon3DBox[{453, 451, 351}], 
+          Polygon3DBox[{351, 451, 349}], Polygon3DBox[{451, 449, 349}], 
+          Polygon3DBox[{349, 449, 347}], Polygon3DBox[{449, 447, 347}], 
+          Polygon3DBox[{347, 447, 345}], Polygon3DBox[{447, 445, 345}], 
+          Polygon3DBox[{345, 445, 249}], Polygon3DBox[{445, 250, 249}], 
+          Polygon3DBox[{249, 250, 242}], Polygon3DBox[{250, 252, 242}], 
+          Polygon3DBox[{242, 252, 243}], Polygon3DBox[{495, 317, 320}], 
+          Polygon3DBox[{317, 316, 320}], Polygon3DBox[{320, 316, 318}], 
+          Polygon3DBox[{316, 314, 318}], Polygon3DBox[{318, 314, 496}], 
+          Polygon3DBox[{314, 312, 496}], Polygon3DBox[{496, 312, 497}], 
+          Polygon3DBox[{312, 310, 497}], Polygon3DBox[{497, 310, 498}], 
+          Polygon3DBox[{310, 308, 498}], Polygon3DBox[{498, 308, 499}], 
+          Polygon3DBox[{308, 306, 499}], Polygon3DBox[{499, 306, 500}], 
+          Polygon3DBox[{306, 304, 500}], Polygon3DBox[{500, 304, 501}], 
+          Polygon3DBox[{304, 302, 501}], Polygon3DBox[{501, 302, 502}], 
+          Polygon3DBox[{302, 299, 502}], Polygon3DBox[{502, 299, 503}], 
+          Polygon3DBox[{299, 297, 503}], Polygon3DBox[{503, 297, 504}], 
+          Polygon3DBox[{297, 294, 504}], Polygon3DBox[{504, 294, 505}], 
+          Polygon3DBox[{294, 292, 505}], Polygon3DBox[{505, 292, 506}], 
+          Polygon3DBox[{292, 291, 506}], Polygon3DBox[{506, 291, 507}], 
+          Polygon3DBox[{291, 281, 507}], Polygon3DBox[{507, 281, 508}], 
+          Polygon3DBox[{281, 283, 508}], Polygon3DBox[{508, 283, 509}], 
+          Polygon3DBox[{283, 285, 509}], Polygon3DBox[{509, 285, 510}], 
+          Polygon3DBox[{285, 274, 510}], Polygon3DBox[{510, 274, 511}], 
+          Polygon3DBox[{274, 276, 511}], Polygon3DBox[{511, 276, 512}], 
+          Polygon3DBox[{276, 278, 512}], Polygon3DBox[{512, 278, 513}], 
+          Polygon3DBox[{278, 265, 513}], Polygon3DBox[{513, 265, 514}], 
+          Polygon3DBox[{265, 267, 514}], Polygon3DBox[{514, 267, 515}], 
+          Polygon3DBox[{267, 269, 515}], Polygon3DBox[{515, 269, 516}], 
+          Polygon3DBox[{269, 271, 516}], Polygon3DBox[{516, 271, 517}], 
+          Polygon3DBox[{271, 258, 517}], Polygon3DBox[{517, 258, 518}], 
+          Polygon3DBox[{258, 260, 518}], Polygon3DBox[{518, 260, 519}], 
+          Polygon3DBox[{260, 262, 519}], Polygon3DBox[{519, 262, 520}], 
+          Polygon3DBox[{262, 263, 520}], Polygon3DBox[{520, 263, 521}], 
+          Polygon3DBox[{263, 264, 521}], Polygon3DBox[{521, 264, 522}], 
+          Polygon3DBox[{341, 343, 523}], Polygon3DBox[{343, 524, 523}], 
+          Polygon3DBox[{523, 524, 525}], Polygon3DBox[{524, 526, 525}], 
+          Polygon3DBox[{525, 526, 527}], Polygon3DBox[{526, 528, 527}], 
+          Polygon3DBox[{527, 528, 529}], Polygon3DBox[{528, 530, 529}], 
+          Polygon3DBox[{529, 530, 531}], Polygon3DBox[{530, 532, 531}], 
+          Polygon3DBox[{531, 532, 533}], Polygon3DBox[{532, 534, 533}], 
+          Polygon3DBox[{533, 534, 535}], Polygon3DBox[{534, 536, 535}], 
+          Polygon3DBox[{535, 536, 537}], Polygon3DBox[{536, 538, 537}], 
+          Polygon3DBox[{537, 538, 539}], Polygon3DBox[{538, 540, 539}], 
+          Polygon3DBox[{539, 540, 541}], Polygon3DBox[{540, 542, 541}], 
+          Polygon3DBox[{541, 542, 543}], Polygon3DBox[{542, 544, 543}], 
+          Polygon3DBox[{544, 545, 543}], Polygon3DBox[{543, 545, 546}], 
+          Polygon3DBox[{545, 547, 546}], Polygon3DBox[{546, 547, 548}], 
+          Polygon3DBox[{547, 549, 548}], Polygon3DBox[{548, 549, 550}], 
+          Polygon3DBox[{549, 551, 550}], Polygon3DBox[{550, 551, 552}], 
+          Polygon3DBox[{551, 553, 552}], Polygon3DBox[{552, 553, 554}], 
+          Polygon3DBox[{553, 555, 554}], Polygon3DBox[{554, 555, 556}], 
+          Polygon3DBox[{555, 557, 556}], Polygon3DBox[{556, 557, 558}], 
+          Polygon3DBox[{557, 559, 558}], Polygon3DBox[{558, 559, 560}], 
+          Polygon3DBox[{559, 561, 560}], Polygon3DBox[{560, 561, 562}], 
+          Polygon3DBox[{561, 563, 562}], Polygon3DBox[{562, 563, 564}], 
+          Polygon3DBox[{563, 565, 564}], Polygon3DBox[{564, 565, 566}], 
+          Polygon3DBox[{565, 567, 566}], Polygon3DBox[{566, 567, 245}], 
+          Polygon3DBox[{567, 568, 245}], Polygon3DBox[{245, 568, 246}], 
+          Polygon3DBox[{336, 338, 343}], Polygon3DBox[{338, 390, 343}], 
+          Polygon3DBox[{343, 390, 524}], Polygon3DBox[{390, 388, 524}], 
+          Polygon3DBox[{524, 388, 526}], Polygon3DBox[{388, 386, 526}], 
+          Polygon3DBox[{526, 386, 528}], Polygon3DBox[{386, 384, 528}], 
+          Polygon3DBox[{528, 384, 530}], Polygon3DBox[{384, 382, 530}], 
+          Polygon3DBox[{530, 382, 532}], Polygon3DBox[{382, 380, 532}], 
+          Polygon3DBox[{532, 380, 534}], Polygon3DBox[{380, 378, 534}], 
+          Polygon3DBox[{534, 378, 536}], Polygon3DBox[{378, 376, 536}], 
+          Polygon3DBox[{536, 376, 538}], Polygon3DBox[{376, 374, 538}], 
+          Polygon3DBox[{538, 374, 540}], Polygon3DBox[{374, 372, 540}], 
+          Polygon3DBox[{540, 372, 542}], Polygon3DBox[{372, 370, 542}], 
+          Polygon3DBox[{542, 370, 544}], Polygon3DBox[{370, 368, 544}], 
+          Polygon3DBox[{544, 368, 545}], Polygon3DBox[{368, 366, 545}], 
+          Polygon3DBox[{545, 366, 547}], Polygon3DBox[{366, 364, 547}], 
+          Polygon3DBox[{547, 364, 549}], Polygon3DBox[{364, 362, 549}], 
+          Polygon3DBox[{549, 362, 551}], Polygon3DBox[{362, 360, 551}], 
+          Polygon3DBox[{551, 360, 553}], Polygon3DBox[{360, 358, 553}], 
+          Polygon3DBox[{553, 358, 555}], Polygon3DBox[{358, 356, 555}], 
+          Polygon3DBox[{555, 356, 557}], Polygon3DBox[{356, 354, 557}], 
+          Polygon3DBox[{557, 354, 559}], Polygon3DBox[{354, 352, 559}], 
+          Polygon3DBox[{559, 352, 561}], Polygon3DBox[{352, 350, 561}], 
+          Polygon3DBox[{561, 350, 563}], Polygon3DBox[{350, 348, 563}], 
+          Polygon3DBox[{563, 348, 565}], Polygon3DBox[{348, 346, 565}], 
+          Polygon3DBox[{565, 346, 567}], Polygon3DBox[{346, 344, 567}], 
+          Polygon3DBox[{567, 344, 568}], Polygon3DBox[{344, 247, 568}], 
+          Polygon3DBox[{568, 247, 246}], Polygon3DBox[{247, 248, 246}], 
+          Polygon3DBox[{246, 248, 244}], Polygon3DBox[{319, 318, 443}], 
+          Polygon3DBox[{318, 496, 443}], Polygon3DBox[{443, 496, 442}], 
+          Polygon3DBox[{496, 497, 442}], Polygon3DBox[{442, 497, 440}], 
+          Polygon3DBox[{497, 498, 440}], Polygon3DBox[{440, 498, 438}], 
+          Polygon3DBox[{498, 499, 438}], Polygon3DBox[{438, 499, 436}], 
+          Polygon3DBox[{499, 500, 436}], Polygon3DBox[{436, 500, 434}], 
+          Polygon3DBox[{500, 501, 434}], Polygon3DBox[{434, 501, 432}], 
+          Polygon3DBox[{501, 502, 432}], Polygon3DBox[{432, 502, 430}], 
+          Polygon3DBox[{502, 503, 430}], Polygon3DBox[{430, 503, 428}], 
+          Polygon3DBox[{503, 504, 428}], Polygon3DBox[{428, 504, 426}], 
+          Polygon3DBox[{504, 505, 426}], Polygon3DBox[{426, 505, 424}], 
+          Polygon3DBox[{505, 506, 424}], Polygon3DBox[{424, 506, 422}], 
+          Polygon3DBox[{506, 507, 422}], Polygon3DBox[{422, 507, 420}], 
+          Polygon3DBox[{507, 508, 420}], Polygon3DBox[{420, 508, 418}], 
+          Polygon3DBox[{508, 509, 418}], Polygon3DBox[{418, 509, 416}], 
+          Polygon3DBox[{509, 510, 416}], Polygon3DBox[{416, 510, 414}], 
+          Polygon3DBox[{510, 511, 414}], Polygon3DBox[{414, 511, 412}], 
+          Polygon3DBox[{511, 512, 412}], Polygon3DBox[{412, 512, 410}], 
+          Polygon3DBox[{512, 513, 410}], Polygon3DBox[{410, 513, 408}], 
+          Polygon3DBox[{513, 514, 408}], Polygon3DBox[{408, 514, 406}], 
+          Polygon3DBox[{514, 515, 406}], Polygon3DBox[{406, 515, 404}], 
+          Polygon3DBox[{515, 516, 404}], Polygon3DBox[{404, 516, 402}], 
+          Polygon3DBox[{516, 517, 402}], Polygon3DBox[{402, 517, 400}], 
+          Polygon3DBox[{517, 518, 400}], Polygon3DBox[{400, 518, 398}], 
+          Polygon3DBox[{518, 519, 398}], Polygon3DBox[{398, 519, 396}], 
+          Polygon3DBox[{519, 520, 396}], Polygon3DBox[{396, 520, 394}], 
+          Polygon3DBox[{520, 521, 394}], Polygon3DBox[{394, 521, 392}], 
+          Polygon3DBox[{521, 522, 392}], Polygon3DBox[{392, 522, 254}], 
+          Polygon3DBox[{215, 212, 240}], Polygon3DBox[{569, 212, 570}], 
+          Polygon3DBox[{212, 571, 570}], Polygon3DBox[{233, 230, 224}], 
+          Polygon3DBox[{572, 204, 202}], Polygon3DBox[{186, 212, 185}], 
+          Polygon3DBox[{212, 184, 185}], Polygon3DBox[{186, 187, 212}], 
+          Polygon3DBox[{187, 188, 212}], Polygon3DBox[{212, 188, 189}], 
+          Polygon3DBox[{202, 198, 572}], Polygon3DBox[{198, 196, 572}], 
+          Polygon3DBox[{572, 196, 194}], Polygon3DBox[{204, 572, 212}], 
+          Polygon3DBox[{572, 573, 212}], Polygon3DBox[{212, 573, 574}], 
+          Polygon3DBox[{574, 575, 212}], Polygon3DBox[{575, 576, 212}], 
+          Polygon3DBox[{212, 576, 577}], Polygon3DBox[{578, 579, 212}], 
+          Polygon3DBox[{579, 580, 212}], Polygon3DBox[{212, 580, 571}], 
+          Polygon3DBox[{569, 581, 212}], Polygon3DBox[{581, 582, 212}], 
+          Polygon3DBox[{212, 582, 583}], Polygon3DBox[{583, 584, 212}], 
+          Polygon3DBox[{584, 585, 212}], Polygon3DBox[{212, 585, 181}], 
+          Polygon3DBox[{181, 182, 212}], Polygon3DBox[{182, 183, 212}], 
+          Polygon3DBox[{212, 183, 184}], Polygon3DBox[{233, 224, 240}], 
+          Polygon3DBox[{224, 221, 240}], Polygon3DBox[{240, 221, 215}], 
+          Polygon3DBox[{577, 586, 212}], Polygon3DBox[{586, 587, 212}], 
+          Polygon3DBox[{212, 587, 588}], Polygon3DBox[{189, 190, 212}], 
+          Polygon3DBox[{190, 191, 212}], Polygon3DBox[{212, 191, 240}], 
+          Polygon3DBox[{588, 589, 212}], Polygon3DBox[{589, 590, 212}], 
+          Polygon3DBox[{212, 590, 578}], Polygon3DBox[{591, 592, 564}], 
+          Polygon3DBox[{593, 523, 594}], Polygon3DBox[{523, 595, 594}], 
+          Polygon3DBox[{593, 596, 523}], Polygon3DBox[{596, 597, 523}], 
+          Polygon3DBox[{523, 597, 341}], Polygon3DBox[{597, 105, 341}], 
+          Polygon3DBox[{341, 105, 342}], Polygon3DBox[{527, 529, 598}], 
+          Polygon3DBox[{529, 531, 598}], Polygon3DBox[{598, 531, 599}], 
+          Polygon3DBox[{543, 546, 600}], Polygon3DBox[{531, 533, 599}], 
+          Polygon3DBox[{533, 535, 599}], Polygon3DBox[{599, 535, 601}], 
+          Polygon3DBox[{535, 537, 601}], Polygon3DBox[{601, 537, 602}], 
+          Polygon3DBox[{595, 523, 598}], Polygon3DBox[{523, 525, 598}], 
+          Polygon3DBox[{598, 525, 527}], Polygon3DBox[{244, 603, 245}], 
+          Polygon3DBox[{603, 604, 245}], Polygon3DBox[{245, 604, 566}], 
+          Polygon3DBox[{566, 604, 564}], Polygon3DBox[{604, 605, 564}], 
+          Polygon3DBox[{564, 605, 591}], Polygon3DBox[{546, 548, 600}], 
+          Polygon3DBox[{548, 550, 600}], Polygon3DBox[{600, 550, 552}], 
+          Polygon3DBox[{543, 600, 541}], Polygon3DBox[{600, 606, 541}], 
+          Polygon3DBox[{541, 606, 539}], Polygon3DBox[{552, 554, 600}], 
+          Polygon3DBox[{554, 556, 600}], Polygon3DBox[{600, 556, 607}], 
+          Polygon3DBox[{556, 558, 607}], Polygon3DBox[{607, 558, 560}], 
+          Polygon3DBox[{592, 608, 564}], Polygon3DBox[{608, 609, 564}], 
+          Polygon3DBox[{564, 609, 562}], Polygon3DBox[{609, 610, 562}], 
+          Polygon3DBox[{562, 610, 560}], Polygon3DBox[{610, 611, 560}], 
+          Polygon3DBox[{560, 611, 607}], Polygon3DBox[{606, 612, 539}], 
+          Polygon3DBox[{612, 613, 539}], Polygon3DBox[{539, 613, 537}], 
+          Polygon3DBox[{613, 614, 537}], Polygon3DBox[{537, 614, 602}], 
+          Polygon3DBox[{615, 125, 616}], Polygon3DBox[{125, 8, 616}], 
+          Polygon3DBox[{615, 617, 125}], Polygon3DBox[{617, 618, 125}], 
+          Polygon3DBox[{125, 618, 126}], Polygon3DBox[{618, 619, 126}], 
+          Polygon3DBox[{126, 619, 127}], Polygon3DBox[{127, 619, 128}], 
+          Polygon3DBox[{619, 620, 128}], Polygon3DBox[{128, 620, 129}], 
+          Polygon3DBox[{620, 621, 129}], Polygon3DBox[{129, 621, 130}], 
+          Polygon3DBox[{621, 622, 130}], Polygon3DBox[{130, 622, 131}], 
+          Polygon3DBox[{622, 623, 131}], Polygon3DBox[{131, 623, 171}], 
+          Polygon3DBox[{623, 624, 171}], Polygon3DBox[{171, 624, 172}], 
+          Polygon3DBox[{624, 625, 172}], Polygon3DBox[{172, 625, 173}], 
+          Polygon3DBox[{625, 626, 173}], Polygon3DBox[{173, 626, 104}], 
+          Polygon3DBox[{626, 627, 104}], Polygon3DBox[{104, 627, 103}], 
+          Polygon3DBox[{627, 628, 103}], Polygon3DBox[{103, 628, 102}], 
+          Polygon3DBox[{628, 629, 102}], Polygon3DBox[{102, 629, 101}], 
+          Polygon3DBox[{629, 630, 101}], Polygon3DBox[{101, 630, 109}], 
+          Polygon3DBox[{630, 631, 109}], Polygon3DBox[{109, 631, 108}], 
+          Polygon3DBox[{631, 632, 108}], Polygon3DBox[{108, 632, 107}], 
+          Polygon3DBox[{342, 105, 633}], Polygon3DBox[{105, 106, 633}], 
+          Polygon3DBox[{633, 106, 634}], Polygon3DBox[{106, 107, 634}], 
+          Polygon3DBox[{634, 107, 635}], Polygon3DBox[{107, 632, 635}], 
+          Polygon3DBox[{181, 585, 636}], Polygon3DBox[{181, 636, 180}], 
+          Polygon3DBox[{636, 616, 180}], Polygon3DBox[{180, 616, 8}], 
+          Polygon3DBox[{270, 268, 574}], Polygon3DBox[{637, 578, 590}], 
+          Polygon3DBox[{495, 637, 317}], Polygon3DBox[{637, 590, 317}], 
+          Polygon3DBox[{317, 590, 315}], Polygon3DBox[{590, 589, 315}], 
+          Polygon3DBox[{315, 589, 313}], Polygon3DBox[{588, 309, 589}], 
+          Polygon3DBox[{309, 311, 589}], Polygon3DBox[{589, 311, 313}], 
+          Polygon3DBox[{301, 303, 587}], Polygon3DBox[{303, 305, 587}], 
+          Polygon3DBox[{587, 305, 588}], Polygon3DBox[{305, 307, 588}], 
+          Polygon3DBox[{588, 307, 309}], Polygon3DBox[{586, 293, 295}], 
+          Polygon3DBox[{295, 296, 586}], Polygon3DBox[{296, 298, 586}], 
+          Polygon3DBox[{586, 298, 587}], Polygon3DBox[{298, 300, 587}], 
+          Polygon3DBox[{587, 300, 301}], Polygon3DBox[{282, 577, 284}], 
+          Polygon3DBox[{577, 576, 284}], Polygon3DBox[{284, 576, 286}], 
+          Polygon3DBox[{576, 287, 286}], Polygon3DBox[{282, 290, 577}], 
+          Polygon3DBox[{290, 289, 577}], Polygon3DBox[{577, 289, 586}], 
+          Polygon3DBox[{289, 288, 586}], Polygon3DBox[{586, 288, 293}], 
+          Polygon3DBox[{287, 576, 275}], Polygon3DBox[{576, 575, 275}], 
+          Polygon3DBox[{275, 575, 277}], Polygon3DBox[{268, 266, 574}], 
+          Polygon3DBox[{266, 280, 574}], Polygon3DBox[{574, 280, 575}], 
+          Polygon3DBox[{280, 279, 575}], Polygon3DBox[{575, 279, 277}], 
+          Polygon3DBox[{573, 259, 273}], Polygon3DBox[{573, 273, 574}], 
+          Polygon3DBox[{273, 272, 574}], Polygon3DBox[{574, 272, 270}], 
+          Polygon3DBox[{194, 193, 572}], Polygon3DBox[{193, 256, 572}], 
+          Polygon3DBox[{572, 256, 573}], Polygon3DBox[{256, 261, 573}], 
+          Polygon3DBox[{573, 261, 259}], Polygon3DBox[{638, 264, 257}], 
+          Polygon3DBox[{639, 254, 522}], Polygon3DBox[{243, 252, 640}], 
+          Polygon3DBox[{252, 251, 640}], Polygon3DBox[{640, 251, 255}], 
+          Polygon3DBox[{641, 241, 243}], Polygon3DBox[{603, 244, 248}], 
+          Polygon3DBox[{642, 63, 70}], Polygon3DBox[{47, 46, 643}], 
+          Polygon3DBox[{46, 64, 643}], Polygon3DBox[{53, 52, 644}], 
+          Polygon3DBox[{52, 50, 644}], Polygon3DBox[{644, 50, 49}], 
+          Polygon3DBox[{44, 43, 645}], Polygon3DBox[{43, 53, 645}], 
+          Polygon3DBox[{165, 145, 646}], Polygon3DBox[{145, 144, 646}], 
+          Polygon3DBox[{159, 160, 647}], Polygon3DBox[{160, 161, 647}], 
+          Polygon3DBox[{648, 192, 649}], Polygon3DBox[{192, 41, 649}], 
+          Polygon3DBox[{649, 41, 650}], Polygon3DBox[{41, 40, 650}], 
+          Polygon3DBox[{650, 40, 159}], Polygon3DBox[{651, 234, 648}], 
+          Polygon3DBox[{234, 239, 648}], Polygon3DBox[{648, 239, 192}], 
+          Polygon3DBox[{652, 237, 653}], Polygon3DBox[{237, 236, 653}], 
+          Polygon3DBox[{653, 236, 651}], Polygon3DBox[{236, 235, 651}], 
+          Polygon3DBox[{651, 235, 234}], Polygon3DBox[{654, 231, 655}], 
+          Polygon3DBox[{231, 229, 655}], Polygon3DBox[{655, 229, 656}], 
+          Polygon3DBox[{229, 228, 656}], Polygon3DBox[{656, 228, 652}], 
+          Polygon3DBox[{228, 238, 652}], Polygon3DBox[{652, 238, 237}], 
+          Polygon3DBox[{226, 225, 654}], Polygon3DBox[{225, 232, 654}], 
+          Polygon3DBox[{654, 232, 231}], Polygon3DBox[{654, 657, 226}], 
+          Polygon3DBox[{657, 658, 226}], Polygon3DBox[{226, 658, 227}], 
+          Polygon3DBox[{658, 659, 227}], Polygon3DBox[{227, 659, 219}], 
+          Polygon3DBox[{219, 659, 220}], Polygon3DBox[{659, 660, 220}], 
+          Polygon3DBox[{220, 660, 222}], Polygon3DBox[{660, 661, 222}], 
+          Polygon3DBox[{222, 661, 223}], Polygon3DBox[{223, 661, 216}], 
+          Polygon3DBox[{661, 662, 216}], Polygon3DBox[{216, 662, 217}], 
+          Polygon3DBox[{662, 663, 217}], Polygon3DBox[{663, 664, 217}], 
+          Polygon3DBox[{217, 664, 218}], Polygon3DBox[{665, 213, 666}], 
+          Polygon3DBox[{213, 211, 666}], Polygon3DBox[{666, 211, 664}], 
+          Polygon3DBox[{211, 210, 664}], Polygon3DBox[{664, 210, 218}], 
+          Polygon3DBox[{667, 201, 668}], Polygon3DBox[{201, 203, 668}], 
+          Polygon3DBox[{668, 203, 669}], Polygon3DBox[{203, 205, 669}], 
+          Polygon3DBox[{669, 205, 670}], Polygon3DBox[{205, 206, 670}], 
+          Polygon3DBox[{670, 206, 665}], Polygon3DBox[{206, 214, 665}], 
+          Polygon3DBox[{665, 214, 213}], Polygon3DBox[{671, 209, 672}], 
+          Polygon3DBox[{209, 208, 672}], Polygon3DBox[{672, 208, 667}], 
+          Polygon3DBox[{208, 207, 667}], Polygon3DBox[{667, 207, 201}], 
+          Polygon3DBox[{193, 195, 673}], Polygon3DBox[{195, 197, 673}], 
+          Polygon3DBox[{673, 197, 674}], Polygon3DBox[{197, 199, 674}], 
+          Polygon3DBox[{674, 199, 671}], Polygon3DBox[{199, 200, 671}], 
+          Polygon3DBox[{671, 200, 209}], Polygon3DBox[{165, 646, 675}], 
+          Polygon3DBox[{646, 676, 675}], Polygon3DBox[{675, 676, 677}], 
+          Polygon3DBox[{676, 678, 677}], Polygon3DBox[{677, 678, 679}], 
+          Polygon3DBox[{678, 680, 679}], Polygon3DBox[{679, 680, 681}], 
+          Polygon3DBox[{680, 682, 681}], Polygon3DBox[{681, 682, 683}], 
+          Polygon3DBox[{682, 684, 683}], Polygon3DBox[{683, 684, 685}], 
+          Polygon3DBox[{684, 686, 685}], Polygon3DBox[{685, 686, 687}], 
+          Polygon3DBox[{686, 688, 687}], Polygon3DBox[{687, 688, 689}], 
+          Polygon3DBox[{688, 690, 689}], Polygon3DBox[{689, 690, 691}], 
+          Polygon3DBox[{690, 692, 691}], Polygon3DBox[{691, 692, 693}], 
+          Polygon3DBox[{692, 694, 693}], Polygon3DBox[{693, 694, 695}], 
+          Polygon3DBox[{694, 696, 695}], Polygon3DBox[{695, 696, 697}], 
+          Polygon3DBox[{696, 698, 697}], Polygon3DBox[{697, 698, 699}], 
+          Polygon3DBox[{698, 700, 699}], Polygon3DBox[{699, 700, 701}], 
+          Polygon3DBox[{700, 702, 701}], Polygon3DBox[{701, 702, 703}], 
+          Polygon3DBox[{702, 704, 703}], Polygon3DBox[{703, 704, 705}], 
+          Polygon3DBox[{704, 706, 705}], Polygon3DBox[{705, 706, 707}], 
+          Polygon3DBox[{706, 708, 707}], Polygon3DBox[{707, 708, 709}], 
+          Polygon3DBox[{708, 710, 709}], Polygon3DBox[{709, 710, 711}], 
+          Polygon3DBox[{710, 712, 711}], Polygon3DBox[{711, 712, 713}], 
+          Polygon3DBox[{712, 714, 713}], Polygon3DBox[{713, 714, 715}], 
+          Polygon3DBox[{714, 716, 715}], Polygon3DBox[{715, 716, 717}], 
+          Polygon3DBox[{716, 718, 717}], Polygon3DBox[{717, 718, 719}], 
+          Polygon3DBox[{718, 720, 719}], Polygon3DBox[{719, 720, 721}], 
+          Polygon3DBox[{720, 722, 721}], Polygon3DBox[{721, 722, 723}], 
+          Polygon3DBox[{722, 724, 723}], Polygon3DBox[{723, 724, 725}], 
+          Polygon3DBox[{724, 639, 725}], Polygon3DBox[{725, 639, 726}], 
+          Polygon3DBox[{639, 522, 726}], Polygon3DBox[{726, 522, 264}], 
+          Polygon3DBox[{53, 644, 645}], Polygon3DBox[{644, 727, 645}], 
+          Polygon3DBox[{645, 727, 728}], Polygon3DBox[{727, 729, 728}], 
+          Polygon3DBox[{728, 729, 730}], Polygon3DBox[{729, 731, 730}], 
+          Polygon3DBox[{730, 731, 732}], Polygon3DBox[{731, 733, 732}], 
+          Polygon3DBox[{732, 733, 734}], Polygon3DBox[{733, 735, 734}], 
+          Polygon3DBox[{734, 735, 736}], Polygon3DBox[{735, 737, 736}], 
+          Polygon3DBox[{736, 737, 738}], Polygon3DBox[{737, 739, 738}], 
+          Polygon3DBox[{738, 739, 740}], Polygon3DBox[{739, 741, 740}], 
+          Polygon3DBox[{740, 741, 742}], Polygon3DBox[{741, 743, 742}], 
+          Polygon3DBox[{742, 743, 744}], Polygon3DBox[{743, 745, 744}], 
+          Polygon3DBox[{744, 745, 746}], Polygon3DBox[{745, 747, 746}], 
+          Polygon3DBox[{746, 747, 748}], Polygon3DBox[{747, 749, 748}], 
+          Polygon3DBox[{748, 749, 750}], Polygon3DBox[{749, 751, 750}], 
+          Polygon3DBox[{750, 751, 752}], Polygon3DBox[{751, 753, 752}], 
+          Polygon3DBox[{752, 753, 754}], Polygon3DBox[{753, 755, 754}], 
+          Polygon3DBox[{754, 755, 756}], Polygon3DBox[{755, 757, 756}], 
+          Polygon3DBox[{756, 757, 758}], Polygon3DBox[{757, 759, 758}], 
+          Polygon3DBox[{758, 759, 760}], Polygon3DBox[{759, 761, 760}], 
+          Polygon3DBox[{760, 761, 762}], Polygon3DBox[{761, 763, 762}], 
+          Polygon3DBox[{762, 763, 764}], Polygon3DBox[{763, 765, 764}], 
+          Polygon3DBox[{764, 765, 766}], Polygon3DBox[{765, 767, 766}], 
+          Polygon3DBox[{766, 767, 768}], Polygon3DBox[{767, 769, 768}], 
+          Polygon3DBox[{768, 769, 770}], Polygon3DBox[{769, 771, 770}], 
+          Polygon3DBox[{770, 771, 772}], Polygon3DBox[{771, 773, 772}], 
+          Polygon3DBox[{772, 773, 774}], Polygon3DBox[{773, 775, 774}], 
+          Polygon3DBox[{774, 775, 776}], Polygon3DBox[{775, 640, 776}], 
+          Polygon3DBox[{776, 640, 777}], Polygon3DBox[{640, 255, 777}], 
+          Polygon3DBox[{777, 255, 254}], Polygon3DBox[{254, 639, 777}], 
+          Polygon3DBox[{639, 724, 777}], Polygon3DBox[{777, 724, 776}], 
+          Polygon3DBox[{724, 722, 776}], Polygon3DBox[{776, 722, 774}], 
+          Polygon3DBox[{722, 720, 774}], Polygon3DBox[{774, 720, 772}], 
+          Polygon3DBox[{720, 718, 772}], Polygon3DBox[{772, 718, 770}], 
+          Polygon3DBox[{718, 716, 770}], Polygon3DBox[{770, 716, 768}], 
+          Polygon3DBox[{716, 714, 768}], Polygon3DBox[{768, 714, 766}], 
+          Polygon3DBox[{714, 712, 766}], Polygon3DBox[{766, 712, 764}], 
+          Polygon3DBox[{712, 710, 764}], Polygon3DBox[{764, 710, 762}], 
+          Polygon3DBox[{710, 708, 762}], Polygon3DBox[{762, 708, 760}], 
+          Polygon3DBox[{708, 706, 760}], Polygon3DBox[{760, 706, 758}], 
+          Polygon3DBox[{706, 704, 758}], Polygon3DBox[{758, 704, 756}], 
+          Polygon3DBox[{704, 702, 756}], Polygon3DBox[{756, 702, 754}], 
+          Polygon3DBox[{702, 700, 754}], Polygon3DBox[{754, 700, 752}], 
+          Polygon3DBox[{700, 698, 752}], Polygon3DBox[{752, 698, 750}], 
+          Polygon3DBox[{698, 696, 750}], Polygon3DBox[{750, 696, 748}], 
+          Polygon3DBox[{696, 694, 748}], Polygon3DBox[{748, 694, 746}], 
+          Polygon3DBox[{694, 692, 746}], Polygon3DBox[{746, 692, 744}], 
+          Polygon3DBox[{692, 690, 744}], Polygon3DBox[{744, 690, 742}], 
+          Polygon3DBox[{690, 688, 742}], Polygon3DBox[{742, 688, 740}], 
+          Polygon3DBox[{688, 686, 740}], Polygon3DBox[{740, 686, 738}], 
+          Polygon3DBox[{686, 684, 738}], Polygon3DBox[{738, 684, 736}], 
+          Polygon3DBox[{684, 682, 736}], Polygon3DBox[{736, 682, 734}], 
+          Polygon3DBox[{682, 680, 734}], Polygon3DBox[{734, 680, 732}], 
+          Polygon3DBox[{680, 678, 732}], Polygon3DBox[{732, 678, 730}], 
+          Polygon3DBox[{678, 676, 730}], Polygon3DBox[{730, 676, 728}], 
+          Polygon3DBox[{676, 646, 728}], Polygon3DBox[{728, 646, 645}], 
+          Polygon3DBox[{646, 144, 645}], Polygon3DBox[{645, 144, 44}], 
+          Polygon3DBox[{243, 778, 641}], Polygon3DBox[{778, 779, 641}], 
+          Polygon3DBox[{641, 779, 780}], Polygon3DBox[{779, 781, 780}], 
+          Polygon3DBox[{780, 781, 782}], Polygon3DBox[{781, 783, 782}], 
+          Polygon3DBox[{782, 783, 784}], Polygon3DBox[{783, 785, 784}], 
+          Polygon3DBox[{784, 785, 786}], Polygon3DBox[{785, 787, 786}], 
+          Polygon3DBox[{786, 787, 788}], Polygon3DBox[{787, 789, 788}], 
+          Polygon3DBox[{788, 789, 790}], Polygon3DBox[{789, 791, 790}], 
+          Polygon3DBox[{790, 791, 792}], Polygon3DBox[{791, 793, 792}], 
+          Polygon3DBox[{792, 793, 794}], Polygon3DBox[{793, 795, 794}], 
+          Polygon3DBox[{794, 795, 796}], Polygon3DBox[{795, 797, 796}], 
+          Polygon3DBox[{796, 797, 798}], Polygon3DBox[{797, 799, 798}], 
+          Polygon3DBox[{798, 799, 800}], Polygon3DBox[{799, 801, 800}], 
+          Polygon3DBox[{800, 801, 802}], Polygon3DBox[{801, 803, 802}], 
+          Polygon3DBox[{802, 803, 804}], Polygon3DBox[{803, 805, 804}], 
+          Polygon3DBox[{804, 805, 806}], Polygon3DBox[{805, 807, 806}], 
+          Polygon3DBox[{806, 807, 808}], Polygon3DBox[{807, 809, 808}], 
+          Polygon3DBox[{808, 809, 810}], Polygon3DBox[{809, 811, 810}], 
+          Polygon3DBox[{810, 811, 812}], Polygon3DBox[{811, 813, 812}], 
+          Polygon3DBox[{812, 813, 814}], Polygon3DBox[{813, 815, 814}], 
+          Polygon3DBox[{814, 815, 816}], Polygon3DBox[{815, 817, 816}], 
+          Polygon3DBox[{816, 817, 818}], Polygon3DBox[{817, 819, 818}], 
+          Polygon3DBox[{818, 819, 820}], Polygon3DBox[{819, 821, 820}], 
+          Polygon3DBox[{820, 821, 822}], Polygon3DBox[{821, 823, 822}], 
+          Polygon3DBox[{822, 823, 824}], Polygon3DBox[{823, 825, 824}], 
+          Polygon3DBox[{824, 825, 826}], Polygon3DBox[{825, 827, 826}], 
+          Polygon3DBox[{826, 827, 828}], Polygon3DBox[{827, 643, 828}], 
+          Polygon3DBox[{828, 643, 642}], Polygon3DBox[{643, 64, 642}], 
+          Polygon3DBox[{642, 64, 63}], Polygon3DBox[{243, 640, 778}], 
+          Polygon3DBox[{640, 775, 778}], Polygon3DBox[{778, 775, 779}], 
+          Polygon3DBox[{775, 773, 779}], Polygon3DBox[{779, 773, 781}], 
+          Polygon3DBox[{773, 771, 781}], Polygon3DBox[{781, 771, 783}], 
+          Polygon3DBox[{771, 769, 783}], Polygon3DBox[{783, 769, 785}], 
+          Polygon3DBox[{769, 767, 785}], Polygon3DBox[{785, 767, 787}], 
+          Polygon3DBox[{767, 765, 787}], Polygon3DBox[{787, 765, 789}], 
+          Polygon3DBox[{765, 763, 789}], Polygon3DBox[{789, 763, 791}], 
+          Polygon3DBox[{763, 761, 791}], Polygon3DBox[{791, 761, 793}], 
+          Polygon3DBox[{761, 759, 793}], Polygon3DBox[{793, 759, 795}], 
+          Polygon3DBox[{759, 757, 795}], Polygon3DBox[{795, 757, 797}], 
+          Polygon3DBox[{757, 755, 797}], Polygon3DBox[{797, 755, 799}], 
+          Polygon3DBox[{755, 753, 799}], Polygon3DBox[{799, 753, 801}], 
+          Polygon3DBox[{753, 751, 801}], Polygon3DBox[{801, 751, 803}], 
+          Polygon3DBox[{751, 749, 803}], Polygon3DBox[{803, 749, 805}], 
+          Polygon3DBox[{749, 747, 805}], Polygon3DBox[{805, 747, 807}], 
+          Polygon3DBox[{747, 745, 807}], Polygon3DBox[{807, 745, 809}], 
+          Polygon3DBox[{745, 743, 809}], Polygon3DBox[{809, 743, 811}], 
+          Polygon3DBox[{743, 741, 811}], Polygon3DBox[{811, 741, 813}], 
+          Polygon3DBox[{741, 739, 813}], Polygon3DBox[{813, 739, 815}], 
+          Polygon3DBox[{739, 737, 815}], Polygon3DBox[{815, 737, 817}], 
+          Polygon3DBox[{737, 735, 817}], Polygon3DBox[{817, 735, 819}], 
+          Polygon3DBox[{735, 733, 819}], Polygon3DBox[{819, 733, 821}], 
+          Polygon3DBox[{733, 731, 821}], Polygon3DBox[{821, 731, 823}], 
+          Polygon3DBox[{731, 729, 823}], Polygon3DBox[{823, 729, 825}], 
+          Polygon3DBox[{729, 727, 825}], Polygon3DBox[{825, 727, 827}], 
+          Polygon3DBox[{727, 644, 827}], Polygon3DBox[{827, 644, 643}], 
+          Polygon3DBox[{644, 49, 643}], Polygon3DBox[{643, 49, 47}], 
+          Polygon3DBox[{159, 647, 650}], Polygon3DBox[{647, 829, 650}], 
+          Polygon3DBox[{650, 829, 649}], Polygon3DBox[{829, 830, 649}], 
+          Polygon3DBox[{649, 830, 648}], Polygon3DBox[{830, 831, 648}], 
+          Polygon3DBox[{648, 831, 651}], Polygon3DBox[{831, 832, 651}], 
+          Polygon3DBox[{651, 832, 653}], Polygon3DBox[{832, 833, 653}], 
+          Polygon3DBox[{653, 833, 652}], Polygon3DBox[{833, 834, 652}], 
+          Polygon3DBox[{652, 834, 656}], Polygon3DBox[{834, 835, 656}], 
+          Polygon3DBox[{656, 835, 655}], Polygon3DBox[{835, 836, 655}], 
+          Polygon3DBox[{655, 836, 654}], Polygon3DBox[{836, 837, 654}], 
+          Polygon3DBox[{654, 837, 657}], Polygon3DBox[{837, 838, 657}], 
+          Polygon3DBox[{657, 838, 658}], Polygon3DBox[{838, 839, 658}], 
+          Polygon3DBox[{658, 839, 659}], Polygon3DBox[{839, 840, 659}], 
+          Polygon3DBox[{659, 840, 660}], Polygon3DBox[{840, 841, 660}], 
+          Polygon3DBox[{660, 841, 661}], Polygon3DBox[{841, 842, 661}], 
+          Polygon3DBox[{661, 842, 662}], Polygon3DBox[{842, 843, 662}], 
+          Polygon3DBox[{662, 843, 663}], Polygon3DBox[{843, 844, 663}], 
+          Polygon3DBox[{663, 844, 664}], Polygon3DBox[{844, 845, 664}], 
+          Polygon3DBox[{664, 845, 666}], Polygon3DBox[{845, 846, 666}], 
+          Polygon3DBox[{666, 846, 665}], Polygon3DBox[{846, 847, 665}], 
+          Polygon3DBox[{665, 847, 670}], Polygon3DBox[{847, 848, 670}], 
+          Polygon3DBox[{670, 848, 669}], Polygon3DBox[{848, 849, 669}], 
+          Polygon3DBox[{669, 849, 668}], Polygon3DBox[{849, 850, 668}], 
+          Polygon3DBox[{668, 850, 667}], Polygon3DBox[{850, 851, 667}], 
+          Polygon3DBox[{667, 851, 672}], Polygon3DBox[{851, 852, 672}], 
+          Polygon3DBox[{672, 852, 671}], Polygon3DBox[{852, 853, 671}], 
+          Polygon3DBox[{671, 853, 674}], Polygon3DBox[{853, 638, 674}], 
+          Polygon3DBox[{674, 638, 673}], Polygon3DBox[{638, 257, 673}], 
+          Polygon3DBox[{673, 257, 193}], Polygon3DBox[{248, 854, 603}], 
+          Polygon3DBox[{854, 855, 603}], Polygon3DBox[{603, 855, 604}], 
+          Polygon3DBox[{855, 856, 604}], Polygon3DBox[{604, 856, 605}], 
+          Polygon3DBox[{856, 857, 605}], Polygon3DBox[{605, 857, 591}], 
+          Polygon3DBox[{857, 858, 591}], Polygon3DBox[{591, 858, 592}], 
+          Polygon3DBox[{858, 859, 592}], Polygon3DBox[{592, 859, 608}], 
+          Polygon3DBox[{859, 860, 608}], Polygon3DBox[{608, 860, 609}], 
+          Polygon3DBox[{860, 861, 609}], Polygon3DBox[{609, 861, 610}], 
+          Polygon3DBox[{861, 862, 610}], Polygon3DBox[{610, 862, 611}], 
+          Polygon3DBox[{862, 863, 611}], Polygon3DBox[{611, 863, 607}], 
+          Polygon3DBox[{863, 864, 607}], Polygon3DBox[{607, 864, 600}], 
+          Polygon3DBox[{864, 865, 600}], Polygon3DBox[{600, 865, 606}], 
+          Polygon3DBox[{865, 866, 606}], Polygon3DBox[{606, 866, 612}], 
+          Polygon3DBox[{866, 867, 612}], Polygon3DBox[{867, 868, 612}], 
+          Polygon3DBox[{612, 868, 613}], Polygon3DBox[{868, 869, 613}], 
+          Polygon3DBox[{613, 869, 614}], Polygon3DBox[{869, 870, 614}], 
+          Polygon3DBox[{614, 870, 602}], Polygon3DBox[{870, 871, 602}], 
+          Polygon3DBox[{602, 871, 601}], Polygon3DBox[{871, 872, 601}], 
+          Polygon3DBox[{601, 872, 599}], Polygon3DBox[{872, 873, 599}], 
+          Polygon3DBox[{599, 873, 598}], Polygon3DBox[{873, 874, 598}], 
+          Polygon3DBox[{598, 874, 595}], Polygon3DBox[{874, 875, 595}], 
+          Polygon3DBox[{595, 875, 594}], Polygon3DBox[{875, 876, 594}], 
+          Polygon3DBox[{594, 876, 593}], Polygon3DBox[{876, 877, 593}], 
+          Polygon3DBox[{593, 877, 596}], Polygon3DBox[{877, 878, 596}], 
+          Polygon3DBox[{596, 878, 597}], Polygon3DBox[{878, 879, 597}], 
+          Polygon3DBox[{597, 879, 105}], Polygon3DBox[{241, 641, 248}], 
+          Polygon3DBox[{641, 780, 248}], Polygon3DBox[{248, 780, 854}], 
+          Polygon3DBox[{780, 782, 854}], Polygon3DBox[{854, 782, 855}], 
+          Polygon3DBox[{782, 784, 855}], Polygon3DBox[{855, 784, 856}], 
+          Polygon3DBox[{784, 786, 856}], Polygon3DBox[{856, 786, 857}], 
+          Polygon3DBox[{786, 788, 857}], Polygon3DBox[{857, 788, 858}], 
+          Polygon3DBox[{788, 790, 858}], Polygon3DBox[{858, 790, 859}], 
+          Polygon3DBox[{790, 792, 859}], Polygon3DBox[{859, 792, 860}], 
+          Polygon3DBox[{792, 794, 860}], Polygon3DBox[{860, 794, 861}], 
+          Polygon3DBox[{794, 796, 861}], Polygon3DBox[{861, 796, 862}], 
+          Polygon3DBox[{796, 798, 862}], Polygon3DBox[{862, 798, 863}], 
+          Polygon3DBox[{798, 800, 863}], Polygon3DBox[{863, 800, 864}], 
+          Polygon3DBox[{800, 802, 864}], Polygon3DBox[{864, 802, 865}], 
+          Polygon3DBox[{802, 804, 865}], Polygon3DBox[{865, 804, 866}], 
+          Polygon3DBox[{804, 806, 866}], Polygon3DBox[{866, 806, 867}], 
+          Polygon3DBox[{806, 808, 867}], Polygon3DBox[{867, 808, 868}], 
+          Polygon3DBox[{808, 810, 868}], Polygon3DBox[{868, 810, 869}], 
+          Polygon3DBox[{810, 812, 869}], Polygon3DBox[{869, 812, 870}], 
+          Polygon3DBox[{812, 814, 870}], Polygon3DBox[{870, 814, 871}], 
+          Polygon3DBox[{814, 816, 871}], Polygon3DBox[{871, 816, 872}], 
+          Polygon3DBox[{816, 818, 872}], Polygon3DBox[{872, 818, 873}], 
+          Polygon3DBox[{818, 820, 873}], Polygon3DBox[{873, 820, 874}], 
+          Polygon3DBox[{820, 822, 874}], Polygon3DBox[{874, 822, 875}], 
+          Polygon3DBox[{822, 824, 875}], Polygon3DBox[{875, 824, 876}], 
+          Polygon3DBox[{824, 826, 876}], Polygon3DBox[{876, 826, 877}], 
+          Polygon3DBox[{826, 828, 877}], Polygon3DBox[{877, 828, 878}], 
+          Polygon3DBox[{828, 642, 878}], Polygon3DBox[{878, 642, 879}], 
+          Polygon3DBox[{642, 70, 879}], Polygon3DBox[{879, 70, 105}], 
+          Polygon3DBox[{264, 638, 726}], Polygon3DBox[{638, 853, 726}], 
+          Polygon3DBox[{726, 853, 725}], Polygon3DBox[{853, 852, 725}], 
+          Polygon3DBox[{725, 852, 723}], Polygon3DBox[{852, 851, 723}], 
+          Polygon3DBox[{723, 851, 721}], Polygon3DBox[{851, 850, 721}], 
+          Polygon3DBox[{721, 850, 719}], Polygon3DBox[{850, 849, 719}], 
+          Polygon3DBox[{719, 849, 717}], Polygon3DBox[{849, 848, 717}], 
+          Polygon3DBox[{717, 848, 715}], Polygon3DBox[{848, 847, 715}], 
+          Polygon3DBox[{715, 847, 713}], Polygon3DBox[{847, 846, 713}], 
+          Polygon3DBox[{713, 846, 711}], Polygon3DBox[{846, 845, 711}], 
+          Polygon3DBox[{711, 845, 709}], Polygon3DBox[{845, 844, 709}], 
+          Polygon3DBox[{709, 844, 707}], Polygon3DBox[{844, 843, 707}], 
+          Polygon3DBox[{707, 843, 705}], Polygon3DBox[{843, 842, 705}], 
+          Polygon3DBox[{705, 842, 703}], Polygon3DBox[{842, 841, 703}], 
+          Polygon3DBox[{703, 841, 701}], Polygon3DBox[{841, 840, 701}], 
+          Polygon3DBox[{701, 840, 699}], Polygon3DBox[{840, 839, 699}], 
+          Polygon3DBox[{699, 839, 697}], Polygon3DBox[{839, 838, 697}], 
+          Polygon3DBox[{697, 838, 695}], Polygon3DBox[{838, 837, 695}], 
+          Polygon3DBox[{695, 837, 693}], Polygon3DBox[{837, 836, 693}], 
+          Polygon3DBox[{693, 836, 691}], Polygon3DBox[{836, 835, 691}], 
+          Polygon3DBox[{691, 835, 689}], Polygon3DBox[{835, 834, 689}], 
+          Polygon3DBox[{689, 834, 687}], Polygon3DBox[{834, 833, 687}], 
+          Polygon3DBox[{687, 833, 685}], Polygon3DBox[{833, 832, 685}], 
+          Polygon3DBox[{685, 832, 683}], Polygon3DBox[{832, 831, 683}], 
+          Polygon3DBox[{683, 831, 681}], Polygon3DBox[{831, 830, 681}], 
+          Polygon3DBox[{681, 830, 679}], Polygon3DBox[{830, 829, 679}], 
+          Polygon3DBox[{679, 829, 677}], Polygon3DBox[{829, 647, 677}], 
+          Polygon3DBox[{677, 647, 675}], Polygon3DBox[{647, 161, 675}], 
+          Polygon3DBox[{675, 161, 165}], Polygon3DBox[{616, 636, 880}], 
+          Polygon3DBox[{881, 882, 883}], Polygon3DBox[{882, 884, 883}], 
+          Polygon3DBox[{883, 884, 880}], Polygon3DBox[{884, 885, 880}], 
+          Polygon3DBox[{880, 885, 616}], Polygon3DBox[{886, 887, 888}], 
+          Polygon3DBox[{887, 889, 888}], Polygon3DBox[{888, 889, 890}], 
+          Polygon3DBox[{889, 891, 890}], Polygon3DBox[{892, 893, 891}], 
+          Polygon3DBox[{495, 893, 637}], Polygon3DBox[{893, 892, 637}], 
+          Polygon3DBox[{637, 892, 578}], Polygon3DBox[{892, 579, 578}], 
+          Polygon3DBox[{891, 889, 892}], Polygon3DBox[{889, 580, 892}], 
+          Polygon3DBox[{892, 580, 579}], Polygon3DBox[{581, 569, 887}], 
+          Polygon3DBox[{569, 570, 887}], Polygon3DBox[{887, 570, 889}], 
+          Polygon3DBox[{570, 571, 889}], Polygon3DBox[{889, 571, 580}], 
+          Polygon3DBox[{582, 581, 883}], Polygon3DBox[{581, 887, 883}], 
+          Polygon3DBox[{883, 887, 881}], Polygon3DBox[{887, 886, 881}], 
+          Polygon3DBox[{582, 883, 583}], Polygon3DBox[{883, 880, 583}], 
+          Polygon3DBox[{583, 880, 584}], Polygon3DBox[{880, 636, 584}], 
+          Polygon3DBox[{584, 636, 585}], Polygon3DBox[{894, 895, 886}], 
+          Polygon3DBox[{896, 616, 885}], Polygon3DBox[{897, 898, 899}], 
+          Polygon3DBox[{900, 901, 902}], Polygon3DBox[{618, 617, 903}], 
+          Polygon3DBox[{904, 905, 906}], Polygon3DBox[{616, 896, 907}], 
+          Polygon3DBox[{886, 895, 881}], Polygon3DBox[{908, 909, 910}], 
+          Polygon3DBox[{911, 912, 913}], Polygon3DBox[{913, 912, 914}], 
+          Polygon3DBox[{915, 916, 917}], Polygon3DBox[{918, 319, 325}], 
+          Polygon3DBox[{893, 495, 320}], Polygon3DBox[{919, 324, 920}], 
+          Polygon3DBox[{324, 322, 920}], Polygon3DBox[{920, 322, 921}], 
+          Polygon3DBox[{922, 923, 924}], Polygon3DBox[{923, 925, 924}], 
+          Polygon3DBox[{924, 925, 926}], Polygon3DBox[{319, 918, 320}], 
+          Polygon3DBox[{918, 927, 320}], Polygon3DBox[{320, 927, 893}], 
+          Polygon3DBox[{928, 916, 929}], Polygon3DBox[{916, 915, 929}], 
+          Polygon3DBox[{929, 915, 930}], Polygon3DBox[{931, 914, 932}], 
+          Polygon3DBox[{914, 912, 932}], Polygon3DBox[{932, 912, 933}], 
+          Polygon3DBox[{912, 911, 933}], Polygon3DBox[{933, 911, 934}], 
+          Polygon3DBox[{935, 936, 937}], Polygon3DBox[{938, 939, 940}], 
+          Polygon3DBox[{939, 941, 940}], Polygon3DBox[{940, 941, 942}], 
+          Polygon3DBox[{941, 943, 942}], Polygon3DBox[{882, 881, 944}], 
+          Polygon3DBox[{881, 895, 944}], Polygon3DBox[{944, 895, 909}], 
+          Polygon3DBox[{895, 894, 909}], Polygon3DBox[{909, 894, 910}], 
+          Polygon3DBox[{894, 931, 910}], Polygon3DBox[{910, 931, 945}], 
+          Polygon3DBox[{931, 932, 945}], Polygon3DBox[{945, 932, 946}], 
+          Polygon3DBox[{932, 933, 946}], Polygon3DBox[{946, 933, 922}], 
+          Polygon3DBox[{933, 934, 922}], Polygon3DBox[{922, 934, 923}], 
+          Polygon3DBox[{939, 907, 941}], Polygon3DBox[{907, 896, 941}], 
+          Polygon3DBox[{941, 896, 943}], Polygon3DBox[{896, 885, 943}], 
+          Polygon3DBox[{943, 885, 884}], Polygon3DBox[{947, 948, 949}], 
+          Polygon3DBox[{948, 950, 949}], Polygon3DBox[{949, 950, 951}], 
+          Polygon3DBox[{950, 938, 951}], Polygon3DBox[{951, 938, 908}], 
+          Polygon3DBox[{938, 940, 908}], Polygon3DBox[{908, 940, 909}], 
+          Polygon3DBox[{940, 942, 909}], Polygon3DBox[{909, 942, 944}], 
+          Polygon3DBox[{942, 943, 944}], Polygon3DBox[{944, 943, 882}], 
+          Polygon3DBox[{943, 884, 882}], Polygon3DBox[{619, 952, 620}], 
+          Polygon3DBox[{952, 953, 620}], Polygon3DBox[{620, 953, 621}], 
+          Polygon3DBox[{953, 954, 621}], Polygon3DBox[{618, 903, 619}], 
+          Polygon3DBox[{955, 956, 957}], Polygon3DBox[{956, 958, 957}], 
+          Polygon3DBox[{957, 958, 959}], Polygon3DBox[{958, 960, 959}], 
+          Polygon3DBox[{959, 960, 903}], Polygon3DBox[{948, 955, 950}], 
+          Polygon3DBox[{955, 957, 950}], Polygon3DBox[{950, 957, 938}], 
+          Polygon3DBox[{957, 959, 938}], Polygon3DBox[{938, 959, 939}], 
+          Polygon3DBox[{959, 903, 939}], Polygon3DBox[{939, 903, 907}], 
+          Polygon3DBox[{903, 616, 907}], Polygon3DBox[{635, 632, 961}], 
+          Polygon3DBox[{635, 902, 634}], Polygon3DBox[{902, 901, 634}], 
+          Polygon3DBox[{634, 901, 633}], Polygon3DBox[{901, 342, 633}], 
+          Polygon3DBox[{622, 962, 623}], Polygon3DBox[{962, 963, 623}], 
+          Polygon3DBox[{623, 963, 624}], Polygon3DBox[{963, 964, 624}], 
+          Polygon3DBox[{624, 964, 625}], Polygon3DBox[{964, 965, 625}], 
+          Polygon3DBox[{625, 965, 626}], Polygon3DBox[{965, 966, 626}], 
+          Polygon3DBox[{626, 966, 627}], Polygon3DBox[{966, 967, 627}], 
+          Polygon3DBox[{632, 631, 961}], Polygon3DBox[{631, 630, 961}], 
+          Polygon3DBox[{961, 630, 968}], Polygon3DBox[{630, 629, 968}], 
+          Polygon3DBox[{968, 629, 967}], Polygon3DBox[{629, 628, 967}], 
+          Polygon3DBox[{967, 628, 627}], Polygon3DBox[{340, 339, 900}], 
+          Polygon3DBox[{339, 337, 900}], Polygon3DBox[{900, 337, 901}], 
+          Polygon3DBox[{337, 336, 901}], Polygon3DBox[{901, 336, 342}], 
+          Polygon3DBox[{635, 961, 902}], Polygon3DBox[{961, 969, 902}], 
+          Polygon3DBox[{902, 969, 900}], Polygon3DBox[{969, 970, 900}], 
+          Polygon3DBox[{900, 970, 340}], Polygon3DBox[{335, 971, 329}], 
+          Polygon3DBox[{971, 972, 329}], Polygon3DBox[{329, 972, 330}], 
+          Polygon3DBox[{972, 332, 330}], Polygon3DBox[{322, 321, 921}], 
+          Polygon3DBox[{321, 327, 921}], Polygon3DBox[{921, 327, 973}], 
+          Polygon3DBox[{327, 326, 973}], Polygon3DBox[{973, 326, 333}], 
+          Polygon3DBox[{911, 919, 934}], Polygon3DBox[{919, 920, 934}], 
+          Polygon3DBox[{934, 920, 923}], Polygon3DBox[{920, 921, 923}], 
+          Polygon3DBox[{923, 921, 925}], Polygon3DBox[{921, 973, 925}], 
+          Polygon3DBox[{925, 973, 926}], Polygon3DBox[{905, 904, 974}], 
+          Polygon3DBox[{904, 975, 974}], Polygon3DBox[{974, 975, 976}], 
+          Polygon3DBox[{975, 977, 976}], Polygon3DBox[{976, 977, 978}], 
+          Polygon3DBox[{977, 979, 978}], Polygon3DBox[{978, 979, 980}], 
+          Polygon3DBox[{979, 981, 980}], Polygon3DBox[{980, 981, 982}], 
+          Polygon3DBox[{981, 983, 982}], Polygon3DBox[{982, 983, 984}], 
+          Polygon3DBox[{985, 898, 986}], Polygon3DBox[{898, 897, 986}], 
+          Polygon3DBox[{986, 897, 987}], Polygon3DBox[{988, 899, 989}], 
+          Polygon3DBox[{899, 898, 989}], Polygon3DBox[{989, 898, 990}], 
+          Polygon3DBox[{898, 985, 990}], Polygon3DBox[{990, 985, 991}], 
+          Polygon3DBox[{985, 986, 991}], Polygon3DBox[{991, 986, 992}], 
+          Polygon3DBox[{986, 987, 992}], Polygon3DBox[{992, 987, 993}], 
+          Polygon3DBox[{987, 994, 993}], Polygon3DBox[{993, 994, 995}], 
+          Polygon3DBox[{994, 996, 995}], Polygon3DBox[{995, 996, 997}], 
+          Polygon3DBox[{988, 935, 899}], Polygon3DBox[{935, 937, 899}], 
+          Polygon3DBox[{899, 937, 897}], Polygon3DBox[{937, 998, 897}], 
+          Polygon3DBox[{897, 998, 987}], Polygon3DBox[{998, 999, 987}], 
+          Polygon3DBox[{987, 999, 994}], Polygon3DBox[{999, 1000, 994}], 
+          Polygon3DBox[{994, 1000, 996}], Polygon3DBox[{619, 903, 952}], 
+          Polygon3DBox[{903, 960, 952}], Polygon3DBox[{952, 960, 953}], 
+          Polygon3DBox[{960, 958, 953}], Polygon3DBox[{953, 958, 954}], 
+          Polygon3DBox[{958, 956, 954}], Polygon3DBox[{954, 956, 906}], 
+          Polygon3DBox[{956, 955, 906}], Polygon3DBox[{906, 955, 904}], 
+          Polygon3DBox[{955, 948, 904}], Polygon3DBox[{904, 948, 975}], 
+          Polygon3DBox[{948, 947, 975}], Polygon3DBox[{975, 947, 977}], 
+          Polygon3DBox[{947, 1001, 977}], Polygon3DBox[{977, 1001, 979}], 
+          Polygon3DBox[{1001, 1002, 979}], Polygon3DBox[{979, 1002, 981}], 
+          Polygon3DBox[{1002, 1003, 981}], Polygon3DBox[{981, 1003, 983}], 
+          Polygon3DBox[{971, 997, 972}], Polygon3DBox[{997, 996, 972}], 
+          Polygon3DBox[{972, 996, 1004}], Polygon3DBox[{996, 1000, 1004}], 
+          Polygon3DBox[{1004, 1000, 930}], Polygon3DBox[{1000, 999, 930}], 
+          Polygon3DBox[{930, 999, 929}], Polygon3DBox[{999, 998, 929}], 
+          Polygon3DBox[{929, 998, 928}], Polygon3DBox[{998, 937, 928}], 
+          Polygon3DBox[{928, 937, 916}], Polygon3DBox[{937, 936, 916}], 
+          Polygon3DBox[{916, 936, 917}], Polygon3DBox[{622, 621, 962}], 
+          Polygon3DBox[{621, 954, 962}], Polygon3DBox[{962, 954, 963}], 
+          Polygon3DBox[{954, 906, 963}], Polygon3DBox[{963, 906, 964}], 
+          Polygon3DBox[{906, 905, 964}], Polygon3DBox[{964, 905, 965}], 
+          Polygon3DBox[{905, 974, 965}], Polygon3DBox[{965, 974, 966}], 
+          Polygon3DBox[{974, 976, 966}], Polygon3DBox[{966, 976, 967}], 
+          Polygon3DBox[{976, 978, 967}], Polygon3DBox[{967, 978, 968}], 
+          Polygon3DBox[{978, 980, 968}], Polygon3DBox[{968, 980, 961}], 
+          Polygon3DBox[{980, 982, 961}], Polygon3DBox[{961, 982, 969}], 
+          Polygon3DBox[{982, 984, 969}], Polygon3DBox[{969, 984, 970}], 
+          Polygon3DBox[{886, 888, 894}], Polygon3DBox[{888, 890, 894}], 
+          Polygon3DBox[{894, 890, 931}], Polygon3DBox[{890, 891, 931}], 
+          Polygon3DBox[{931, 891, 914}], Polygon3DBox[{891, 893, 914}], 
+          Polygon3DBox[{914, 893, 913}], Polygon3DBox[{893, 927, 913}], 
+          Polygon3DBox[{913, 927, 911}], Polygon3DBox[{927, 918, 911}], 
+          Polygon3DBox[{911, 918, 919}], Polygon3DBox[{918, 325, 919}], 
+          Polygon3DBox[{919, 325, 324}], Polygon3DBox[{617, 615, 903}], 
+          Polygon3DBox[{615, 616, 903}], Polygon3DBox[{333, 332, 973}], 
+          Polygon3DBox[{332, 972, 973}], Polygon3DBox[{973, 972, 926}], 
+          Polygon3DBox[{972, 1004, 926}], Polygon3DBox[{926, 1004, 924}], 
+          Polygon3DBox[{1004, 930, 924}], Polygon3DBox[{924, 930, 922}], 
+          Polygon3DBox[{930, 915, 922}], Polygon3DBox[{922, 915, 946}], 
+          Polygon3DBox[{915, 917, 946}], Polygon3DBox[{946, 917, 945}], 
+          Polygon3DBox[{917, 936, 945}], Polygon3DBox[{945, 936, 910}], 
+          Polygon3DBox[{936, 935, 910}], Polygon3DBox[{910, 935, 908}], 
+          Polygon3DBox[{935, 988, 908}], Polygon3DBox[{908, 988, 951}], 
+          Polygon3DBox[{988, 989, 951}], Polygon3DBox[{951, 989, 949}], 
+          Polygon3DBox[{989, 990, 949}], Polygon3DBox[{949, 990, 947}], 
+          Polygon3DBox[{990, 991, 947}], Polygon3DBox[{947, 991, 1001}], 
+          Polygon3DBox[{991, 992, 1001}], Polygon3DBox[{1001, 992, 1002}], 
+          Polygon3DBox[{992, 993, 1002}], Polygon3DBox[{1002, 993, 1003}], 
+          Polygon3DBox[{993, 995, 1003}], Polygon3DBox[{1003, 995, 983}], 
+          Polygon3DBox[{995, 997, 983}], Polygon3DBox[{983, 997, 984}], 
+          Polygon3DBox[{997, 971, 984}], Polygon3DBox[{984, 971, 970}], 
+          Polygon3DBox[{971, 335, 970}], Polygon3DBox[{970, 335, 340}]}]}, 
+       {RGBColor[0, 0, 1], Opacity[0.3], 
+        InterpretationBox[
+         ConicHullRegion3DBox[{0., 0., 1.0654814212811239`}, {{0, 1, 0}, {1, 
+          0, 0}}, {{0, 0, -1}}],
+         HalfSpace[{0, 0, 1}, 1.0654814212811239`]]}, 
+       {RGBColor[1, 0, 0], PointSize[0.05], Point3DBox[{{0, 0, 0}}]}}], 
+     "\[SpanFromLeft]"},
+    {"\<\"Is it a boat?\"\>", "\<\"Boatboat.\"\>"},
+    {"\<\"Does it float?\"\>", "True"},
+    {"\<\"Does it float flat?\"\>", "True"},
+    {"\<\"What's the AVS?\"\>", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", "180"}], " ", 
+        TagBox["\[Degree]",
+         HoldForm]}], ",", 
+       RowBox[{
+        RowBox[{"-", "125"}], " ", 
+        TagBox["\[Degree]",
+         HoldForm]}], ",", 
+       RowBox[{"-", 
+        TagBox["\[Degree]",
+         HoldForm]}], ",", 
+       RowBox[{"124", " ", 
+        TagBox["\[Degree]",
+         HoldForm]}], ",", 
+       RowBox[{"180", " ", 
+        TagBox["\[Degree]",
+         HoldForm]}]}], "}"}]}
+   },
+   AutoDelete->False,
+   GridBoxFrame->{"Columns" -> {{True}}, "Rows" -> {{True}}},
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Grid"]], "Output"]
+}, Open  ]]
 }, Open  ]]
 },
-WindowSize->{1920, 1014},
-WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowSize->{1275, 906},
+WindowMargins->{{70, Automatic}, {Automatic, 29}},
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 TrackCellChangeTimes->False,
-Magnification:>1.5 Inherited,
+Magnification:>2. Inherited,
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
 StyleDefinitions->"Default.nb",
 $CellContext`TrackCellChangeTimes -> False

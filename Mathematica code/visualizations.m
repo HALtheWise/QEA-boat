@@ -15,7 +15,7 @@ Show[Graphics3D[{EdgeForm[],Gray,graphics}],Graphics3D[{Blue,Opacity[0.5],HalfSp
 
 
 showBoat[boat_,waterNormal_]:=
-Module[{mass},
+Module[{mass,graphics,height},
 graphics=GraphicsComplex[MeshCoordinates@region/.boat,MeshCells[region/.boat,2]];
 mass=totalMass[boat];
 height=waterline[region/.boat, waterNormal,totalMass (*Implicit grams\[Rule]cm^3*)];

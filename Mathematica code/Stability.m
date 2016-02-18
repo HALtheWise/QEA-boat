@@ -44,4 +44,11 @@ rightingMoment[cob[region,up,desiredVolume],com,up,front]
 ]
 
 
+rightingArm[boat_,front_,\[Theta]_]:=Module[{up,desiredVolume},
+up=RotationMatrix[\[Theta],front].{0,0,1};
+desiredVolume=totalMass[boat];
+rightingMoment[cob[region/.boat,up,desiredVolume],massCOM[boat],up,front]
+]
+
+
 

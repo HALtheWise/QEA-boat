@@ -19,36 +19,10 @@
 
 
 
-ClearAll[cob];
-cobinner[region_,angle_,waterHeight_]:=Module[{nangle,pts,centroid},
-nangle=Normalize[angle];
-pts=myRandomPoint[region,nPoints];
-underwaterPts=Cases[pts,pt_/;nangle.pt<waterHeight];
-centroid=Total[underwaterPts]/Length[underwaterPts]
-]
-
-cob[region_,angle_,desiredVolume_]:=Module[{waterHeight},
-waterHeight=waterline[region,angle,desiredVolume];
-cobinner[region,angle,waterHeight]
-]
-
-rightingMoment[cob_,com_,up_,front_]:=Module[{left,r},
-left = Normalize[up\[Cross]front];
-r=cob-com;
-r.left
-]
-
-rightingArm[region_,com_,\[Theta]_,desiredVolume_,front_]:=Module[{up},
-up=RotationMatrix[\[Theta],front].{0,0,1};
-rightingMoment[cob[region,up,desiredVolume],com,up,front]
-]
-
-
-rightingArm[boat_,front_,\[Theta]_/;NumberQ[\[Theta]]]:=Module[{up,desiredVolume},
-up=RotationMatrix[\[Theta],front].{0,0,1};
-desiredVolume=totalMass[boat];
-rightingMoment[cob[region/.boat,up,desiredVolume],massCOM[boat],up,front]
-]
-
-
-
+boat := <|
+name -> "A cube",
+massPts (*  *)-> {{0,0,0}},
+masses -> {100},
+region ->  Import["Sample Data/crapboat.stl","BoundaryMeshRegion"],
+graphics :> Show[Graphics3D[{EdgeForm[],Gray,GraphicsComplex[MeshCoordinates@region/.boat,MeshCells[region/.boat,2]];}],Graphics3D[{Red,PointSize[4],Graphics3D@Point[massPts/.boat]}]]
+|>

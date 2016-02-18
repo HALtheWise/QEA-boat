@@ -19,18 +19,30 @@
 
 
 
-massCOM[region_,points_,masses_] := (
+massCOM[boat_] := Module[{densityOfFoam,foamMass,foamPoint,newPoints,newMasses},
 densityOfFoam = QuantityMagnitude[UnitConvert[Quantity[31.7,("Kilograms")/("Meters")^3], "Grams"/"Centimeters"^3]];
 (*center1 = Total[Cross[points,masses]] / Total[masses]
 center2 = RegionCentroid[region]*)
-foamMass=Volume[region] * densityOfFoam;
-foamPoint=RegionCentroid[region];
-newPoints = Append[points,foamPoint];
-newMasses = Append[masses,foamMass];
+foamMass=Volume[region/.boat] * densityOfFoam;
+foamPoint=RegionCentroid[region/.boat];
+newPoints = Append[massPts/.boat,foamPoint];
+newMasses = Append[masses/.boat,foamMass];
 (*allPoints=Join[Table[points[[i]]*masses[[i]],{i,Length@points}]  ,Cross[RegionCentroid[region],densityOfFoam]];*)
 Total[Table[newPoints[[i]]*newMasses[[i]],{i,Length@newPoints}]] / Total[newMasses]
 
-);
+];
+
+
+totalMass[boat_]:=Module[{densityOfFoam,foamMass,newMasses},
+densityOfFoam = QuantityMagnitude[UnitConvert[Quantity[31.7,("Kilograms")/("Meters")^3], "Grams"/"Centimeters"^3]];
+(*center1 = Total[Cross[points,masses]] / Total[masses]
+center2 = RegionCentroid[region]*)
+foamMass=Volume[region/.boat] * densityOfFoam;
+newMasses = Append[masses/.boat,foamMass];
+(*allPoints=Join[Table[points[[i]]*masses[[i]],{i,Length@points}]  ,Cross[RegionCentroid[region],densityOfFoam]];*)
+Total[newMasses]
+
+];
 
 
 

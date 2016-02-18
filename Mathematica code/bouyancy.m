@@ -59,7 +59,7 @@ waterline[region_,angle_,desiredVolume_]:=
 Module[{func, min, max, d, val},
 {func,{min,max}}=underwaterVolume["random", region, angle];
 d /. Quiet[FindRoot[func[d]-desiredVolume,
-   {d,(min+max)/2}],{InterpolatingFunction::dmval}]
+   {d,(min+max)/2},AccuracyGoal->6,PrecisionGoal->6],{InterpolatingFunction::dmval}]
 ]
 
 

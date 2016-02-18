@@ -136,7 +136,9 @@ Cell[BoxData[{
 Cell[BoxData[
  RowBox[{
   RowBox[{"rightingArm", "[", 
-   RowBox[{"boat_", ",", "front_", ",", "\[Theta]_"}], "]"}], ":=", 
+   RowBox[{"boat_", ",", "front_", ",", 
+    RowBox[{"\[Theta]_", "/;", 
+     RowBox[{"NumberQ", "[", "\[Theta]", "]"}]}]}], "]"}], ":=", 
   RowBox[{"Module", "[", 
    RowBox[{
     RowBox[{"{", 

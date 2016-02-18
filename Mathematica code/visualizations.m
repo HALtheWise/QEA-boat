@@ -9,10 +9,15 @@ Show[Graphics3D[{EdgeForm[],Gray,graphics}],Graphics3D[{Blue,Opacity[0.5],HalfSp
 ]*)
 
 
+(* ::Code:: *)
+(*Get[FileNameJoin[{NotebookDirectory[],"boats.m"}]]*)
+(*Get[FileNameJoin[{NotebookDirectory[],"COM.m"}]]*)
+
+
 showBoat[boat_,waterNormal_]:=
-Module[{graphics,height,totalMass},
+Module[{mass},
 graphics=GraphicsComplex[MeshCoordinates@region/.boat,MeshCells[region/.boat,2]];
-totalMass=Volume[region/.boat]*.0317+Total[masses/.boat];
+mass=totalMass[boat];
 height=waterline[region/.boat, waterNormal,totalMass (*Implicit grams\[Rule]cm^3*)];
 Show[
  Graphics3D[{Opacity[.7],EdgeForm[],Gray,graphics}],
@@ -20,3 +25,10 @@ Show[
  Graphics3D[{Red,PointSize[.05],Point[massPts/.boat]}]
 ]
 ]
+
+
+(* ::Code:: *)
+(*showBoat[boat,{0,0,1}]*)
+
+
+

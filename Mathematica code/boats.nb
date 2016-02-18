@@ -10,57 +10,71 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      3704,        110]
-NotebookOptionsPosition[      2809,         73]
-NotebookOutlinePosition[      3779,        111]
-CellTagsIndexPosition[      3736,        108]
+NotebookDataLength[      4319,        130]
+NotebookOptionsPosition[      3291,         88]
+NotebookOutlinePosition[      4261,        126]
+CellTagsIndexPosition[      4218,        123]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
+
+Cell[CellGroupData[{
 Cell[BoxData[
- RowBox[{"boat", " ", ":=", " ", 
-  RowBox[{"<|", "\[IndentingNewLine]", 
-   RowBox[{
-    RowBox[{"name", " ", "\[Rule]", " ", "\"\<A cube\>\""}], ",", 
-    "\[IndentingNewLine]", 
-    RowBox[{"massPts", " ", 
-     RowBox[{"(*", "  ", "*)"}], "\[Rule]", " ", 
-     RowBox[{"{", 
+ RowBox[{"SetDirectory", "[", 
+  RowBox[{"NotebookDirectory", "[", "]"}], "]"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.6648026551879063`*^9, 3.6648026639097958`*^9}}],
+
+Cell[BoxData["\<\"/home/eric/git/QEA-boat2/Mathematica code\"\>"], "Output",
+ CellChangeTimes->{3.664802676219741*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"boat", " ", "=", " ", 
+   RowBox[{"<|", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"name", " ", "\[Rule]", " ", "\"\<A cube\>\""}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"massPts", " ", 
+      RowBox[{"(*", "  ", "*)"}], "\[Rule]", " ", 
       RowBox[{"{", 
-       RowBox[{"0", ",", "0", ",", "0"}], "}"}], "}"}]}], ",", 
-    "\[IndentingNewLine]", 
-    RowBox[{"masses", " ", "\[Rule]", " ", 
-     RowBox[{"{", "100", "}"}]}], ",", "\[IndentingNewLine]", 
-    RowBox[{"region", " ", "\[Rule]", "  ", 
-     RowBox[{"Import", "[", 
-      RowBox[{
-      "\"\<Sample Data/crapboat.stl\>\"", ",", "\"\<BoundaryMeshRegion\>\""}],
-       "]"}]}], ",", "\[IndentingNewLine]", 
-    RowBox[{"graphics", " ", "\[RuleDelayed]", " ", 
-     RowBox[{"Show", "[", 
-      RowBox[{
-       RowBox[{"Graphics3D", "[", 
-        RowBox[{"{", 
-         RowBox[{
-          RowBox[{"EdgeForm", "[", "]"}], ",", "Gray", ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0", ",", "0"}], "}"}], "}"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"masses", " ", "\[Rule]", " ", 
+      RowBox[{"{", "100", "}"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"region", " ", "\[Rule]", "  ", 
+      RowBox[{"Import", "[", 
+       RowBox[{
+       "\"\<Sample Data/crapboat.stl\>\"", ",", 
+        "\"\<BoundaryMeshRegion\>\""}], "]"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"graphics", " ", "\[RuleDelayed]", " ", 
+      RowBox[{"Show", "[", 
+       RowBox[{
+        RowBox[{"Graphics3D", "[", 
+         RowBox[{"{", 
           RowBox[{
-           RowBox[{"GraphicsComplex", "[", 
-            RowBox[{
+           RowBox[{"EdgeForm", "[", "]"}], ",", "Gray", ",", 
+           RowBox[{
+            RowBox[{"GraphicsComplex", "[", 
              RowBox[{
-              RowBox[{"MeshCoordinates", "@", "region"}], "/.", "boat"}], ",", 
-             RowBox[{"MeshCells", "[", 
               RowBox[{
-               RowBox[{"region", "/.", "boat"}], ",", "2"}], "]"}]}], "]"}], 
-           ";"}]}], "}"}], "]"}], ",", 
-       RowBox[{"Graphics3D", "[", 
-        RowBox[{"{", 
-         RowBox[{"Red", ",", 
-          RowBox[{"PointSize", "[", "4", "]"}], ",", 
-          RowBox[{"Graphics3D", "@", 
-           RowBox[{"Point", "[", 
-            RowBox[{"massPts", "/.", "boat"}], "]"}]}]}], "}"}], "]"}]}], 
-      "]"}]}]}], "\[IndentingNewLine]", "|>"}]}]], "Input",
+               RowBox[{"MeshCoordinates", "@", "region"}], "/.", "boat"}], 
+              ",", 
+              RowBox[{"MeshCells", "[", 
+               RowBox[{
+                RowBox[{"region", "/.", "boat"}], ",", "2"}], "]"}]}], "]"}], 
+            ";"}]}], "}"}], "]"}], ",", 
+        RowBox[{"Graphics3D", "[", 
+         RowBox[{"{", 
+          RowBox[{"Red", ",", 
+           RowBox[{"PointSize", "[", "4", "]"}], ",", 
+           RowBox[{"Graphics3D", "@", 
+            RowBox[{"Point", "[", 
+             RowBox[{"massPts", "/.", "boat"}], "]"}]}]}], "}"}], "]"}]}], 
+       "]"}]}]}], "\[IndentingNewLine]", "|>"}]}], ";"}]], "Input",
  InitializationCell->True,
  CellChangeTimes->{{3.664793642389833*^9, 3.6647936924418287`*^9}, {
   3.664793725460979*^9, 3.6647937584661503`*^9}, {3.66479384021062*^9, 
@@ -69,7 +83,8 @@ Cell[BoxData[
   3.664794178567586*^9}, {3.6647942093324223`*^9, 3.664794212875289*^9}, {
   3.664795138107731*^9, 3.664795154565568*^9}, {3.664795323534737*^9, 
   3.664795338573917*^9}, {3.664795370491543*^9, 3.66479537091924*^9}, {
-  3.664795414497427*^9, 3.664795414814631*^9}}]
+  3.664795414497427*^9, 3.664795414814631*^9}, {3.664802670356997*^9, 
+  3.664802687821961*^9}}]
 },
 EvaluatorNames->{"Local" -> {"AutoStartOnLaunch" -> True}},
 NotebookAutoSave->True,
@@ -110,7 +125,12 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 2247, 51, 275, "Input",
+Cell[CellGroupData[{
+Cell[580, 22, 201, 4, 32, "Input",
+ InitializationCell->True],
+Cell[784, 28, 118, 1, 32, "Output"]
+}, Open  ]],
+Cell[917, 32, 2370, 54, 310, "Input",
  InitializationCell->True]
 }
 ]

@@ -19,10 +19,13 @@
 
 
 
-boat := <|
+SetDirectory[NotebookDirectory[]]
+
+
+boat = <|
 name -> "A cube",
 massPts (*  *)-> {{0,0,0}},
 masses -> {100},
 region ->  Import["Sample Data/crapboat.stl","BoundaryMeshRegion"],
 graphics :> Show[Graphics3D[{EdgeForm[],Gray,GraphicsComplex[MeshCoordinates@region/.boat,MeshCells[region/.boat,2]];}],Graphics3D[{Red,PointSize[4],Graphics3D@Point[massPts/.boat]}]]
-|>
+|>;

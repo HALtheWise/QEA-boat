@@ -43,6 +43,14 @@ function returns erroneous results at the limits of the boat*) *)],{sorted[[1]],
 );
 
 
+ClearAll[sortedPoints];
+sortedPoints[region_,nPoints_,normal_]:=sortedPoints[region,nPoints,normal]=Module[{pts,nnormal,sortedPts},
+nnormal=Normalize@normal;
+pts=myRandomPoint[region,nPoints];
+sortedPts=SortBy[pts,Function[x,x.nnormal]]
+]
+
+
 ClearAll[myRandomPoint];
 myRandomPoint[region_,nPoints_]:=(myRandomPoint[region,nPoints]=RandomPoint[region,nPoints]);
 
@@ -59,15 +67,13 @@ d /. Quiet[FindRoot[func[d]-desiredVolume,
 ]*)
 
 
+ClearAll[waterline]
 waterline[region_,angle_,desiredVolume_]:=
-Module[{func, min, max, d, val,neededPts},
-{func,{min,max}}=underwaterVolume["random", region, angle];
+Module[{sorted,neededPts},
 
-nangle=Normalize[angle];
-pts=Table[nangle.i,{i,myRandomPoint[region,nPoints]}];
-sorted = Sort[pts];
+sorted = sortedPoints[region,nPoints,angle];
 neededPts = Round[desiredVolume/totalVolume[region]*nPoints];
-sorted[[neededPts]]
+sorted[[neededPts]].angle
 ]
 
 

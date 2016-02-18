@@ -12,30 +12,26 @@
 (*Needs["Combinatorica`"]*)
 
 
-(* ::Code:: *)
-(*ClearAll[underwaterVolume]*)
-(*Module[{waterHeight,reg},*)
-(*underwaterVolume["nocache", region_, waterLevel_]:=( *)
-(*reg:=RegionIntersection[region,HalfSpace[{0,0,-1},waterLevel]];*)
-(*If[RegionDistance[reg,{0,0,0}]==\[Infinity],0,*)
-(*NIntegrate[1,{x,y,z}\[Element]reg, PrecisionGoal->2]]*)
-(*);*)
-(*]*)
+ClearAll[underwaterVolume]
+Module[{waterHeight,reg},
+underwaterVolume["nocache", region_, waterLevel_]:=(
+reg:=RegionIntersection[region,HalfSpace[{0,0,-1},waterLevel]];
+If[RegionDistance[reg,{0,0,0}]==\[Infinity],0,
+NIntegrate[1,{x,y,z}\[Element]reg, PrecisionGoal->2]]
+);
+]
 
 
-(* ::Code:: *)
-(*ClearAll[underwaterVolume]*)
-(*(* This is really slow, do not  use *)*)
-(*underwaterVolume["meshsupport", region_, waterLevel_]:=( *)
-(*reg:=ImplicitRegion[RegionMember[region,{x,y,z}]&&z<waterLevel,{x,y,z}];*)
-(*NIntegrate[1,{x,y,z}\[Element]reg, PrecisionGoal->2]*)
-(*);*)
+(* This is really slow, do not  use *)
+underwaterVolume["meshsupport", region_, waterLevel_]:=(
+reg:=ImplicitRegion[RegionMember[region,{x,y,z}]&&z<waterLevel,{x,y,z}];
+NIntegrate[1,{x,y,z}\[Element]reg, PrecisionGoal->2]
+);
 
 
 nPoints=10000;
 
 
-ClearAll[underwaterVolume]
 (* angle is a unit vector in the direction of the water surface *)
 underwaterVolume["random", region_,angle_]:=underwaterVolume["random", region, angle]=(
 nangle=Normalize[angle];
@@ -55,11 +51,23 @@ ClearAll[totalVolume];
 totalVolume[region_]:=totalVolume[region]=Volume[region];
 
 
-waterline[region_,angle_,desiredVolume_]:=
+(*waterline[region_,angle_,desiredVolume_]:=
 Module[{func, min, max, d, val},
 {func,{min,max}}=underwaterVolume["random", region, angle];
 d /. Quiet[FindRoot[func[d]-desiredVolume,
-   {d,(min+max)/2},AccuracyGoal->6,PrecisionGoal->6],{InterpolatingFunction::dmval}]
+   {d,(min+max)/2},AccuracyGoal\[Rule]6,PrecisionGoal\[Rule]6],{InterpolatingFunction::dmval}]
+]*)
+
+
+waterline[region_,angle_,desiredVolume_]:=
+Module[{func, min, max, d, val,neededPts},
+{func,{min,max}}=underwaterVolume["random", region, angle];
+
+nangle=Normalize[angle];
+pts=Table[nangle.i,{i,myRandomPoint[region,nPoints]}];
+sorted = Sort[pts];
+neededPts = Round[desiredVolume/totalVolume[region]*nPoints];
+sorted[[neededPts]]
 ]
 
 

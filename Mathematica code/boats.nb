@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6932,        193]
-NotebookOptionsPosition[      5826,        149]
-NotebookOutlinePosition[      6807,        187]
-CellTagsIndexPosition[      6764,        184]
+NotebookDataLength[      7041,        195]
+NotebookOptionsPosition[      5935,        151]
+NotebookOutlinePosition[      6916,        189]
+CellTagsIndexPosition[      6873,        186]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -114,7 +114,7 @@ Cell[BoxData[
      RowBox[{"region", " ", "\[Rule]", "  ", 
       RowBox[{"Import", "[", 
        RowBox[{
-       "\"\<Sample Data/spaceboat2.stl\>\"", ",", 
+       "\"\<Sample Data/spaceboatscaled.stl\>\"", ",", 
         "\"\<BoundaryMeshRegion\>\""}], "]"}]}], ",", "\[IndentingNewLine]", 
      RowBox[{"graphics", " ", "\[RuleDelayed]", " ", 
       RowBox[{"Show", "[", 
@@ -145,7 +145,9 @@ Cell[BoxData[
    3.664901428881953*^9}, 3.664901957454805*^9, {3.664902435536608*^9, 
    3.6649024823392878`*^9}, {3.6649025183658905`*^9, 
    3.6649025273287864`*^9}, {3.6649026929683485`*^9, 
-   3.6649027726053114`*^9}, {3.6649029753545847`*^9, 3.664902992369286*^9}}]
+   3.6649027726053114`*^9}, {3.6649029753545847`*^9, 3.664902992369286*^9}, {
+   3.6649068889891014`*^9, 3.664906898476999*^9}, {3.664907120362067*^9, 
+   3.6649071223642673`*^9}}]
 },
 EvaluatorNames->{"Local" -> {"AutoStartOnLaunch" -> True}},
 NotebookAutoSave->True,
@@ -193,7 +195,7 @@ Cell[784, 28, 118, 1, 31, "Output"]
 }, Open  ]],
 Cell[917, 32, 2400, 53, 232, "Input",
  InitializationCell->True],
-Cell[3320, 87, 2502, 60, 252, "Input",
+Cell[3320, 87, 2611, 62, 252, "Input",
  InitializationCell->True]
 }
 ]

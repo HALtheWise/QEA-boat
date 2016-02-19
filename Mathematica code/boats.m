@@ -31,6 +31,15 @@ graphics :> Show[Graphics3D[{EdgeForm[],Gray,GraphicsComplex[MeshCoordinates@reg
 |>;
 
 
+cubeboat = <|
+name -> "A. Square",
+massPts (*  *)-> {{0,0,20}},
+masses -> {2000},
+region ->  Import["Sample Data/40mmcube.stl","BoundaryMeshRegion"],
+graphics :> Show[Graphics3D[{EdgeForm[],Gray,GraphicsComplex[MeshCoordinates@region/.boat,MeshCells[region/.boat,2]]}],Graphics3D[{Red,PointSize[4],Graphics3D@Point[massPts/.boat]}]]
+|>;
+
+
 spaceboat=<|
 name -> "Spaceboat",
 massPts (*  *)-> {{0,0,0}},

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6267,        178]
-NotebookOptionsPosition[      5172,        134]
-NotebookOutlinePosition[      6142,        172]
-CellTagsIndexPosition[      6099,        169]
+NotebookDataLength[      8813,        235]
+NotebookOptionsPosition[      7650,        189]
+NotebookOutlinePosition[      8620,        227]
+CellTagsIndexPosition[      8577,        224]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -27,7 +27,7 @@ Cell[BoxData[
  CellChangeTimes->{{3.6648026551879063`*^9, 3.6648026639097958`*^9}}],
 
 Cell[BoxData["\<\"/home/eric/git/QEA-boat2/Mathematica code\"\>"], "Output",
- CellChangeTimes->{3.664802676219741*^9}]
+ CellChangeTimes->{3.664802676219741*^9, 3.664817602126807*^9}]
 }, Open  ]],
 
 Cell[BoxData[
@@ -84,6 +84,61 @@ Cell[BoxData[
    3.664795414497427*^9, 3.664795414814631*^9}, {3.664802670356997*^9, 
    3.664802687821961*^9}, 3.66480311836506*^9, {3.664805050486774*^9, 
    3.664805052000288*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"cubeboat", " ", "=", " ", 
+   RowBox[{"<|", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"name", " ", "\[Rule]", " ", "\"\<A. Square\>\""}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"massPts", " ", 
+      RowBox[{"(*", "  ", "*)"}], "\[Rule]", " ", 
+      RowBox[{"{", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0", ",", "20"}], "}"}], "}"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"masses", " ", "\[Rule]", " ", 
+      RowBox[{"{", "2000", "}"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"region", " ", "\[Rule]", "  ", 
+      RowBox[{"Import", "[", 
+       RowBox[{
+       "\"\<Sample Data/40mmcube.stl\>\"", ",", 
+        "\"\<BoundaryMeshRegion\>\""}], "]"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"graphics", " ", "\[RuleDelayed]", " ", 
+      RowBox[{"Show", "[", 
+       RowBox[{
+        RowBox[{"Graphics3D", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"EdgeForm", "[", "]"}], ",", "Gray", ",", 
+           RowBox[{"GraphicsComplex", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"MeshCoordinates", "@", "region"}], "/.", "boat"}], ",", 
+             RowBox[{"MeshCells", "[", 
+              RowBox[{
+               RowBox[{"region", "/.", "boat"}], ",", "2"}], "]"}]}], "]"}]}],
+           "}"}], "]"}], ",", 
+        RowBox[{"Graphics3D", "[", 
+         RowBox[{"{", 
+          RowBox[{"Red", ",", 
+           RowBox[{"PointSize", "[", "4", "]"}], ",", 
+           RowBox[{"Graphics3D", "@", 
+            RowBox[{"Point", "[", 
+             RowBox[{"massPts", "/.", "boat"}], "]"}]}]}], "}"}], "]"}]}], 
+       "]"}]}]}], "\[IndentingNewLine]", "|>"}]}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.664793642389833*^9, 3.6647936924418287`*^9}, {
+   3.664793725460979*^9, 3.6647937584661503`*^9}, {3.66479384021062*^9, 
+   3.664793990335765*^9}, {3.664794021375003*^9, 3.664794028238022*^9}, {
+   3.664794090357779*^9, 3.664794122690844*^9}, {3.66479415862263*^9, 
+   3.664794178567586*^9}, {3.6647942093324223`*^9, 3.664794212875289*^9}, {
+   3.664795138107731*^9, 3.664795154565568*^9}, {3.664795323534737*^9, 
+   3.664795338573917*^9}, {3.664795370491543*^9, 3.66479537091924*^9}, {
+   3.664795414497427*^9, 3.664795414814631*^9}, {3.664802670356997*^9, 
+   3.664802687821961*^9}, 3.66480311836506*^9, {3.664805050486774*^9, 
+   3.664805052000288*^9}, {3.664817509931923*^9, 3.664817596770121*^9}}],
 
 Cell[BoxData[
  RowBox[{
@@ -174,11 +229,13 @@ Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 201, 4, 32, "Input",
  InitializationCell->True],
-Cell[784, 28, 118, 1, 32, "Output"]
+Cell[784, 28, 140, 1, 32, "Output"]
 }, Open  ]],
-Cell[917, 32, 2400, 53, 253, "Input",
+Cell[939, 32, 2400, 53, 253, "Input",
  InitializationCell->True],
-Cell[3320, 87, 1848, 45, 275, "Input",
+Cell[3342, 87, 2453, 53, 253, "Input",
+ InitializationCell->True],
+Cell[5798, 142, 1848, 45, 275, "Input",
  InitializationCell->True]
 }
 ]

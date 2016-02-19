@@ -33,7 +33,7 @@ graphics :> Show[Graphics3D[{EdgeForm[],Gray,GraphicsComplex[MeshCoordinates@reg
 
 spaceboat=<|
 name -> "Spaceboat",
-massPts (*mast,can1,can2,centered around mast  *)-> {{0,0,26},{0,9,0},{0,-9,0}},
+massPts (*mast,can1,can2,centered around mast  *)-> {{0,0,260},{0,90,20},{0,-90,20}},
 masses -> {96.2,364,364},
 region ->  Import["Sample Data/spaceboat2.stl","BoundaryMeshRegion"],
 graphics :> Show[Graphics3D[{EdgeForm[],Gray,GraphicsComplex[MeshCoordinates@region/.boat,MeshCells[region/.boat,2]]}],Graphics3D[{Red,PointSize[4],Graphics3D@Point[massPts/.boat]}]]

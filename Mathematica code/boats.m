@@ -35,6 +35,6 @@ spaceboat=<|
 name -> "Spaceboat",
 massPts (*  *)-> {{0,0,0}},
 masses -> {100},
-region ->  Import["Sample Data/spaceboatdisplacement.stl","BoundaryMeshRegion"],
+region ->  Import["Sample Data/spaceboat.stl","BoundaryMeshRegion"],
 graphics :> Show[Graphics3D[{EdgeForm[],Gray,GraphicsComplex[MeshCoordinates@region/.boat,MeshCells[region/.boat,2]]}],Graphics3D[{Red,PointSize[4],Graphics3D@Point[massPts/.boat]}]]
 |>;

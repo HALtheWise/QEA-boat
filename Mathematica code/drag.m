@@ -27,7 +27,7 @@ Cases[allTriangles,Polygon[{p1_,p2_,p3_}]/;p1.normal<height&&p2.normal<height&&p
 
 
 underwaterArea[boat_,normal_,height_]:=Module[{},
-areas=underwaterTriangles[boat,normal,height]/.Polygon[{p1_,p2_,p3_}]:>Norm[(p1-p2)\[Cross](p3-p2)]/2;
+areas=underwaterTriangles[boat,normal,height]/.Polygon[{p1_,p2_,p3_}]:>Norm[(p1-p2)\[Cross](p3-p2)]/2Quantity[1,(("Centimeters")^2)];
 Total[areas]
 ]
 

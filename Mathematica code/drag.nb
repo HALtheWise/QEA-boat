@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     12962,        367]
-NotebookOptionsPosition[     12153,        333]
-NotebookOutlinePosition[     12746,        358]
-CellTagsIndexPosition[     12703,        355]
+NotebookDataLength[     14486,        407]
+NotebookOptionsPosition[     13563,        369]
+NotebookOutlinePosition[     14156,        394]
+CellTagsIndexPosition[     14113,        391]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -309,13 +309,17 @@ Cell[BoxData[
           RowBox[{"p1_", ",", "p2_", ",", "p3_"}], "}"}], "]"}], 
         "\[RuleDelayed]", 
         RowBox[{
-         RowBox[{"Norm", "[", 
-          RowBox[{
-           RowBox[{"(", 
-            RowBox[{"p1", "-", "p2"}], ")"}], "\[Cross]", 
-           RowBox[{"(", 
-            RowBox[{"p3", "-", "p2"}], ")"}]}], "]"}], "/", "2"}]}]}]}], ";", 
-     "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"Norm", "[", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"p1", "-", "p2"}], ")"}], "\[Cross]", 
+            RowBox[{"(", 
+             RowBox[{"p3", "-", "p2"}], ")"}]}], "]"}], "/", "2"}], 
+         TemplateBox[{InterpretationBox["\[InvisibleSpace]", 1],RowBox[{
+             SuperscriptBox["\"cm\"", "2"]}],"centimeters squared",
+           SuperscriptBox["\"Centimeters\"", "2"]},
+          "Quantity"]}]}]}]}], ";", "\[IndentingNewLine]", 
      RowBox[{"Total", "[", "areas", "]"}]}]}], "\[IndentingNewLine]", 
    "]"}]}]], "Input",
  InitializationCell->True],
@@ -329,6 +333,38 @@ Cell[BoxData[
     RowBox[{"0", ",", "0", ",", "1"}], "}"}], ",", "1"}], "]"}]], "Input"],
 
 Cell[BoxData["131.9938579571899`"], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"reynolds", "=", 
+  RowBox[{
+   TemplateBox[{
+    "0.3",RowBox[{
+      "\"m\"", "\[InvisibleSpace]", "\"/\"", "\[InvisibleSpace]", "\"s\""}],
+     "meters per second",FractionBox["\"Meters\"", "\"Seconds\""]},
+    "Quantity"], "*", 
+   TemplateBox[{".5","\"m\"","meters","\"Meters\""},
+    "Quantity"], "*", 
+   RowBox[{
+    TemplateBox[{
+     "1",RowBox[{"\"g\"", "\[InvisibleSpace]", "\"/\"", "\[InvisibleSpace]", 
+        SuperscriptBox["\"cm\"", "3"]}],"grams per centimeter cubed",
+      FractionBox["\"Grams\"", 
+       SuperscriptBox["\"Centimeters\"", "3"]]},
+     "Quantity"], "/", 
+    RowBox[{
+     TemplateBox[{"\"water\"",RowBox[{"Entity", "[", 
+         RowBox[{"\"Chemical\"", ",", "\"Water\""}], "]"}],
+       "\"Entity[\\\"Chemical\\\", \\\"Water\\\"]\"","\"chemical\""},
+      "Entity"], "[", 
+     TemplateBox[{"\"dynamic viscosity\"",RowBox[{"EntityProperty", "[", 
+         RowBox[{"\"Chemical\"", ",", "\"Viscosity\""}], "]"}],
+       "\"EntityProperty[\\\"Chemical\\\", \\\"Viscosity\\\"]\""},
+      "EntityProperty"], "]"}]}]}]}]], "Input"],
+
+Cell[BoxData["168539.32584269662`"], "Output"]
 }, Open  ]]
 },
 NotebookAutoSave->True,
@@ -363,11 +399,15 @@ Cell[CellGroupData[{
 Cell[1600, 51, 167, 4, 32, "Input"],
 Cell[1770, 57, 9162, 233, 115, "Output"]
 }, Open  ]],
-Cell[10947, 293, 955, 27, 154, "Input",
+Cell[10947, 293, 1192, 31, 143, "Input",
  InitializationCell->True],
 Cell[CellGroupData[{
-Cell[11927, 324, 162, 4, 32, "Input"],
-Cell[12092, 330, 45, 0, 32, "Output"]
+Cell[12164, 328, 162, 4, 32, "Input"],
+Cell[12329, 334, 45, 0, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12411, 339, 1087, 25, 50, "Input"],
+Cell[13501, 366, 46, 0, 32, "Output"]
 }, Open  ]]
 }
 ]

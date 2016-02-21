@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10397,        279]
-NotebookOptionsPosition[      9149,        230]
-NotebookOutlinePosition[     10130,        268]
-CellTagsIndexPosition[     10087,        265]
+NotebookDataLength[      9916,        270]
+NotebookOptionsPosition[      8670,        221]
+NotebookOutlinePosition[      9651,        259]
+CellTagsIndexPosition[      9608,        256]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -28,7 +28,8 @@ Cell[BoxData[
 
 Cell[BoxData["\<\"C:\\\\Users\\\\jbriskman\\\\Documents\\\\GitHub\\\\boat2\\\\\
 Mathematica code\"\>"], "Output",
- CellChangeTimes->{3.664802676219741*^9, 3.6650160966928444`*^9}]
+ CellChangeTimes->{3.664802676219741*^9, 3.6650160966928444`*^9, 
+  3.6650163071499825`*^9}]
 }, Open  ]],
 
 Cell[BoxData[
@@ -214,18 +215,8 @@ Cell[BoxData[
   3.6650153381602383`*^9}, {3.665015576939068*^9, 3.665015586979072*^9}, {
   3.6650159866148643`*^9, 3.6650159918488173`*^9}}],
 
-Cell[BoxData[
- RowBox[{
-  StyleBox[
-   RowBox[{"BoundaryMeshRegion", "::", "bcsm"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"There is a closed curve or surface that does not include \
-all cells specified for a boundary. A boundary should consist of a single \
-closed curve or surface. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
-ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
-ButtonData:>\\\"paclet:ref/BoundaryMeshRegion\\\", ButtonNote -> \
-\\\"BoundaryMeshRegion::bcsm\\\"]\\)\"\>"}]], "Message", "MSG",
- CellChangeTimes->{{3.665016103229537*^9, 3.6650161037394347`*^9}}]
+Cell[BoxData["$Aborted"], "Output",
+ CellChangeTimes->{3.6650164606949825`*^9}]
 }, Open  ]]
 },
 EvaluatorNames->{"Local" -> {"AutoStartOnLaunch" -> True}},
@@ -270,16 +261,16 @@ Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 201, 4, 31, "Input",
  InitializationCell->True],
-Cell[784, 28, 179, 2, 31, "Output"]
+Cell[784, 28, 206, 3, 31, "Output"]
 }, Open  ]],
-Cell[978, 33, 2400, 53, 232, "Input",
+Cell[1005, 34, 2400, 53, 232, "Input",
  InitializationCell->True],
-Cell[3381, 88, 2658, 62, 252, "Input",
+Cell[3408, 89, 2658, 62, 252, "Input",
  InitializationCell->True],
 Cell[CellGroupData[{
-Cell[6064, 154, 2481, 60, 272, "Input",
+Cell[6091, 155, 2481, 60, 272, "Input",
  InitializationCell->True],
-Cell[8548, 216, 585, 11, 39, "Message"]
+Cell[8575, 217, 79, 1, 31, "Output"]
 }, Open  ]]
 }
 ]

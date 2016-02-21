@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     14486,        407]
-NotebookOptionsPosition[     13563,        369]
-NotebookOutlinePosition[     14156,        394]
-CellTagsIndexPosition[     14113,        391]
+NotebookDataLength[     17146,        486]
+NotebookOptionsPosition[     15992,        441]
+NotebookOutlinePosition[     16585,        466]
+CellTagsIndexPosition[     16542,        463]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -324,15 +324,85 @@ Cell[BoxData[
    "]"}]}]], "Input",
  InitializationCell->True],
 
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"frontalArea", "[", 
+   RowBox[{"boat_", ",", "normal_", ",", "height_", ",", "flowdir_"}], "]"}], 
+  ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"normflow", "=", 
+      RowBox[{"Normalize", "@", "flowdir"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"areas", "=", 
+      RowBox[{
+       RowBox[{"underwaterTriangles", "[", 
+        RowBox[{"boat", ",", "normal", ",", "height"}], "]"}], "/.", 
+       RowBox[{
+        RowBox[{"Polygon", "[", 
+         RowBox[{"{", 
+          RowBox[{"p1_", ",", "p2_", ",", "p3_"}], "}"}], "]"}], 
+        "\[RuleDelayed]", 
+        RowBox[{
+         RowBox[{"-", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"p1", "-", "p2"}], ")"}], "\[Cross]", 
+              RowBox[{"(", 
+               RowBox[{"p3", "-", "p2"}], ")"}]}], "/", "2"}], ")"}], ".", 
+           "flowdir"}]}], 
+         TemplateBox[{InterpretationBox["\[InvisibleSpace]", 1],RowBox[{
+             SuperscriptBox["\"cm\"", "2"]}],"centimeters squared",
+           SuperscriptBox["\"Centimeters\"", "2"]},
+          "Quantity"]}]}]}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"positiveAreas", " ", "=", " ", 
+      RowBox[{"Cases", "[", 
+       RowBox[{"areas", ",", 
+        RowBox[{"n_", "/;", 
+         RowBox[{"n", ">", 
+          TemplateBox[{"0",RowBox[{
+              SuperscriptBox["\"cm\"", "2"]}],"centimeters squared",
+            SuperscriptBox["\"Centimeters\"", "2"]},
+           "Quantity"]}]}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Total", "[", "positiveAreas", "]"}]}]}], "\[IndentingNewLine]", 
+   "]"}]}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"frontalArea", "[", 
+  RowBox[{"boat", ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", "1"}], "}"}], ",", ".1", ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "0", ",", "0"}], "}"}]}], "]"}]], "Input"],
+
+Cell[BoxData[
+ TemplateBox[{"1.2735787372968763`",RowBox[{
+     SuperscriptBox["\"cm\"", "2"]}],"centimeters squared",SuperscriptBox[
+   "\"Centimeters\"", "2"]},
+  "Quantity"]], "Output"]
+}, Open  ]],
+
+Cell[BoxData["Max"], "Input"],
+
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"underwaterArea", "[", 
   RowBox[{"boat", ",", 
    RowBox[{"{", 
-    RowBox[{"0", ",", "0", ",", "1"}], "}"}], ",", "1"}], "]"}]], "Input"],
+    RowBox[{"0", ",", "0", ",", "1"}], "}"}], ",", ".1"}], "]"}]], "Input"],
 
-Cell[BoxData["131.9938579571899`"], "Output"]
+Cell[BoxData[
+ TemplateBox[{"96.26484870085051`",RowBox[{
+     SuperscriptBox["\"cm\"", "2"]}],"centimeters squared",SuperscriptBox[
+   "\"Centimeters\"", "2"]},
+  "Quantity"]], "Output"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -365,7 +435,9 @@ Cell[BoxData[
       "EntityProperty"], "]"}]}]}]}]], "Input"],
 
 Cell[BoxData["168539.32584269662`"], "Output"]
-}, Open  ]]
+}, Open  ]],
+
+Cell[BoxData[""], "Input"]
 },
 NotebookAutoSave->True,
 ClosingAutoSave->False,
@@ -401,14 +473,21 @@ Cell[1770, 57, 9162, 233, 115, "Output"]
 }, Open  ]],
 Cell[10947, 293, 1192, 31, 143, "Input",
  InitializationCell->True],
+Cell[12142, 326, 1765, 45, 200, "Input"],
 Cell[CellGroupData[{
-Cell[12164, 328, 162, 4, 32, "Input"],
-Cell[12329, 334, 45, 0, 32, "Output"]
+Cell[13932, 375, 229, 6, 32, "Input"],
+Cell[14164, 383, 188, 4, 71, "Output"]
+}, Open  ]],
+Cell[14367, 390, 29, 0, 32, "Input"],
+Cell[CellGroupData[{
+Cell[14421, 394, 163, 4, 32, "Input"],
+Cell[14587, 400, 187, 4, 38, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12411, 339, 1087, 25, 50, "Input"],
-Cell[13501, 366, 46, 0, 32, "Output"]
-}, Open  ]]
+Cell[14811, 409, 1087, 25, 50, "Input"],
+Cell[15901, 436, 46, 0, 32, "Output"]
+}, Open  ]],
+Cell[15962, 439, 26, 0, 32, "Input"]
 }
 ]
 *)

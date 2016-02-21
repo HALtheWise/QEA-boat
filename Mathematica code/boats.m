@@ -26,6 +26,7 @@ boat = <|
 name -> "Crapboat",
 massPts (*  *)-> {{0,0,0}},
 masses -> {100},
+front -> {0,1,0},
 region ->  Import["Sample Data/crapboat.stl","BoundaryMeshRegion"],
 graphics :> Show[Graphics3D[{EdgeForm[],Gray,GraphicsComplex[MeshCoordinates@region/.boat,MeshCells[region/.boat,2]]}],Graphics3D[{Red,PointSize[4],Graphics3D@Point[massPts/.boat]}]]
 |>;
@@ -35,6 +36,7 @@ spaceboat=<|
 name -> "Spaceboat",
 massPts (*mast,can1,can2,centered around mast  *)-> {{0,0,26},{0,9.2,2},{0,-9.2,2}},
 masses -> {96.2,364,364},
+front -> {1,0,0},
 region ->  Import["Sample Data/spaceboatscaled.stl","BoundaryMeshRegion"],
 graphics :> Show[Graphics3D[{EdgeForm[],Gray,GraphicsComplex[MeshCoordinates@region/.boat,MeshCells[region/.boat,2]]}],Graphics3D[{Red,PointSize[4],Graphics3D@Point[massPts/.boat]}]]
 |>;
@@ -45,6 +47,17 @@ bestboat=<|
 name -> "Bestboat",
 massPts (*mast,can1,can2,centered around mast  *)-> {{0,0,20},{7,0,0},{-7,0,0}},
 masses -> {96.2,364,364},
+front -> {1,0,0},
 region ->  Import["Sample Data/bestboatdisplacement.stl","BoundaryMeshRegion"],
+graphics :> Show[Graphics3D[{EdgeForm[],Gray,GraphicsComplex[MeshCoordinates@region/.boat,MeshCells[region/.boat,2]]}],Graphics3D[{Red,PointSize[4],Graphics3D@Point[massPts/.boat]}]]
+|>;
+
+
+besterboat=<|
+name -> "besterboat",
+massPts (*mast,can1,can2,centered around mast  *)-> {{0,0,20},{7,0,0},{-7,0,0}},
+masses -> {96.2,364,364},
+front -> {1,0,0},
+region ->  Import["Sample Data/besterboat10tall5deg.stl","BoundaryMeshRegion"],
 graphics :> Show[Graphics3D[{EdgeForm[],Gray,GraphicsComplex[MeshCoordinates@region/.boat,MeshCells[region/.boat,2]]}],Graphics3D[{Red,PointSize[4],Graphics3D@Point[massPts/.boat]}]]
 |>;

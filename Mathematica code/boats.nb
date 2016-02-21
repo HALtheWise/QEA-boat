@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     13321,        343]
-NotebookOptionsPosition[     12078,        295]
-NotebookOutlinePosition[     13059,        333]
-CellTagsIndexPosition[     13016,        330]
+NotebookDataLength[     13550,        349]
+NotebookOptionsPosition[     12307,        301]
+NotebookOutlinePosition[     13288,        339]
+CellTagsIndexPosition[     13245,        336]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -168,8 +168,9 @@ Cell[BoxData[
       "\[IndentingNewLine]", 
       RowBox[{"massPts", " ", 
        RowBox[{"(*", 
-        RowBox[{"mast", ",", "can1", ",", "can2", ",", "ballast"}], " ", 
-        "*)"}], "\[Rule]", " ", 
+        RowBox[{
+        "mast", ",", "can1", ",", "can2", ",", "ballast1", ",", "ballast2"}], 
+        " ", "*)"}], "\[Rule]", " ", 
        RowBox[{"{", 
         RowBox[{
          RowBox[{"{", 
@@ -180,12 +181,16 @@ Cell[BoxData[
           RowBox[{
            RowBox[{"-", "7"}], ",", "0", ",", "0"}], "}"}], ",", 
          RowBox[{"{", 
-          RowBox[{"0", ",", "0", ",", 
-           RowBox[{"-", "4"}]}], "}"}]}], "}"}]}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"-", "4"}], ",", "0", ",", 
+           RowBox[{"-", "6"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"4", ",", "0", ",", 
+           RowBox[{"-", "6"}]}], "}"}]}], "}"}]}], ",", "\[IndentingNewLine]", 
       RowBox[{"masses", " ", "\[Rule]", " ", 
        RowBox[{"{", 
-        RowBox[{"96.2", ",", "364", ",", "364", ",", "100"}], "}"}]}], ",", 
-      "\[IndentingNewLine]", 
+        RowBox[{"96.2", ",", "364", ",", "364", ",", "100", ",", "100"}], 
+        "}"}]}], ",", "\[IndentingNewLine]", 
       RowBox[{"front", " ", "\[Rule]", " ", 
        RowBox[{"{", 
         RowBox[{"1", ",", "0", ",", "0"}], "}"}]}], ",", 
@@ -226,7 +231,8 @@ Cell[BoxData[
   3.6650159866148643`*^9, 3.6650159918488173`*^9}, {3.665016856338982*^9, 
   3.6650168861470366`*^9}, {3.665017046846105*^9, 3.665017050954516*^9}, {
   3.6650208613069787`*^9, 3.665020861508979*^9}, {3.6650215173620176`*^9, 
-  3.6650215398380175`*^9}, {3.6650216033750176`*^9, 3.6650216565270176`*^9}}],
+  3.6650215398380175`*^9}, {3.6650216033750176`*^9, 3.6650216565270176`*^9}, {
+  3.6650223788989296`*^9, 3.6650224307075567`*^9}}],
 
 Cell[BoxData[
  RowBox[{
@@ -341,9 +347,9 @@ Cell[1005, 34, 2590, 56, 252, "Input",
  InitializationCell->True],
 Cell[3598, 92, 2854, 66, 272, "Input",
  InitializationCell->True],
-Cell[6455, 160, 2950, 68, 292, "Input",
+Cell[6455, 160, 3179, 74, 292, "Input",
  InitializationCell->True],
-Cell[9408, 230, 2666, 63, 272, "Input",
+Cell[9637, 236, 2666, 63, 272, "Input",
  InitializationCell->True]
 }
 ]

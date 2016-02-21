@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      9916,        270]
-NotebookOptionsPosition[      8670,        221]
-NotebookOutlinePosition[      9651,        259]
-CellTagsIndexPosition[      9608,        256]
+NotebookDataLength[      9826,        262]
+NotebookOptionsPosition[      8651,        216]
+NotebookOutlinePosition[      9632,        254]
+CellTagsIndexPosition[      9589,        251]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -151,8 +151,6 @@ Cell[BoxData[
    3.6649068889891014`*^9, 3.664906898476999*^9}, {3.664907120362067*^9, 
    3.6649071223642673`*^9}, {3.664907182815312*^9, 3.6649072014221725`*^9}}],
 
-Cell[CellGroupData[{
-
 Cell[BoxData[
  RowBox[{"\[IndentingNewLine]", 
   RowBox[{
@@ -171,10 +169,10 @@ Cell[BoxData[
          RowBox[{"{", 
           RowBox[{"0", ",", "0", ",", "20"}], "}"}], ",", 
          RowBox[{"{", 
-          RowBox[{"0", ",", "3", ",", "0"}], "}"}], ",", 
+          RowBox[{"7", ",", "0", ",", "0"}], "}"}], ",", 
          RowBox[{"{", 
-          RowBox[{"0", ",", 
-           RowBox[{"-", "3"}], ",", "0"}], "}"}]}], "}"}]}], ",", 
+          RowBox[{
+           RowBox[{"-", "7"}], ",", "0", ",", "0"}], "}"}]}], "}"}]}], ",", 
       "\[IndentingNewLine]", 
       RowBox[{"masses", " ", "\[Rule]", " ", 
        RowBox[{"{", 
@@ -213,11 +211,8 @@ Cell[BoxData[
  CellChangeTimes->{{3.6650151962618637`*^9, 3.665015196922996*^9}, {
   3.665015231635937*^9, 3.6650152889523983`*^9}, {3.6650153378291717`*^9, 
   3.6650153381602383`*^9}, {3.665015576939068*^9, 3.665015586979072*^9}, {
-  3.6650159866148643`*^9, 3.6650159918488173`*^9}}],
-
-Cell[BoxData["$Aborted"], "Output",
- CellChangeTimes->{3.6650164606949825`*^9}]
-}, Open  ]]
+  3.6650159866148643`*^9, 3.6650159918488173`*^9}, {3.665016856338982*^9, 
+  3.6650168861470366`*^9}, {3.665017046846105*^9, 3.665017050954516*^9}}]
 },
 EvaluatorNames->{"Local" -> {"AutoStartOnLaunch" -> True}},
 NotebookAutoSave->True,
@@ -267,11 +262,8 @@ Cell[1005, 34, 2400, 53, 232, "Input",
  InitializationCell->True],
 Cell[3408, 89, 2658, 62, 252, "Input",
  InitializationCell->True],
-Cell[CellGroupData[{
-Cell[6091, 155, 2481, 60, 272, "Input",
- InitializationCell->True],
-Cell[8575, 217, 79, 1, 31, "Output"]
-}, Open  ]]
+Cell[6069, 153, 2578, 61, 272, "Input",
+ InitializationCell->True]
 }
 ]
 *)

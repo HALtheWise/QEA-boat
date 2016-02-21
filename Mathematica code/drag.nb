@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     17200,        488]
-NotebookOptionsPosition[     16019,        442]
-NotebookOutlinePosition[     16612,        467]
-CellTagsIndexPosition[     16569,        464]
+NotebookDataLength[     17624,        505]
+NotebookOptionsPosition[     16333,        455]
+NotebookOutlinePosition[     16926,        480]
+CellTagsIndexPosition[     16883,        477]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -375,15 +375,28 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
+ RowBox[{
+  RowBox[{"floatHeight", "=", 
+   RowBox[{"boatWaterline", "[", 
+    RowBox[{"scadboat", ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "]"}]}], ";"}]], "Input"],
+
+Cell[BoxData["976.6541307028583`"], "Print"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
  RowBox[{"frontalArea", "[", 
-  RowBox[{"boat", ",", 
+  RowBox[{"scadboat", ",", 
    RowBox[{"{", 
-    RowBox[{"0", ",", "0", ",", "1"}], "}"}], ",", ".1", ",", 
+    RowBox[{"0", ",", "0", ",", "1"}], "}"}], ",", "floatHeight", ",", 
    RowBox[{"{", 
     RowBox[{"1", ",", "0", ",", "0"}], "}"}]}], "]"}]], "Input"],
 
 Cell[BoxData[
- TemplateBox[{"1.2735787372968763`",RowBox[{
+ TemplateBox[{"32.015968247105626`",RowBox[{
      SuperscriptBox["\"cm\"", "2"]}],"centimeters squared",SuperscriptBox[
    "\"Centimeters\"", "2"]},
   "Quantity"]], "Output"]
@@ -395,12 +408,12 @@ Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"underwaterArea", "[", 
-  RowBox[{"boat", ",", 
+  RowBox[{"scadboat", ",", 
    RowBox[{"{", 
     RowBox[{"0", ",", "0", ",", "1"}], "}"}], ",", ".1"}], "]"}]], "Input"],
 
 Cell[BoxData[
- TemplateBox[{"96.26484870085051`",RowBox[{
+ TemplateBox[{"1371.182884486255`",RowBox[{
      SuperscriptBox["\"cm\"", "2"]}],"centimeters squared",SuperscriptBox[
    "\"Centimeters\"", "2"]},
   "Quantity"]], "Output"]
@@ -477,19 +490,23 @@ Cell[10947, 293, 1192, 31, 143, "Input",
 Cell[12142, 326, 1792, 46, 200, "Input",
  InitializationCell->True],
 Cell[CellGroupData[{
-Cell[13959, 376, 229, 6, 32, "Input"],
-Cell[14191, 384, 188, 4, 38, "Output"]
-}, Open  ]],
-Cell[14394, 391, 29, 0, 32, "Input"],
-Cell[CellGroupData[{
-Cell[14448, 395, 163, 4, 32, "Input"],
-Cell[14614, 401, 187, 4, 38, "Output"]
+Cell[13959, 376, 213, 6, 32, "Input"],
+Cell[14175, 384, 44, 0, 23, "Print"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14838, 410, 1087, 25, 50, "Input"],
-Cell[15928, 437, 46, 0, 32, "Output"]
+Cell[14256, 389, 242, 6, 32, "Input"],
+Cell[14501, 397, 188, 4, 38, "Output"]
 }, Open  ]],
-Cell[15989, 440, 26, 0, 32, "Input"]
+Cell[14704, 404, 29, 0, 32, "Input"],
+Cell[CellGroupData[{
+Cell[14758, 408, 167, 4, 32, "Input"],
+Cell[14928, 414, 187, 4, 38, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15152, 423, 1087, 25, 50, "Input"],
+Cell[16242, 450, 46, 0, 32, "Output"]
+}, Open  ]],
+Cell[16303, 453, 26, 0, 32, "Input"]
 }
 ]
 *)

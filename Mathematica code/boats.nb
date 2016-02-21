@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     16514,        423]
-NotebookOptionsPosition[     15167,        372]
-NotebookOutlinePosition[     16146,        410]
-CellTagsIndexPosition[     16103,        407]
+NotebookDataLength[     17241,        439]
+NotebookOptionsPosition[     15894,        388]
+NotebookOutlinePosition[     16873,        426]
+CellTagsIndexPosition[     16830,        423]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -315,9 +315,9 @@ Cell[BoxData[
      ",", "\[IndentingNewLine]", 
      RowBox[{"massPts", " ", 
       RowBox[{"(*", 
-       RowBox[{"mast", ",", "can1", ",", "can2", ",", 
-        RowBox[{"centered", " ", "around", " ", "mast"}]}], "  ", "*)"}], 
-      "\[Rule]", " ", 
+       RowBox[{
+       "mast", ",", "can1", ",", "can2", ",", "ballast1", ",", "ballast2", 
+        ",", "ballast3"}], "  ", "*)"}], "\[Rule]", " ", 
       RowBox[{"{", 
        RowBox[{
         RowBox[{"{", 
@@ -325,15 +325,26 @@ Cell[BoxData[
         RowBox[{"{", 
          RowBox[{
           RowBox[{"-", "7.5"}], ",", "0", ",", 
-          RowBox[{"-", "5.2"}]}], "}"}], ",", 
+          RowBox[{"-", "4.1"}]}], "}"}], ",", 
         RowBox[{"{", 
          RowBox[{"7.5", ",", "0", ",", 
-          RowBox[{"-", "5.6"}]}], "}"}]}], "}"}]}], ",", 
+          RowBox[{"-", "4.5"}]}], "}"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"3", ",", "0", ",", 
+          RowBox[{"-", "9.5"}]}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0", ",", 
+          RowBox[{"-", "9.3"}]}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", "3"}], ",", "0", ",", 
+          RowBox[{"-", "9.1"}]}], "}"}]}], "}"}]}], ",", 
      "\[IndentingNewLine]", 
      RowBox[{"masses", " ", "\[Rule]", " ", 
       RowBox[{"{", 
-       RowBox[{"96.2", ",", "364", ",", "364"}], "}"}]}], ",", 
-     "\[IndentingNewLine]", 
+       RowBox[{
+       "96.2", ",", "386", ",", "386", ",", "100", ",", "100", ",", "100"}], 
+       "}"}]}], ",", "\[IndentingNewLine]", 
      RowBox[{"front", " ", "\[Rule]", " ", 
       RowBox[{"{", 
        RowBox[{"1", ",", "0", ",", "0"}], "}"}]}], ",", "\[IndentingNewLine]", 
@@ -367,8 +378,13 @@ Cell[BoxData[
        "]"}]}]}], "\[IndentingNewLine]", "|>"}]}], ";"}]], "Input",
  InitializationCell->True,
  CellChangeTimes->{{3.665072813413921*^9, 3.6650728227747927`*^9}, {
-  3.6650728870956545`*^9, 3.665072964625369*^9}, {3.665073027824689*^9, 
-  3.665073032731179*^9}, {3.665073185592464*^9, 3.665073187826687*^9}}]
+   3.6650728870956545`*^9, 3.665072964625369*^9}, {3.665073027824689*^9, 
+   3.665073032731179*^9}, {3.665073185592464*^9, 3.665073187826687*^9}, {
+   3.665073457942696*^9, 3.6650735050794096`*^9}, {3.6650736653444347`*^9, 
+   3.665073733415241*^9}, {3.6650738947893763`*^9, 3.665073905986496*^9}, {
+   3.6650744170025926`*^9, 3.6650744628471766`*^9}, 3.665074635466437*^9, {
+   3.665074980898359*^9, 3.665074999502359*^9}, {3.6650750737503586`*^9, 
+   3.665075078654359*^9}}]
 },
 EvaluatorNames->{"Local" -> {"AutoStartOnLaunch" -> True}},
 NotebookAutoSave->True,
@@ -423,7 +439,7 @@ Cell[6440, 159, 3389, 79, 292, "Input",
 Cell[9832, 240, 2666, 63, 272, "Input",
  InitializationCell->True],
 Cell[12501, 305, 94, 1, 31, "Input"],
-Cell[12598, 308, 2565, 62, 292, "Input",
+Cell[12598, 308, 3292, 78, 312, "Input",
  InitializationCell->True]
 }
 ]

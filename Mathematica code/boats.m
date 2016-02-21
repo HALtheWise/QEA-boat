@@ -65,8 +65,8 @@ graphics :> Show[Graphics3D[{EdgeForm[],Gray,GraphicsComplex[MeshCoordinates@reg
 
 besterestiesterestboat=<|
 name -> "Besterestiesterestboat",
-massPts (*mast,can1,can2,centered around mast  *)-> {{0,0,19},{-7.5,0,-5.2},{7.5,0,-5.6}},
-masses -> {96.2,364,364},
+massPts (*mast,can1,can2,ballast1,ballast2,ballast3  *)-> {{0,0,19},{-7.5,0,-4.1},{7.5,0,-4.5}, {3,0,-9.5},{0,0,-9.3},{-3,0,-9.1}},
+masses -> {96.2,386,386,100,100,100},
 front -> {1,0,0},
 region ->  Import["Sample Data/besterestiesterestboatdisplacement.stl","BoundaryMeshRegion"],
 graphics :> Show[Graphics3D[{EdgeForm[],Gray,GraphicsComplex[MeshCoordinates@region/.boat,MeshCells[region/.boat,2]]}],Graphics3D[{Red,PointSize[4],Graphics3D@Point[massPts/.boat]}]]

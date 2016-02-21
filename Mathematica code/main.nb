@@ -80,10 +80,21 @@ Cell[BoxData[
     RowBox[{
      RowBox[{"{", 
       RowBox[{
-      "doesFloat", ",", "doesFloatFlat", ",", " ", "trimAngle", ",", 
-       "stabilityPlot", ",", "stabilityAngles"}], "}"}], ",", 
+      "thefront", ",", "theside", ",", "doesFloat", ",", "doesFloatFlat", ",",
+        " ", "trimAngle", ",", "stabilityPlot", ",", "stabilityAngles", ",", 
+       "bounds", ",", "floatHeight", ",", "area"}], "}"}], ",", 
      "\[IndentingNewLine]", 
      RowBox[{
+      RowBox[{"thefront", "=", 
+       RowBox[{"front", "/.", "boat"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"theside", "=", 
+       RowBox[{
+        RowBox[{"RotationMatrix", "[", 
+         RowBox[{
+          RowBox[{"Pi", "/", "2"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "]"}], ".", 
+        "thefront"}]}], ";", "\[IndentingNewLine]", 
       RowBox[{"doesFloat", "=", 
        RowBox[{
         RowBox[{
@@ -110,16 +121,12 @@ Cell[BoxData[
        RowBox[{
         RowBox[{
          RowBox[{"rightingArm", "[", 
-          RowBox[{"boat", ",", 
-           RowBox[{"{", 
-            RowBox[{"0", ",", "1", ",", "0"}], "}"}], ",", 
+          RowBox[{"boat", ",", "thefront", ",", 
            RowBox[{
             RowBox[{"N", "@", "10"}], " ", "Degree"}]}], "]"}], ">", "0"}], "&&", 
         RowBox[{
          RowBox[{"rightingArm", "[", 
-          RowBox[{"boat", ",", 
-           RowBox[{"{", 
-            RowBox[{"0", ",", "1", ",", "0"}], "}"}], ",", 
+          RowBox[{"boat", ",", "thefront", ",", 
            RowBox[{
             RowBox[{"N", "@", 
              RowBox[{"-", "10"}]}], " ", "Degree"}]}], "]"}], "<", "0"}]}]}], 
@@ -129,23 +136,41 @@ Cell[BoxData[
         RowBox[{"Round", "[", 
          RowBox[{
           RowBox[{"avs", "[", 
-           RowBox[{"boat", ",", 
-            RowBox[{"{", 
-             RowBox[{"1", ",", "0", ",", "0"}], "}"}], ",", "0"}], "]"}], "*", 
-          RowBox[{"180", "/", "Pi"}]}], "]"}], " ", 
+           RowBox[{"boat", ",", "theside", ",", "0"}], "]"}], "*", 
+          RowBox[{"180", "/", "Pi"}]}], "]"}], 
         TemplateBox[{
          InterpretationBox["\[InvisibleSpace]", 1],
           RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
           "\"AngularDegrees\""},
          "QuantityPostfix"]}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"doesFloatFlat", "=", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"rightingArm", "[", 
+          RowBox[{"boat", ",", "thefront", ",", 
+           RowBox[{
+            RowBox[{"N", "@", "10"}], " ", "Degree"}]}], "]"}], ">", "0"}], "&&", 
+        RowBox[{
+         RowBox[{"rightingArm", "[", 
+          RowBox[{"boat", ",", "thefront", ",", 
+           RowBox[{
+            RowBox[{"N", "@", 
+             RowBox[{"-", "10"}]}], " ", "Degree"}]}], "]"}], "<", "0"}], " ",
+         "&&", "\[IndentingNewLine]", 
+        RowBox[{
+         TemplateBox[{
+          RowBox[{"-", "5"}],RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+           "degrees","\"AngularDegrees\""},
+          "QuantityPostfix"], "<", "trimAngle", "<", 
+         TemplateBox[{
+          "5",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+           "\"AngularDegrees\""},
+          "QuantityPostfix"]}]}]}], ";", "\[IndentingNewLine]", 
       RowBox[{"stabilityPlot", "=", 
        RowBox[{"Plot", "[", 
         RowBox[{
          RowBox[{"rightingArm", "[", 
-          RowBox[{"boat", ",", 
-           RowBox[{"{", 
-            RowBox[{"0", ",", "1", ",", "0"}], "}"}], ",", "\[Theta]"}], 
-          "]"}], ",", 
+          RowBox[{"boat", ",", "thefront", ",", "\[Theta]"}], "]"}], ",", 
          RowBox[{"{", 
           RowBox[{"\[Theta]", ",", 
            RowBox[{"-", "Pi"}], ",", "Pi"}], "}"}], ",", 
@@ -174,6 +199,7 @@ Cell[BoxData[
           RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
           "\"AngularDegrees\""},
          "QuantityPostfix"]}]}], ";", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
       RowBox[{"bounds", "=", 
        RowBox[{
         RowBox[{"Round", "[", 

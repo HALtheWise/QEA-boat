@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     13734,        353]
-NotebookOptionsPosition[     12502,        305]
-NotebookOutlinePosition[     13473,        343]
-CellTagsIndexPosition[     13430,        340]
+NotebookDataLength[     16514,        423]
+NotebookOptionsPosition[     15167,        372]
+NotebookOutlinePosition[     16146,        410]
+CellTagsIndexPosition[     16103,        407]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -301,7 +301,74 @@ Cell[BoxData[
   3.665019495645254*^9}, {3.665020545860179*^9, 3.665020549130579*^9}, {
   3.665020864338979*^9, 3.6650208647089787`*^9}, {3.6650215689560175`*^9, 
   3.6650215699920177`*^9}, {3.665021903485018*^9, 3.665021905419018*^9}, {
-  3.665022058876379*^9, 3.665022061696858*^9}}]
+  3.665022058876379*^9, 3.665022061696858*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.6650727810144424`*^9, 3.665072794610161*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"besterestiesterestboat", "=", 
+   RowBox[{"<|", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"name", " ", "\[Rule]", " ", "\"\<Besterestiesterestboat\>\""}], 
+     ",", "\[IndentingNewLine]", 
+     RowBox[{"massPts", " ", 
+      RowBox[{"(*", 
+       RowBox[{"mast", ",", "can1", ",", "can2", ",", 
+        RowBox[{"centered", " ", "around", " ", "mast"}]}], "  ", "*)"}], 
+      "\[Rule]", " ", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0", ",", "19"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", "7.5"}], ",", "0", ",", 
+          RowBox[{"-", "5.2"}]}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"7.5", ",", "0", ",", 
+          RowBox[{"-", "5.6"}]}], "}"}]}], "}"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"masses", " ", "\[Rule]", " ", 
+      RowBox[{"{", 
+       RowBox[{"96.2", ",", "364", ",", "364"}], "}"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"front", " ", "\[Rule]", " ", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "0", ",", "0"}], "}"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"region", " ", "\[Rule]", "  ", 
+      RowBox[{"Import", "[", 
+       RowBox[{
+       "\"\<Sample Data/besterestiesterestboatdisplacement.stl\>\"", ",", 
+        "\"\<BoundaryMeshRegion\>\""}], "]"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"graphics", " ", "\[RuleDelayed]", " ", 
+      RowBox[{"Show", "[", 
+       RowBox[{
+        RowBox[{"Graphics3D", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"EdgeForm", "[", "]"}], ",", "Gray", ",", 
+           RowBox[{"GraphicsComplex", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"MeshCoordinates", "@", "region"}], "/.", "boat"}], ",", 
+             RowBox[{"MeshCells", "[", 
+              RowBox[{
+               RowBox[{"region", "/.", "boat"}], ",", "2"}], "]"}]}], "]"}]}],
+           "}"}], "]"}], ",", 
+        RowBox[{"Graphics3D", "[", 
+         RowBox[{"{", 
+          RowBox[{"Red", ",", 
+           RowBox[{"PointSize", "[", "4", "]"}], ",", 
+           RowBox[{"Graphics3D", "@", 
+            RowBox[{"Point", "[", 
+             RowBox[{"massPts", "/.", "boat"}], "]"}]}]}], "}"}], "]"}]}], 
+       "]"}]}]}], "\[IndentingNewLine]", "|>"}]}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.665072813413921*^9, 3.6650728227747927`*^9}, {
+  3.6650728870956545`*^9, 3.665072964625369*^9}, {3.665073027824689*^9, 
+  3.665073032731179*^9}, {3.665073185592464*^9, 3.665073187826687*^9}}]
 },
 EvaluatorNames->{"Local" -> {"AutoStartOnLaunch" -> True}},
 NotebookAutoSave->True,
@@ -328,7 +395,7 @@ CellGrouping->Automatic,
 PageWidth->WindowWidth,
 WindowSize->{808, 911},
 WindowMargins->{{Automatic, 216}, {-9, Automatic}},
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (October 9, 2015)",
 StyleDefinitions->"Default.nb"
 ]
 (* End of Notebook Content *)
@@ -343,17 +410,20 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 201, 4, 32, "Input",
+Cell[580, 22, 201, 4, 31, "Input",
  InitializationCell->True],
-Cell[784, 28, 191, 2, 32, "Output"]
+Cell[784, 28, 191, 2, 31, "Output"]
 }, Open  ]],
-Cell[990, 33, 2590, 56, 275, "Input",
+Cell[990, 33, 2590, 56, 252, "Input",
  InitializationCell->True],
-Cell[3583, 91, 2854, 66, 319, "Input",
+Cell[3583, 91, 2854, 66, 272, "Input",
  InitializationCell->True],
-Cell[6440, 159, 3389, 79, 341, "Input",
+Cell[6440, 159, 3389, 79, 292, "Input",
  InitializationCell->True],
-Cell[9832, 240, 2666, 63, 319, "Input",
+Cell[9832, 240, 2666, 63, 272, "Input",
+ InitializationCell->True],
+Cell[12501, 305, 94, 1, 31, "Input"],
+Cell[12598, 308, 2565, 62, 292, "Input",
  InitializationCell->True]
 }
 ]

@@ -133,8 +133,11 @@ Cell[BoxData[
             RowBox[{"{", 
              RowBox[{"1", ",", "0", ",", "0"}], "}"}], ",", "0"}], "]"}], "*", 
           RowBox[{"180", "/", "Pi"}]}], "]"}], " ", 
-        RowBox[{"HoldForm", "[", "Degree", "]"}]}]}], ";", 
-      "\[IndentingNewLine]", 
+        TemplateBox[{
+         InterpretationBox["\[InvisibleSpace]", 1],
+          RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+          "\"AngularDegrees\""},
+         "QuantityPostfix"]}]}], ";", "\[IndentingNewLine]", 
       RowBox[{"stabilityPlot", "=", 
        RowBox[{"Plot", "[", 
         RowBox[{
@@ -166,8 +169,43 @@ Cell[BoxData[
                RowBox[{"-", "Pi"}], ",", "Pi", ",", 
                RowBox[{"Pi", "/", "3"}]}], "}"}]}], "]"}], "*", 
            RowBox[{"180", "/", "Pi"}]}], "]"}]}], " ", 
-        RowBox[{"HoldForm", "[", "Degree", "]"}]}]}], ";", 
-      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        TemplateBox[{
+         InterpretationBox["\[InvisibleSpace]", 1],
+          RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+          "\"AngularDegrees\""},
+         "QuantityPostfix"]}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"bounds", "=", 
+       RowBox[{
+        RowBox[{"Round", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"RegionBounds", "[", 
+            RowBox[{"region", "/.", "boat"}], "]"}], "/.", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"min_", ",", "max_"}], "}"}], "\[RuleDelayed]", 
+            RowBox[{"max", "-", "min"}]}]}], ",", "0.1"}], "]"}], 
+        TemplateBox[{
+         InterpretationBox["\[InvisibleSpace]", 1],"\"cm\"","centimeters",
+          "\"Centimeters\""},
+         "Quantity"]}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"floatHeight", "=", 
+       RowBox[{"boatWaterline", "[", 
+        RowBox[{"boat", ",", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"area", "=", 
+       RowBox[{
+        RowBox[{"underwaterArea", "[", 
+         RowBox[{"boat", ",", 
+          RowBox[{"{", 
+           RowBox[{"0", ",", "0", ",", "1"}], "}"}], ",", "floatHeight"}], 
+         "]"}], 
+        TemplateBox[{InterpretationBox["\[InvisibleSpace]", 1],RowBox[{
+            SuperscriptBox["\"cm\"", "2"]}],"centimeters squared",
+          SuperscriptBox["\"Centimeters\"", "2"]},
+         "Quantity"]}]}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
       RowBox[{"Grid", "[", 
        RowBox[{
         RowBox[{"{", 
@@ -191,8 +229,14 @@ Cell[BoxData[
            RowBox[{"\"\<Is it a boat?\>\"", ",", "\"\<Boatboat.\>\""}], "}"}],
            ",", "\[IndentingNewLine]", 
           RowBox[{"{", 
+           RowBox[{"\"\<How big is it?\>\"", ",", "bounds"}], "}"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"{", 
            RowBox[{"\"\<Does it float?\>\"", ",", "doesFloat"}], "}"}], ",", 
           "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{"\"\<How much is underwater?\>\"", ",", "area"}], "}"}], 
+          ",", "\[IndentingNewLine]", 
           RowBox[{"{", 
            RowBox[{"\"\<Stability curve\>\"", ",", "stabilityPlot"}], "}"}], 
           ",", "\[IndentingNewLine]", 
@@ -213,6 +257,8 @@ Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"boatboatboat", "[", "boat", "]"}]], "Input"],
+
+Cell[BoxData["111.76894869045125`"], "Print"],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -1479,7 +1525,22 @@ nUx97A/NsK5Vgy6xmO2n1/o/ATyEPw==
        {RGBColor[1, 0, 0], PointSize[0.05], Point3DBox[{{0, 0, 0}}]}}], 
      "\[SpanFromLeft]"},
     {"\<\"Is it a boat?\"\>", "\<\"Boatboat.\"\>"},
+    {"\<\"How big is it?\"\>", 
+     RowBox[{"{", 
+      RowBox[{
+       TemplateBox[{"9.5`","\"cm\"","centimeters","\"Centimeters\""},
+        "Quantity"], ",", 
+       TemplateBox[{"16.7`","\"cm\"","centimeters","\"Centimeters\""},
+        "Quantity"], ",", 
+       TemplateBox[{
+        "3.3000000000000003`","\"cm\"","centimeters","\"Centimeters\""},
+        "Quantity"]}], "}"}]},
     {"\<\"Does it float?\"\>", "True"},
+    {"\<\"How much is underwater?\"\>", 
+     TemplateBox[{"132.89828211726356`",RowBox[{
+         SuperscriptBox["\"cm\"", "2"]}],"centimeters squared",SuperscriptBox[
+       "\"Centimeters\"", "2"]},
+      "Quantity"]},
     {"\<\"Stability curve\"\>", 
      GraphicsBox[{{}, {}, 
        {RGBColor[0.368417, 0.506779, 0.709798], AbsoluteThickness[1.6], 
@@ -1521,35 +1582,41 @@ rwW0Qw==
       Ticks->{Automatic, Automatic}]},
     {"\<\"Does it float flat?\"\>", "True"},
     {"\<\"Trim Angle?\"\>", 
-     RowBox[{
-      RowBox[{"-", "49"}], " ", 
-      TagBox["\[Degree]",
-       HoldForm]}]},
+     TemplateBox[{
+      RowBox[{"-", "49"}],RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+       "degrees","\"AngularDegrees\""},
+      "QuantityPostfix"]},
     {"\<\"What's the AVS?\"\>", 
      RowBox[{"{", 
       RowBox[{
-       RowBox[{
-        RowBox[{"-", "180"}], " ", 
-        TagBox["\[Degree]",
-         HoldForm]}], ",", 
-       RowBox[{
-        RowBox[{"-", "124"}], " ", 
-        TagBox["\[Degree]",
-         HoldForm]}], ",", 
-       TagBox["\[Degree]",
-        HoldForm], ",", 
-       RowBox[{"125", " ", 
-        TagBox["\[Degree]",
-         HoldForm]}], ",", 
-       RowBox[{"180", " ", 
-        TagBox["\[Degree]",
-         HoldForm]}]}], "}"}]}
+       TemplateBox[{
+        RowBox[{"-", "180"}],RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+         "degrees","\"AngularDegrees\""},
+        "QuantityPostfix"], ",", 
+       TemplateBox[{
+        RowBox[{"-", "124"}],RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+         "degrees","\"AngularDegrees\""},
+        "QuantityPostfix"], ",", 
+       TemplateBox[{
+        "1",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+         "\"AngularDegrees\""},
+        "QuantityPostfix"], ",", 
+       TemplateBox[{
+        "125",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+         "\"AngularDegrees\""},
+        "QuantityPostfix"], ",", 
+       TemplateBox[{
+        "180",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+         "\"AngularDegrees\""},
+        "QuantityPostfix"]}], "}"}]}
    },
    AutoDelete->False,
    GridBoxFrame->{"Columns" -> {{True}}, "Rows" -> {{True}}},
    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
   "Grid"]], "Output"]
-}, Open  ]]
+}, Open  ]],
+
+Cell[BoxData[""], "Input"]
 }, Open  ]]
 },
 WindowSize->{1920, 1014},

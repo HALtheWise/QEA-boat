@@ -294,9 +294,10 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"boatboatboat", "[", "bestboat", "]"}]], "Input"],
+ RowBox[{"boatboatboat", "[", 
+  RowBox[{"Evaluate", "@", "bestboat"}], "]"}]], "Input"],
 
-Cell[BoxData["915.7427130796787`"], "Print"],
+Cell[BoxData["1215.7427130796787`"], "Print"],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -22050,15 +22051,16 @@ Wh9eRx46TuGSt8e0/VY9F+eQTGqgcKl7jKI4hN0Qz4W+65Q+sk/m1W4Kx3im
           Polygon3DBox[{2, 537, 3}], Polygon3DBox[{2, 534, 537}]}]}, 
        {RGBColor[0, 0, 1], Opacity[0.3], 
         InterpretationBox[
-         ConicHullRegion3DBox[{0., 0.27741435038557316`, -3.170860534443663}, 
+         ConicHullRegion3DBox[{0., 0.2313945053457891, -2.644851298673959}, 
           NCache[{{0, Cot[Rational[1, 36] Pi], 1}, {1, 0, 0}}, {{
             0, 11.430052302761343`, 1}, {1, 0, 0}}], 
           NCache[{{0, Sin[Rational[1, 36] Pi], -Cos[Rational[1, 36] Pi]}}, {{
             0, 0.08715574274765817, -0.9961946980917455}}]],
          HalfSpace[{0, -Sin[Rational[1, 36] Pi], 
-           Cos[Rational[1, 36] Pi]}, -3.1829727065578495`]]}, 
+           Cos[Rational[1, 36] Pi]}, -2.6549542009612046`]]}, 
        {RGBColor[1, 0, 0], PointSize[0.05], 
-        Point3DBox[{{0, 0, 20}, {7, 0, 0}, {-7, 0, 0}}]}}], "\[SpanFromLeft]"},
+        Point3DBox[{{0, 0, 5}, {7, 0, -3}, {-7, 0, -3}, {-4, 0, -8}, {4, 
+         0, -8}}]}}], "\[SpanFromLeft]"},
     {"\<\"Is it a boat?\"\>", "\<\"Boatboat.\"\>"},
     {"\<\"How big is it?\"\>", 
      RowBox[{"{", 
@@ -22076,15 +22078,15 @@ Wh9eRx46TuGSt8e0/VY9F+eQTGqgcKl7jKI4hN0Qz4W+65Q+sk/m1W4Kx3im
      GraphicsBox[{{}, {}, 
        {RGBColor[0.368417, 0.506779, 0.709798], AbsoluteThickness[1.6], 
         Opacity[1.], LineBox[CompressedData["
-1:eJwBYQGe/iFib1JlAgAAABUAAAACAAAAm3Saq/ohCcD7x1jI/bmsP2gEDyko
-twbALkxIT7JSBEA0lIOmVUwEwCxD71USbg1AAST4I4PhAcD4Roo8IckQQJxn
-2UJh7f6/d9HwCq2KEEAuxPufoa/5vwjaEJ2tQxFAvyAe/eFx9L8+FWGlBbIJ
-QKD6gLREaO6/xCvQB6jG/D/Ds8VuxezjvyAA0YqzXNw/bNEgsjVG1L/A/quU
-NU+avyBqx9YQXIa/4Gik8SB/cT/KWrSkdODSP1BybVMS7bM/cngP6OQ54z8o
-vntLXCrZv/ry78Zo0uw/gqqJ8z0N+b/BNuhSdjXzPyqp2nqDTAfABXRYQrgB
-+D+ozhHw2B4QwEmxyDH6zfw//3bgnsq9D8Ci35F9vBUBQPthYYpA3hDAoGY/
-4nvEA0Bu11iJgJUOwJ7t7EY7cwZAl3znYUjRBcCbdJqr+iEJQP/UgMOFuaw/
-CWWuGQ==
+1:eJwBYQGe/iFib1JlAgAAABUAAAACAAAAm3Saq/ohCcAO3W8e8BGLP2gEDyko
+twbA7Fn4TVmK6T80lIOmVUwEwB5hIbn0pOM/AST4I4PhAcDA2W/PPkKbv5xn
+2UJh7f6/tNezJlKg6b8uxPufoa/5v9VPW01sLfi/vyAe/eFx9L+gXCF9A1T9
+v6D6gLREaO6/q0nbk27dAsDDs8Vuxezjv3syYyWrdgPAbNEgsjVG1L/kuqf2
+GmP6vyBqx9YQXIa/Fcz6MBjCv7/KWrSkdODSPx3CGwvDxPY/cngP6OQ54z9i
+eQ/TxrACQPry78Zo0uw/Ka+GmzPQAkDBNuhSdjXzPxIgubbHCf8/BXRYQrgB
++D/LPAazuqH1P0mxyDH6zfw/ZqiT8evz8j+i35F9vBUBQISi+mVBodY/oGY/
+4nvEA0BwiCDjDbjav57t7EY7cwZAisFxiPy55r+bdJqr+iEJQL4BLeNzFos/
+i+mz+g==
          "]]}},
       AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
       Axes->{True, True},
@@ -22101,9 +22103,9 @@ CWWuGQ==
        "DefaultBoundaryStyle" -> Automatic, "DefaultMeshStyle" -> 
         AbsolutePointSize[6], "ScalingFunctions" -> None},
       PlotRange->
-       NCache[{{-Pi, Pi}, {-4.217043077653666, 
-         4.316091970590158}}, {{-3.141592653589793, 
-        3.141592653589793}, {-4.217043077653666, 4.316091970590158}}],
+       NCache[{{-Pi, Pi}, {-2.432943622674711, 
+         2.3516609335400926`}}, {{-3.141592653589793, 
+        3.141592653589793}, {-2.432943622674711, 2.3516609335400926`}}],
       PlotRangeClipping->True,
       PlotRangePadding->{{
          Scaled[0.02], 
@@ -22125,11 +22127,7 @@ CWWuGQ==
          "degrees","\"AngularDegrees\""},
         "QuantityPostfix"], ",", 
        TemplateBox[{
-        "19",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
-         "\"AngularDegrees\""},
-        "QuantityPostfix"], ",", 
-       TemplateBox[{
-        RowBox[{"-", "23"}],RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
+        RowBox[{"-", "129"}],RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
          "degrees","\"AngularDegrees\""},
         "QuantityPostfix"], ",", 
        TemplateBox[{
@@ -22137,27 +22135,19 @@ CWWuGQ==
          "\"AngularDegrees\""},
         "QuantityPostfix"], ",", 
        TemplateBox[{
-        "26",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
+        "131",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
          "\"AngularDegrees\""},
-        "QuantityPostfix"], ",", 
-       TemplateBox[{
-        RowBox[{"-", "19"}],RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],
-         "degrees","\"AngularDegrees\""},
         "QuantityPostfix"], ",", 
        TemplateBox[{
         "180",RowBox[{"\[InvisibleSpace]", "\"\[Degree]\""}],"degrees",
          "\"AngularDegrees\""},
         "QuantityPostfix"]}], "}"}]},
     {"\<\"How much is underwater?\"\>", 
-     TemplateBox[{"574.138695857393`",RowBox[{
+     TemplateBox[{"616.6575347300812`",RowBox[{
          SuperscriptBox["\"cm\"", "2"]}],"centimeters squared",SuperscriptBox[
        "\"Centimeters\"", "2"]},
       "Quantity"]},
-    {"\<\"Cross-sectional area?\"\>", 
-     TemplateBox[{"31.529948750265685`",RowBox[{
-         SuperscriptBox["\"cm\"", "2"]}],"centimeters squared",SuperscriptBox[
-       "\"Centimeters\"", "2"]},
-      "Quantity"]}
+    {"\<\"Cross-sectional area?\"\>", "0"}
    },
    AutoDelete->False,
    GridBoxFrame->{"Columns" -> {{True}}, "Rows" -> {{True}}},

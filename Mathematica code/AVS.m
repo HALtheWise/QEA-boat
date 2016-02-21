@@ -20,7 +20,7 @@
 
 
 avs[boat_,front_,guess_]:=Module[{},
-FindRoot[rightingArm[boat,front,\[Theta]],{\[Theta],guess},AccuracyGoal->3,PrecisionGoal->Infinity (*only accuracy used*)]
+\[Theta]/.FindRoot[rightingArm[boat,front,\[Theta]],{\[Theta],guess},AccuracyGoal->3,PrecisionGoal->Infinity (*only accuracy used*)]
 ]
 
 

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      9589,        258]
-NotebookOptionsPosition[      8415,        212]
-NotebookOutlinePosition[      9396,        250]
-CellTagsIndexPosition[      9353,        247]
+NotebookDataLength[     10397,        279]
+NotebookOptionsPosition[      9149,        230]
+NotebookOutlinePosition[     10130,        268]
+CellTagsIndexPosition[     10087,        265]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -26,8 +26,9 @@ Cell[BoxData[
  InitializationCell->True,
  CellChangeTimes->{{3.6648026551879063`*^9, 3.6648026639097958`*^9}}],
 
-Cell[BoxData["\<\"/home/eric/git/QEA-boat2/Mathematica code\"\>"], "Output",
- CellChangeTimes->{3.664802676219741*^9}]
+Cell[BoxData["\<\"C:\\\\Users\\\\jbriskman\\\\Documents\\\\GitHub\\\\boat2\\\\\
+Mathematica code\"\>"], "Output",
+ CellChangeTimes->{3.664802676219741*^9, 3.6650160966928444`*^9}]
 }, Open  ]],
 
 Cell[BoxData[
@@ -149,6 +150,8 @@ Cell[BoxData[
    3.6649068889891014`*^9, 3.664906898476999*^9}, {3.664907120362067*^9, 
    3.6649071223642673`*^9}, {3.664907182815312*^9, 3.6649072014221725`*^9}}],
 
+Cell[CellGroupData[{
+
 Cell[BoxData[
  RowBox[{"\[IndentingNewLine]", 
   RowBox[{
@@ -165,7 +168,7 @@ Cell[BoxData[
        RowBox[{"{", 
         RowBox[{
          RowBox[{"{", 
-          RowBox[{"0", ",", "0", ",", "25.4"}], "}"}], ",", 
+          RowBox[{"0", ",", "0", ",", "20"}], "}"}], ",", 
          RowBox[{"{", 
           RowBox[{"0", ",", "3", ",", "0"}], "}"}], ",", 
          RowBox[{"{", 
@@ -208,7 +211,22 @@ Cell[BoxData[
  InitializationCell->True,
  CellChangeTimes->{{3.6650151962618637`*^9, 3.665015196922996*^9}, {
   3.665015231635937*^9, 3.6650152889523983`*^9}, {3.6650153378291717`*^9, 
-  3.6650153381602383`*^9}, {3.665015576939068*^9, 3.665015586979072*^9}}]
+  3.6650153381602383`*^9}, {3.665015576939068*^9, 3.665015586979072*^9}, {
+  3.6650159866148643`*^9, 3.6650159918488173`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"BoundaryMeshRegion", "::", "bcsm"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"There is a closed curve or surface that does not include \
+all cells specified for a boundary. A boundary should consist of a single \
+closed curve or surface. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/BoundaryMeshRegion\\\", ButtonNote -> \
+\\\"BoundaryMeshRegion::bcsm\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{{3.665016103229537*^9, 3.6650161037394347`*^9}}]
+}, Open  ]]
 },
 EvaluatorNames->{"Local" -> {"AutoStartOnLaunch" -> True}},
 NotebookAutoSave->True,
@@ -252,14 +270,17 @@ Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 201, 4, 31, "Input",
  InitializationCell->True],
-Cell[784, 28, 118, 1, 31, "Output"]
+Cell[784, 28, 179, 2, 31, "Output"]
 }, Open  ]],
-Cell[917, 32, 2400, 53, 232, "Input",
+Cell[978, 33, 2400, 53, 232, "Input",
  InitializationCell->True],
-Cell[3320, 87, 2658, 62, 252, "Input",
+Cell[3381, 88, 2658, 62, 252, "Input",
  InitializationCell->True],
-Cell[5981, 151, 2430, 59, 272, "Input",
- InitializationCell->True]
+Cell[CellGroupData[{
+Cell[6064, 154, 2481, 60, 272, "Input",
+ InitializationCell->True],
+Cell[8548, 216, 585, 11, 39, "Message"]
+}, Open  ]]
 }
 ]
 *)

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     17146,        486]
-NotebookOptionsPosition[     15992,        441]
-NotebookOutlinePosition[     16585,        466]
-CellTagsIndexPosition[     16542,        463]
+NotebookDataLength[     17200,        488]
+NotebookOptionsPosition[     16019,        442]
+NotebookOutlinePosition[     16612,        467]
+CellTagsIndexPosition[     16569,        464]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -369,7 +369,8 @@ Cell[BoxData[
             SuperscriptBox["\"Centimeters\"", "2"]},
            "Quantity"]}]}]}], "]"}]}], ";", "\[IndentingNewLine]", 
      RowBox[{"Total", "[", "positiveAreas", "]"}]}]}], "\[IndentingNewLine]", 
-   "]"}]}]], "Input"],
+   "]"}]}]], "Input",
+ InitializationCell->True],
 
 Cell[CellGroupData[{
 
@@ -473,21 +474,22 @@ Cell[1770, 57, 9162, 233, 115, "Output"]
 }, Open  ]],
 Cell[10947, 293, 1192, 31, 143, "Input",
  InitializationCell->True],
-Cell[12142, 326, 1765, 45, 200, "Input"],
+Cell[12142, 326, 1792, 46, 200, "Input",
+ InitializationCell->True],
 Cell[CellGroupData[{
-Cell[13932, 375, 229, 6, 32, "Input"],
-Cell[14164, 383, 188, 4, 71, "Output"]
+Cell[13959, 376, 229, 6, 32, "Input"],
+Cell[14191, 384, 188, 4, 38, "Output"]
 }, Open  ]],
-Cell[14367, 390, 29, 0, 32, "Input"],
+Cell[14394, 391, 29, 0, 32, "Input"],
 Cell[CellGroupData[{
-Cell[14421, 394, 163, 4, 32, "Input"],
-Cell[14587, 400, 187, 4, 38, "Output"]
+Cell[14448, 395, 163, 4, 32, "Input"],
+Cell[14614, 401, 187, 4, 38, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14811, 409, 1087, 25, 50, "Input"],
-Cell[15901, 436, 46, 0, 32, "Output"]
+Cell[14838, 410, 1087, 25, 50, "Input"],
+Cell[15928, 437, 46, 0, 32, "Output"]
 }, Open  ]],
-Cell[15962, 439, 26, 0, 32, "Input"]
+Cell[15989, 440, 26, 0, 32, "Input"]
 }
 ]
 *)

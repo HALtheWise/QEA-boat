@@ -32,4 +32,12 @@ Total[areas]
 ]
 
 
+frontalArea[boat_,normal_,height_,flowdir_]:=Module[{},
+normflow=Normalize@flowdir;
+areas=underwaterTriangles[boat,normal,height]/.Polygon[{p1_,p2_,p3_}]:>-((p1-p2)\[Cross](p3-p2)/2).flowdirQuantity[1,(("Centimeters")^2)];
+positiveAreas = Cases[areas,n_/;n>Quantity[0,("Centimeters")^2]];
+Total[positiveAreas]
+]
+
+
 

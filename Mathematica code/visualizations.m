@@ -36,11 +36,13 @@ showBoat[boat,waterNormal,height]
 
 
 manipulateBoat[boat_,front_]:=
-Module[{data},
-data=Table[{\[Theta],[boat,RotationMatrix[\[Theta],front].{0,0,1}]},{\[Theta],0,Pi,Pi/20}];
-interp=Interpolation[data];
-Manipulate[showBoat[boat,RotationMatrix[\[Theta],front].{0,0,1},interp[\[Theta]]],{\[Theta],0,Pi}]
+Module[{},
+data=Table[{\[Theta],showBoat[boat,RotationMatrix[\[Theta],front].{0,0,1}]},{\[Theta],0,-Pi,-Pi/6}];
+Grid[data,Frame->All]
+(*interp=Interpolation[data];*)
+(*Manipulate[Evaluate@\[Theta]/.data,{\[Theta],0,Pi,Pi/6}]*)
 ]
 
 
-manipulateBoat[scadboat2,{1,0,0}]
+(* ::Code:: *)
+(*manipulateBoat[scadboat2,{1,0,0}]*)

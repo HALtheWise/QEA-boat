@@ -4,6 +4,8 @@ module sodacan(){import("Generated boats/sodacan.stl",convexity=1);}
 canDepth=-2.5;
 extrudeHeight=6.8;
 makeCutFile=true;
+useNiceCan=false;
+includeText=false;
 
 union(){
     difference() {
@@ -24,7 +26,13 @@ union(){
         if(makeCutFile){
             translate([0,0,10])cylinder(h=11,d=1,$fn=20,center=true);
             translate([0,0,extrudeHeight-0.4])
-            cylinder(h=1000,d=3,center=falses,$fn=20);
+            cylinder(h=1000,d=3,center=false,$fn=20);
+        }
+        
+        translate([0,0,extrudeHeight-1])
+        if (includeText)
+        linear_extrude(1){
+            names();
         }
     }
     union(){
@@ -36,24 +44,25 @@ union(){
 }
 
 module names() {
-    scale([2,.7])
-        translate([-7,5])
-            text("Eric",6,"Times New Roman");
+    scale([1.3,.5])
+        translate([-7,8])
+            text("Eric",6,"Comic Sans MS");
     
     rotate([0,0,180])
-    scale([2,.7])
-        translate([-9,5])
-            text("Jared",6,"Times New Roman");
+    scale([1.1,.4])
+        translate([-12,10])
+            text("Jared",6,"Comic Sans MS");
 }
 
-*names();
 
 module can() {
     if (!makeCutFile){
-        rotate([0,90,0])
-        cylinder(/*h=12.2*/h=14 ,r=3.3,center=true,$fn=50);
-        *rotate([0,0,90])
-        sodacan();
+        if (useNiceCan) 
+            rotate([0,0,90])
+            sodacan();            
+        else
+            rotate([0,90,0])
+            cylinder(/*h=12.2*/h=14 ,r=3.3,center=true,$fn=50);
     }
 }
 

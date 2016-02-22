@@ -22,7 +22,7 @@ union(){
             cancut();
         
     }
-    union(){
+    *union(){
     translate([-7.5,0,canDepth])
         can();
     translate([7.5,0,canDepth])

@@ -22,7 +22,7 @@
 SetDirectory[NotebookDirectory[]]
 
 
-boat = <|
+boat:=boat = <|
 name -> "Crapboat",
 massPts (*  *)-> {{0,0,0}},
 masses -> {100},
@@ -32,7 +32,7 @@ graphics :> Show[Graphics3D[{EdgeForm[],Gray,GraphicsComplex[MeshCoordinates@reg
 |>;
 
 
-spaceboat=<|
+spaceboat:=spaceboat=<|
 name -> "Spaceboat",
 massPts (*mast,can1,can2,centered around mast  *)-> {{0,0,26},{0,9.2,2},{0,-9.2,2}},
 masses -> {96.2,364,364},
@@ -43,7 +43,7 @@ graphics :> Show[Graphics3D[{EdgeForm[],Gray,GraphicsComplex[MeshCoordinates@reg
 
 
 
-bestboat=<|
+bestboat:=bestboat=<|
 name -> "Bestboat",
 massPts (*mast,can1,can2,ballast1,ballast2 *)-> {{0,0,5},{7,0,-3},{-7,0,-3},{-4,0,-6},{4,0,-6}},
 masses -> {96.2,364,364,100,100},
@@ -53,7 +53,7 @@ graphics :> Show[Graphics3D[{EdgeForm[],Gray,GraphicsComplex[MeshCoordinates@reg
 |>;
 
 
-besterboat=<|
+besterboat:=besterboat=<|
 name -> "besterboat",
 massPts (*mast,can1,can2,centered around mast  *)-> {{0,0,20},{7,0,0},{-7,0,0}},
 masses -> {96.2,364,364},
@@ -63,7 +63,7 @@ graphics :> Show[Graphics3D[{EdgeForm[],Gray,GraphicsComplex[MeshCoordinates@reg
 |>;
 
 
-besterestiesterestboat=<|
+besterestiesterestboat:=besterestiesterestboat=<|
 name -> "Besterestiesterestboat",
 massPts (*mast,can1,can2,ballast1,ballast2,ballast3  *)-> {{0,0,19},{-7.5,0,-4.1},{7.5,0,-4.5}, {3,0,-9.5},{0,0,-9.5},{-3,0,-9.5}},
 masses -> {96.2,364,364,100,100,100},
@@ -73,7 +73,7 @@ graphics :> Show[Graphics3D[{EdgeForm[],Gray,GraphicsComplex[MeshCoordinates@reg
 |>;
 
 
-scadboat:=scadboat=<|
+scadboat1:=scadboat1=<|
 name -> "Bescadboat",
 massPts (*mast,can1,can2,ballast1,ballast2,ballast3  *)-> {{0,0,19},{-7.5,0,-2.5},{7.5,0,-2.5}(*, {3,0,-9.5},{0,0,-9.5},{-3,0,-9.5}*)},
 masses -> {96.2,364,364(*,100,100,100*)},

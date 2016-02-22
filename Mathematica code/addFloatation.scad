@@ -2,8 +2,8 @@ module boat(){import("Sample Data/bestboatdisplacement.stl",convexity=4);}
 module sodacan(){import("Generated boats/sodacan.stl",convexity=1);}
 //sodacan();
 canDepth=-2.5;
-extrudeHeight=6.5;
-makeCutFile=false;
+extrudeHeight=6.8;
+makeCutFile=true;
 
 union(){
     difference() {
@@ -22,8 +22,8 @@ union(){
         translate([-7.5,0,0])
             cancut();
         if(makeCutFile){
-            cylinder(h=1000,d=1,$fn=20,center=true);
-            translate([0,0,extrudeHeight])
+            translate([0,0,10])cylinder(h=11,d=1,$fn=20,center=true);
+            translate([0,0,extrudeHeight-0.4])
             cylinder(h=1000,d=3,center=falses,$fn=20);
         }
     }

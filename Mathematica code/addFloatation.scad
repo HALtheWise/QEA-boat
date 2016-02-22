@@ -3,16 +3,16 @@ module sodacan(){import("Generated boats/sodacan.stl",convexity=1);}
 //sodacan();
 canDepth=-2.5;
 extrudeHeight=6.5;
-makeCutFile=true;
+makeCutFile=false;
 
 union(){
     difference() {
         union() {
            boat();
 
-            translate([0,0,-0.3]) 
+            translate([0,0,-0.4]) 
             linear_extrude(height=extrudeHeight,center=false)
-            projection(cut=true) {
+            projection() {
                 translate([0,0,0.3]) boat();
             }
         }
@@ -35,11 +35,24 @@ union(){
     }
 }
 
+module names() {
+    scale([2,.7])
+        translate([-7,5])
+            text("Eric",6,"Times New Roman");
+    
+    rotate([0,0,180])
+    scale([2,.7])
+        translate([-9,5])
+            text("Jared",6,"Times New Roman");
+}
+
+*names();
+
 module can() {
     if (!makeCutFile){
-        *rotate([0,90,0])
+        rotate([0,90,0])
         cylinder(/*h=12.2*/h=14 ,r=3.3,center=true,$fn=50);
-        rotate([0,0,90])
+        *rotate([0,0,90])
         sodacan();
     }
 }

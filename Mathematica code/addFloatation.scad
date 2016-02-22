@@ -2,7 +2,7 @@ module boat(){import("Sample Data/bestboatdisplacement.stl",convexity=4);}
 module sodacan(){import("Generated boats/sodacan.stl",convexity=1);}
 //sodacan();
 canDepth=-2.5;
-extrudeHeight=7;
+extrudeHeight=6.5;
 
 union(){
     difference() {
@@ -22,11 +22,12 @@ union(){
             cancut();
         
     }
-
+    union(){
     translate([-7.5,0,canDepth])
         can();
     translate([7.5,0,canDepth])
         can();
+    }
 }
 
 module can() {

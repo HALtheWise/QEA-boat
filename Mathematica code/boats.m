@@ -73,11 +73,11 @@ graphics :> Show[Graphics3D[{EdgeForm[],Gray,GraphicsComplex[MeshCoordinates@reg
 |>;
 
 
-scadboat=<|
+scadboat:=scadboat=<|
 name -> "Bescadboat",
 massPts (*mast,can1,can2,ballast1,ballast2,ballast3  *)-> {{0,0,19},{-7.5,0,-2.5},{7.5,0,-2.5}(*, {3,0,-9.5},{0,0,-9.5},{-3,0,-9.5}*)},
 masses -> {96.2,364,364(*,100,100,100*)},
 front -> {1,0,0},
-region ->  Import["Generated boats/addFloatation.stl","BoundaryMeshRegion"],
+region ->  Import["Generated boats/addFloatationpi.stl","BoundaryMeshRegion"],
 graphics :> Show[Graphics3D[{EdgeForm[],Gray,GraphicsComplex[MeshCoordinates@region/.boat,MeshCells[region/.boat,2]]}],Graphics3D[{Red,PointSize[4],Graphics3D@Point[massPts/.boat]}]]
 |>;

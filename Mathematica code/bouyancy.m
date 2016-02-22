@@ -8,7 +8,6 @@
 (*Given a boat hull Region and a height of the waterline, we want to return a volume underwater. This needs to happen efficiently for arbitrary shapes.*)
 
 
-(* ::Code:: *)
 (*Needs["Combinatorica`"]*)
 
 
@@ -79,31 +78,25 @@ sorted[[neededPts]].angle
 
 boatWaterline[boat_,waterNormal_]:= Module[{mass},
 mass=totalMass[boat];
-Print@mass;
+(*Print@mass;*)
 waterline[region/.boat, waterNormal,mass (*Implicit grams\[Rule]cm^3*)]
 ]
 
 
-(* ::Code:: *)
 (*Get[FileNameJoin[{NotebookDirectory[],"boats.m"}]]*)
 (*Get[FileNameJoin[{NotebookDirectory[],"COM.m"}]]*)
 
 
-(* ::Code:: *)
 (*testRegion=DiscretizeRegion@RegionUnion[CapsuleShape[{{0,0,0},{0,2,1}},1],CapsuleShape[{{0,0.1,0},{0,-1,1}},1]];*)
 
 
-(* ::Code:: *)
 (*waterline[testRegion,{0,0,1},5]*)
 
 
-(* ::Code:: *)
 (*Timing@Volume[testRegion]*)
 
 
-(* ::Code:: *)
 (*Plot[underwaterVolume["random",testRegion,{0,0,1},d],{d,-1,1.9}]*)
 
 
-(* ::Code:: *)
 (*N@boatWaterline[boat,{0,0,1}]*)

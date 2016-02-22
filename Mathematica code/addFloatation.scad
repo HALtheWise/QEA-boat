@@ -3,6 +3,7 @@ module sodacan(){import("Generated boats/sodacan.stl",convexity=1);}
 //sodacan();
 canDepth=-2.5;
 extrudeHeight=6.5;
+makeCutFile=true;
 
 union(){
     difference() {
@@ -20,9 +21,13 @@ union(){
         
         translate([-7.5,0,0])
             cancut();
-        
+        if(makeCutFile){
+            cylinder(h=1000,d=1,$fn=20,center=true);
+            translate([0,0,extrudeHeight])
+            cylinder(h=1000,d=3,center=falses,$fn=20);
+        }
     }
-    *union(){
+    union(){
     translate([-7.5,0,canDepth])
         can();
     translate([7.5,0,canDepth])
@@ -31,8 +36,12 @@ union(){
 }
 
 module can() {
-    rotate([0,90,0])
-    cylinder(/*h=12.2*/h=14 ,r=3.3,center=true,$fn=50);
+    if (!makeCutFile){
+        *rotate([0,90,0])
+        cylinder(/*h=12.2*/h=14 ,r=3.3,center=true,$fn=50);
+        rotate([0,0,90])
+        sodacan();
+    }
 }
 
 module cancut(){

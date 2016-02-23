@@ -3,10 +3,31 @@ module sodacan(){import("Generated boats/sodacan.stl",convexity=1);}
 //sodacan();
 canDepth=-2.5;
 extrudeHeight=6.8;
-makeCutFile=true;
+makeCutFile=false;
 useNiceCan=false;
 includeText=false;
 
+makeCanPlugs=true;
+
+if(makeCanPlugs){
+    difference(){
+        translate([0,0,1.6]){
+            intersection(){
+                boat();
+                translate([7.5,0,0])
+                    cancut();
+            }
+            intersection(){
+                boat();
+                translate([-7.5,0,0])
+                    cancut();
+            }
+        }
+        translate([-50,-50]) cube(100);
+    }
+}
+
+if(!makeCanPlugs)
 union(){
     difference() {
         union() {
